@@ -9,7 +9,7 @@
     <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
 </head>
 <body>
-    <?php include 'header.html';?>
+    <?php include 'header_logado.html';?>
 
     <div class="body_content">
         <h1 class="body_title">Histórico</h1>
