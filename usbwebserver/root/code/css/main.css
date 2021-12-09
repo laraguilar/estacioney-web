@@ -101,7 +101,7 @@ body{
 }
 
 .body_content{
-    width: 50%;
+    width: 60%;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -117,7 +117,159 @@ body{
 
 .body_content h2{
     font-size: larger;
-    text-align: center;
+    text-align: left;
+}
+
+div.val_fixo{
+    font-weight: bold;
+    font-size: 15pt;
+    float: left;
+}
+
+div.preco_fixo{
+    margin-left: 20px;
+    float: left;
+}
+
+div.acres_hr{
+    font-weight: bold;
+    font-size: 15pt;
+    float: left;
+
+}
+
+div.preco_acresc{
+    margin-left: 20px;
+    float: left;
+
+}
+
+div.dispo{
+    font-size: 15pt;
+    font-weight: bold;
+    float: left;
+}
+
+div.disponivel{
+    float: right;
+    margin-left: 20px;
+}
+
+div.clear{
+    clear: both;
+}
+
+div.nome_estacionado{
+    float: left;
+}
+
+div.placa_estacionado{
+    margin-left: 10px;
+    float: left;
+}
+
+div.dsc_estacionado{
+    float: left;
+}
+
+div.horario_entrada{
+    float: left;
+}
+
+div.num_vaga{
+    font-size: 50pt;
+    float: left;
+}
+
+div.add_car{
+    text-align: right;
+}
+.valores{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+div.vaga{
+    float: left;
+}
+div.qtd_vaga{
+    float: left;
+    margin-left: 105px;
+}
+
+div.placa{
+    float: left;
+}
+div.placa_carro{
+    margin-left: 20px;
+    float: left;
+}
+
+div.model{
+    float: left;
+}
+
+div.model_carro{
+    margin-left: 85px;
+    float: left;
+}
+
+div.color{
+    float: left;
+}
+
+div.color_carro{
+    float: left;
+    margin-left: 118px;
+}
+
+div.nome_empresa{
+    float: left;
+}
+
+div.var_nome_empresa{
+    margin-left: 20px;
+    float: left;
+}
+
+div.email{
+    float: left;
+}
+
+div.var_email{
+    margin-left: 115px;
+    float: left;
+}
+
+div.cpf{
+    float: left;
+}
+
+div.var_cpf{
+    margin-left: 85px;
+    float: left;
+}
+
+div.tele{
+    float: left;
+}
+
+div.var_tele{
+    margin-left: 105px;
+    float: left;
+}
+
+.funcionarios{
+    float: left;
+}
+.alterar_senha{
+    float: left;
+}
+
+.add_estac{
+    margin-left: 40px;
+    float: left;
 }
 
 .table_content{
@@ -244,3 +396,11 @@ footer{
     font-size: 12pt;
 }
 
+
+
+
+
+
+
+
+  
