@@ -1,0 +1,9 @@
+PHP Warning:  PHP Startup: Unable to load dynamic library 'D:/GitHub/trabalho2-pw2/usbwebserver\\php\\ext\\php_curl.dll' - %1 n\xef\xbf\xbdo \xef\xbf\xbd um aplicativo Win32 v\xef\xbf\xbdlido.\r\n in Unknown on line 0
+[Thu Dec 09 16:18:11.793368 2021] [mpm_winnt:notice] [pid 11060:tid 728] AH00455: Apache/2.4.29 (Win32) PHP/7.1.11 configured -- resuming normal operations
+[Thu Dec 09 16:18:11.793368 2021] [mpm_winnt:notice] [pid 11060:tid 728] AH00456: Server built: Nov  3 2017 01:01:54
+[Thu Dec 09 16:18:11.793368 2021] [core:notice] [pid 11060:tid 728] AH00094: Command line: 'D:\\GitHub\\trabalho2-pw2\\usbwebserver/apache2/bin/httpd_usbwv8.exe -d D:/GitHub/trabalho2-pw2/usbwebserver/apache2'
+[Thu Dec 09 16:18:11.799362 2021] [mpm_winnt:notice] [pid 11060:tid 728] AH00418: Parent: Created child process 14080
+PHP Warning:  PHP Startup: Unable to load dynamic library 'D:/GitHub/trabalho2-pw2/usbwebserver\\php\\ext\\php_curl.dll' - %1 n\xef\xbf\xbdo \xef\xbf\xbd um aplicativo Win32 v\xef\xbf\xbdlido.\r\n in Unknown on line 0
+[Thu Dec 09 16:18:12.754040 2021] [mpm_winnt:notice] [pid 14080:tid 724] AH00354: Child: Starting 64 worker threads.
+[Thu Dec 09 16:18:51.005268 2021] [php7:error] [pid 14080:tid 1276] [client ::1:62364] script 'D:/GitHub/trabalho2-pw2/usbwebserver/root/code/sobre.php' not found or unable to stat, referer: http://localhost/code/cadastro.php
+[Thu Dec 09 16:18:53.903731 2021] [php7:error] [pid 14080:tid 1276] [client ::1:62364] script 'D:/GitHub/trabalho2-pw2/usbwebserver/root/code/sobre.php' not found or unable to stat, referer: http://localhost/code/cadastro.php

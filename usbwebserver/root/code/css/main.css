@@ -1,0 +1,246 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.title{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 20pt;
+}
+
+.header_content{
+    box-shadow: 
+    0px 3px 5px -1px rgba(0,0,0, 0.3),
+    0px 6px 10px 0px rgba(0,0,0, 0.14),
+    0px 1px 18px -0px rgba(0,0,0, 0.12);
+    margin: 0;
+}
+
+.image_toolbar{
+    width: 50px;
+    height: 50px;
+
+}
+
+
+.header {
+    background-color: #0F3F63;
+    box-shadow: 
+    0px 3px 5px -1px rgba(0,0,0, 0.3),
+    0px 6px 10px 0px rgba(0,0,0, 0.14),
+    0px 1px 18px -0px rgba(0,0,0, 0.12);
+}
+
+.header_toolbar{
+    padding-left: 10px;
+    box-shadow: 
+    0px 3px 5px -1px rgba(0,0,0, 0.3),
+    0px 6px 10px 0px rgba(0,0,0, 0.14),
+    0px 1px 18px -0px rgba(0,0,0, 0.12);
+    display: flex;
+    flex-flow: row wrap;
+    
+}
+
+.ul_toolbar{
+    list-style-type: none;
+    height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0%;
+    margin-left: 0%;
+       
+}
+
+.ul_toolbar li{
+    display: inline;
+}
+
+.ul_toolbar li img{
+    width: 16px;
+    height: 16px;
+}
+
+
+
+
+.ul_toolbar li a {
+    color: white;
+    text-decoration: none;
+    padding: 2.5px;
+    margin-right: 15px;
+    display: inline-block;
+
+}
+
+.ul_toolbar li a:hover{
+    background-color: #C9D7E1;
+    color:#0F3F63;
+    border-color: #000;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+
+.header_content{
+    padding-top: 10px;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.header_slogan{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.body_content{
+    width: 50%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 5%;
+    padding-top: 1%;
+    box-shadow: 
+    0px 3px 5px -1px rgba(0,0,0, 0.3),
+    0px 6px 10px 0px rgba(0,0,0, 0.14),
+    0px 1px 18px -0px rgba(0,0,0, 0.12);
+    border-radius: 10px;
+}
+
+.body_content h2{
+    font-size: larger;
+    text-align: center;
+}
+
+.table_content{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    display: block;
+    width: 70%;
+}
+
+.table_content form{
+    padding-left: 20px;
+}
+
+.table_content input{
+    width: 100%;
+}
+
+.table_content td{
+    padding: 5px;
+}
+
+
+.body_title{
+    text-align: center;
+    font-size: 24pt;
+}
+
+
+/* tablela histórico */
+.table_historico{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table_historico th, td{
+    text-align: center;
+    padding: 8px;
+}
+
+
+.table_historico tr:nth-child(even){
+    background-color:  #f2f2f2;
+}
+
+.table_historico th{
+    background-color:  #0F3F63;
+    color: white;
+}
+
+
+#sobre_nos{
+    text-align: justify;
+}
+
+/* Inicio CSS cadastro */
+.formcad{
+    border: none;
+    width: 80%;
+    margin: 0px auto;
+}
+
+.formcad label{
+    text-align: justify;
+    display: inline-block;
+    width: 30%;
+}
+
+.formcad input{
+    width: 40%;
+}
+
+.formcad div{
+    margin: 0px auto;
+    text-align: center;
+}
+
+#btn_cad{
+    margin-top: 20px;
+    text-align: center;
+    width: 25%;
+    font-size: medium;
+}
+
+#confirmar_cad{
+    font-size: 13pt;
+}
+
+/* Inicio CSS Login */
+.login{
+    border: none;
+    width: 80%;
+    margin: 0px auto;
+}
+
+.login label{
+    text-align: justify;
+    display: inline-block;
+    width: 10%;
+}
+
+.login input{
+    width: 35%;
+}
+
+#form_login{
+    text-align: center;   
+}
+
+.botao_login{
+    margin-top: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#confirmar_login{
+    font-size: 13pt;
+}
+
+footer{
+    background-color: #C9D7E1;
+    margin: 50px;
+    font-size: 12pt;
+}
+
