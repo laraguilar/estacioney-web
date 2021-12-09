@@ -9,6 +9,10 @@ body{
     overflow-x: hidden;
 }
 
+input{
+    padding: 1.5px;
+}
+
 .title{
     margin-top: 30px;
     text-align: center;
@@ -227,6 +231,11 @@ body{
     text-align: center;   
 }
 
+#form_login a{
+    font-size: 12pt;
+    color:#000;
+}
+
 .botao_login{
     margin-top: 20px;
     text-align: center;
@@ -238,6 +247,95 @@ body{
     font-size: 13pt;
 }
 
+/* ESQUECI SENHA */
+.esqueci_senha{
+    border: none;
+    width: 80%;
+    margin: 0px auto;
+}
+
+.esqueci_senha label{
+    text-align: left;
+    width: 40%;
+}
+
+.esqueci_senha input{
+    width: 35%;
+}
+
+.esqueci_senha button{
+    margin-top: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form_esqueci_senha{
+    text-align: center;   
+}
+
+#form_esqueci_senha a{
+    font-size: 12pt;
+    color:#000;
+}
+
+#confirmar_email{
+    font-size: 13pt;
+}
+
+.timestamp{
+    font-size: 12pt;
+    color: gray;
+    text-align: center;
+    margin: auto;
+}
+
+/* drop down menu */
+
+.dropbtn {
+    background-color: #0F3F63;
+    color: white;
+    padding: 16px;
+    font-size: 14pt;
+    border: none;
+    cursor: pointer;
+    margin: auto;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    font-size: 14pt;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0F3F63;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+  }
+  
+  .dropdown-content a {
+    color: #0F3F63;
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #0F3F63}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #0F3F63;
+  }
+
+/* rodape */
 footer{
     background-color: #C9D7E1;
     margin: 50px;

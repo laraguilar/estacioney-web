@@ -12,19 +12,18 @@
     <?php include 'header_deslogado.html';?>
 
     <div class="body_content">
-        <h1 class="body_title">Login</h1>
-            <form action="index.php" method="post" id = "form_login">
-                <fieldset class="login">
+        <h1 class="body_title">Alterar Senha</h1>
+            <form action="index.php" method="post" id = "form_esqueci_senha">
+                <fieldset class="esqueci_senha">
                     <div>
-                        <label>E-mail</label>
-                        <input type="email" name="email"><br>
-                        <label>Senha</label>
-                        <input type="password" name="password"><br>
-                        <a href="tela_esqueci_senha.php">Esqueci minha senha</a>
+                        <label>Nova Senha</label><br>
+                        <input type="password" name="newPass"><br>
+                        <label>Confirmar Nova Senha</label><br>
+                        <input type="password" name="newPassConfirm"><br>
                     </div>
                 </fieldset>
-                <div class="botao_login">
-                    <button type="submit" id="confirmar_login">Entrar</button>
+                <div>
+                    <button type="submit" id="confirmar_email">Confirmar</button>
                 </div>
             </form>
     </div>
