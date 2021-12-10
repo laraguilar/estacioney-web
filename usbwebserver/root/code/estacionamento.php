@@ -16,15 +16,15 @@
         <table class="valores">
             <tr>
                 <td>
-                    <div class="val_fixo">Nome do Estac: </div>
-                    <div class="preco_fixo">Vix Park - Sede</div>
+                    <div class="nome_estac">Nome do Estac: </div>
+                    <div class="var_nome_estac">Vix Park - Sede</div>
                     <div class="clear"></div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="acres_hr">E-mail:</div>
-                    <div class="preco_acresc"> vixpark@email.com </div>
+                    <div class="email">E-mail:</div>
+                    <div class="var_email"> vixpark@email.com </div>
                     <div class="clear"></div>
                 </td>
             </tr>
@@ -36,35 +36,35 @@
             </tr>
             <tr>
                 <td>
-                    <div class="nome_estacionado">Valor Fixo: </div>
-                    <div class="placa_estacionado">R$ 5,00</div>
+                    <div class="val_fixo">Valor Fixo: </div>
+                    <div class="preco_fixo">R$ 5,00</div>
                     <br></br>
-                    <div class="dsc_estacionado">Acrescimo/Hora: </div>
-                    <div class="horario_entrada">R$ 1,50</div>
+                    <div class="acres_hr">Acrescimo/Hora: </div>
+                    <div class="preco_acresc">R$ 1,50</div>
                     <div class="clear"></div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="funcionarios"> Funcionarios </div>
+                    <div class="funcionario"> Funcionarios </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="funcionarios"> Kebler </div>
-                    <div class="funcionarios"> Gerente </div>
+                    <div class="var_gerente"> Gerente </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="funcionarios"> Valdiney </div>
-                    <div class="funcionarios"> Atendente </div>
+                    <div class="var_atendente"> Atendente </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="funcionarios"> Josephina </div>
-                    <div class="funcionarios"> Atendente </div>
+                    <div class="var_atendente1"> Atendente </div>
                 </td>
             </tr>
         </table>

@@ -138,7 +138,7 @@ div.val_fixo{
 }
 
 div.preco_fixo{
-    margin-left: 20px;
+    margin-left: 100px;
     float: left;
 }
 
@@ -150,7 +150,7 @@ div.acres_hr{
 }
 
 div.preco_acresc{
-    margin-left: 20px;
+    margin-left: 43px;
     float: left;
 
 }
@@ -271,7 +271,35 @@ div.var_tele{
     float: left;
 }
 
+div.vagas{
+    font-weight: bold;
+    float: left;
+}
+
+div.var_vagas{
+    margin-left: 110px;
+    float: left;
+}
+
+div.funcionario{
+    font-weight: bold;
+    float: left;
+}
+
 .funcionarios{
+    float: left;
+}
+div.var_gerente{
+    margin-left: 145px;
+    float: left;
+}
+.var_atendente{
+    margin-left: 130px;
+    float: left;
+}
+
+div.var_atendente1{
+    margin-left:115px;
     float: left;
 }
 .alterar_senha{
@@ -283,6 +311,20 @@ div.var_tele{
     float: left;
 }
 
+div.nome_estac{
+    font-weight: bold;
+    float: left;
+}
+
+div.var_nome_estac{
+    float: left;
+    margin-left: 60px;
+}
+
+div.var_email{
+    float: left;
+    margin-left: 143px;
+}
 .table_content{
     margin-left: auto;
     margin-right: auto;
