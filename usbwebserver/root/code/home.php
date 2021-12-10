@@ -16,7 +16,7 @@
             <tr>
                 <td>
                     <div class="val_fixo">Valor Fixo: </div>
-                    <div class="preco_fixo">R$ 00.00</div>
+                    <div class="preco_fixo">R$00,00</div>
                     <div class="clear"></div>
                 </td>
 
@@ -29,8 +29,8 @@
             </tr>
             <tr>
                 <td>
-                    <div class="acres_hr">Acrescimento/Hora:</div>
-                    <div class="preco_acresc"> R$ 00,00 </div>
+                    <div class="acres_hr">Acréscimo/Hora:</div>
+                    <div class="preco_acresc"> R$00,00 </div>
                     <div class="clear"></div>
                 </td>
             </tr>

@@ -13,7 +13,7 @@
 
     <div class="body_content">
         <h1 class="body_title">Login</h1>
-            <form action="index.php" method="post" id = "form_login">
+            <form action="home.php" method="post" id = "form_login">
                 <fieldset class="login">
                     <div>
                         <label>E-mail</label>

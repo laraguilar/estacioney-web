@@ -30,7 +30,14 @@ input{
 .image_toolbar{
     width: 50px;
     height: 50px;
+}
 
+
+.image_user img{
+    width: 50px;
+    height: 50px;
+    float: right;
+    margin-left: 0px;
 }
 
 
@@ -121,7 +128,7 @@ input{
 
 .body_content h2{
     font-size: larger;
-    text-align: left;
+    text-align: center;
 }
 
 div.val_fixo{
@@ -452,6 +459,7 @@ div.var_tele{
     border: none;
     cursor: pointer;
     margin: auto;
+    margin-left: 650px;
   }
   
   .dropdown {
@@ -468,6 +476,7 @@ div.var_tele{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 5px;
+    margin-left: 660px;
   }
   
   .dropdown-content a {
