@@ -11,7 +11,6 @@
 <body>
     <?php include 'header_logado.html';?> 
     <div class="body_content">
-        
         <h1 class="body_title">Historico</h1>
         <table class="valores">
             <tr>

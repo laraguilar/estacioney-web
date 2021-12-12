@@ -9,10 +9,12 @@
     <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
 </head>
 <body>
-    <?php include 'header_logado.html';?> 
+<?php include 'header_logado.html';?> 
     <div class="body_content">
         <h1 class="body_title">Dados da Empresa</h1>
-        <h1>IMAGEM DE PERFIL</h1>
+        <div class="image_user_profile"><figure><img src="imagem/user_black.png"></figure></div>
+        <div class="edit_profile_icon"><figure><img src="imagem/pencil.png"></figure></div>
+
         <table class="dados_veiculo">
             <tr>
                 <td>
