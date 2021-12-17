@@ -1,60 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Estacioney</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
-    <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
-</head>
-<body>
-    <?php include 'header_logado.html';?> 
-    <div class="body_content">
-        <h1 class="body_title">Historico</h1>
-        <table class="valores">
-            <tr>
-                <td>
-                    <div class="val_fixo">Lucro: </div>
-                    <div class="preco_fixo">R$ 51.00</div>
-                    <div class="clear"></div>
-                </td>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Estacioney</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">   
+        <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
-                <td>
-                    <button class="gerar_pdf">Gerar PDF</button>
-                </td>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
 
-            </tr>
-            <tr>
-                <td>
-                    <div class="acres_hr">Rotatividade:</div>
-                    <div class="preco_acresc"> 8 carros </div>
-                    <div class="clear"></div>
-                </td>
-            </tr>
-        </table>
-        <hr></hr>
-        <table>
-            <tr>
-                <td>
-                    <div class="num_vaga">1</div>
-                </td>
-                <td>
-                    <div class="nome_estacionado">Giovanni</div>
-                    <div class="placa_estacionado">CRN-0021</div>
-                    <br></br>
-                    <div class="dsc_estacionado">Hora entrada: </div>
-                    <div class="horario_entrada">22/04/21 06:11:00</div>
-                    <div class="clear"></div>
-                </td>
-                <td>
-                    <div class="editar_vaga">EDITAR</div>
-                    <div class="sair_vaga">SAIR</div>
-                </td>
-            </tr>
-        </table>
-        <hr></hr>
-    </div>
-    <div class="add_car">ADICIONAR CARRO</div>
-</body>
-</html>
+    <?php include 'headerLog.html' ?>
+
+    <div class="container" style="margin: auto; width: 60%;">
+    <div class="row">
+        <div class="col center-align">
+            <div class="row s12 m6 center-align">
+                <div class="col s12 z-depth-1">
+                    <h3 class="center">Histórico</h3>
+                    <div class="row center">
+                        <div class="col s12 m6">
+                            <h6>Lucro: R$51,00</h6>
+                        </div>
+                        <div class="col s12 m6">
+                            <a class='dropdown-trigger btn' href='#' data-target='dropdown-menu'>HOJE<i class="large material-icons">arrow_drop_down</i></a>
+                            <!--DROPDOWN CONTENT-->
+                            <ul id='dropdown-menu' class='dropdown-content'>
+                                <li><a href="#">Ultimos 7 Dias</a></li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li><a href="#">Ultimos 15 dias</a></li>
+                            </ul>
+                        </div>
+                        <div class="col s12 m6 pull-m6">
+                            <h6>Rotatividade: 8 carros</h6>
+                        </div>
+                        <div class="col s12 left-align">
+                            <!-- Historico repetido -->
+                            <div class="row">
+                                <div class="divider"></div>
+                                <div class="col s12"> <!-- LINHA -->
+                                    <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
+                                        <div class="section">
+                                            <div class="col s6">
+                                                <h5>Giovanni</h5>
+                                                <span>CRN-0021</span>
+                                                <div>
+                                                <span>Hora de Entrada 10:50:45 14/12/2021</span>
+                                                <div>
+                                                <span>Hora de Saida 11:50:45 14/12/2021</span>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 right-align">
+                                                <h5 class="center">R$5,00</h5> 
+                                            </div>
+                                            <div class="col s12"> <!-- LINHA -->
+                                                <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
+                                                <div class="divider"></div>    
+                                                <div class="section">
+                                                    <div class="col s6">
+                                                        <h5 >Giovanni</h5>
+                                                        <span>CRN-0021</span>
+                                                        <div>
+                                                            <span>Hora de Entrada 10:50:45 14/12/2021</span>
+                                                            <div>
+                                                                <span>Hora de Saida 11:50:45 14/12/2021</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s6 right-align">
+                                                        <h5 class="center">R$5,00</h5>
+                                                    </div>
+                                                    <div class="divider"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+  </html>

@@ -1,62 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Estacioney</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
-    <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Estacioney</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">   
+        <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-    <?php include 'header_logado.html';?> 
-    <div class="body_content">
-        <h1 class="body_title">HOJE</h1>
-        <table class="valores">
-            <tr>
-                <td>
-                    <div class="val_fixo">Valor Fixo: </div>
-                    <div class="preco_fixo">R$00,00</div>
-                    <div class="clear"></div>
-                </td>
+<?php include 'headerLog.html' ?>
 
-                <td>
-                    <div class="dispo">Disponibilidade:</div>
-                    <div class="disponivel"> 00/3000 </div>
-                    <div class="clear"></div>
-                </td>
-
-            </tr>
-            <tr>
-                <td>
-                    <div class="acres_hr">Acréscimo/Hora:</div>
-                    <div class="preco_acresc"> R$00,00 </div>
-                    <div class="clear"></div>
-                </td>
-            </tr>
-        </table>
-        <hr></hr>
-        <table>
-            <tr>
-                <td>
-                    <div class="num_vaga">1</div>
-                </td>
-                <td>
-                    <div class="nome_estacionado">Giovanni</div>
-                    <div class="placa_estacionado">CRN-0021</div>
-                    <br></br>
-                    <div class="dsc_estacionado">Hora entrada: </div>
-                    <div class="horario_entrada">22/04/21 06:11:00</div>
-                    <div class="clear"></div>
-                </td>
-                <td>
-                    <div class="editar_vaga">EDITAR</div>
-                    <div class="sair_vaga">SAIR</div>
-                </td>
-            </tr>
-        </table>
-        <hr></hr>
+    <div class="container" style="margin: auto; width: 60%;">
+        <div class="row">
+            <div class="col center-align">
+            <div class="row s12 m6 center-align">
+                <div class="col s12 z-depth-1">
+                    <h3 class="center">Estacionamento 1</h3>
+                    <div class="row center">
+                        <div class="col s12 m6">
+                            <h6>Valor fixo: R$5,00</h6>
+                        </div>
+                        <div class="col s12 m6">
+                            <h5>Disponibilidade: 27/30</h5>
+                        </div>
+                        <div class="col s12 m6">
+                            <h6>Acréscimo/hora: R$1,50</h6>
+                        </div>
+                        <div class="col s12 left-align">
+                            <!-- A partir de agora todas as cols são uma linha do "histórico"-->
+                            <div class="row">
+                                <div class="divider"></div>
+                                <div class="col s12"> <!-- LINHA -->
+                                    <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
+                                        <div class="section">
+                                            <div class="col s6">
+                                                <h5 >Augusto</h6>
+                                                <span>HTM-1353</span>
+                                                <span>Hora de Entrada 10:50:45 14/12/2021</span>
+                                            </div>
+                                            <div class="section">
+                                            <div class="col s6 right-align">
+                                                <h5><a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">edit</i></a>
+                                                <a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">exit_to_app</i></a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                                <div class="col s12"> <!-- LINHA -->
+                                    <div class="divider"></div>
+                                    <div class="row">
+                                        <div class="section">
+                                            <div class="col s6">
+                                                <h5>Augusto</h5>
+                                                <span>HTM-1353</span>
+                                                <span>Hora de Entrada 10:50:45 14/12/2021</span>
+                                            </div>
+                                            <div class="section">
+                                            <div class="col s6 right-align">
+                                                <h5><a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">edit</i></a>
+                                                <a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">exit_to_app</i></a></h5>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="add_car">ADICIONAR CARRO</div>
-</body>
-</html>
+</div>
+
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>
+
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+  </html>
