@@ -1,3 +1,4 @@
+<?php include_once "./conexao.php"?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,35 +18,53 @@
 
         <div class="container" style="margin: auto; width: 60%;">
             <div class="row">
-                <form method="post" class="col s12 m6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
+                <?php 
+                $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+                if(!empty($dados['cadEmpresa'])){
+                    var_dump($dados);
+                    $query_empresa = "INSERT INTO empresa (nomEmpresa, dscCpfCnpj, email, senha, telefone) VALUES ('". $dados['nomEmpresa'] ."', '" . $dados['dsccpfcnpj']. "', '".$dados['email']."', '".$dados['password']."', '".$dados['telEmpresa']."') ";
+                    
+                    $cad_empresa = $conn->prepare($query_empresa);
+                    $cad_empresa->execute();
+
+                    if($cad_empresa->rowCount()){
+                        echo "Usuário cadastrado com sucesso";
+                    } else{
+                        echo"Erro: Usuário não cadastrado";
+                    }
+                }
+                ?>
+                <form method="post" action="" class="col s12 m6" name="cadEmpresa" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
                     <h2 style="text-align: center;">Cadastro da Empresa</h2>
                     <div class="row center-align">
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" id="nomeEmpresa" class="validate">
+                                    <input type="text" name="nomEmpresa" id="nomEmpresa" class="validate">
                                     <label for="text">Nome da Empresa</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input type="text" id="cpfcnpj" class="validate">
+                                    <input type="text" name="dsccpfcnpj" id="dsccpfcnpj" class="validate">
                                     <label for="text">CPF ou CNPJ</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input type="text" id="numEmpresa" class="validate">
+                                    <input type="text" name="telEmpresa" id="telEmpresa" class="validate">
                                     <label for="text">Telefone</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input type="email" id="email" class="validate">
+                                    <input type="email" name="email"  id="email" class="validate">
                                     <label for="email">Email</label>
                                     <span class="helper-text left-align" data-error="Email inválido" data-success="">Digite um email válido</span>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input type="password" id="password" class="validate">
+                                    <input type="password" name="password" id="password" class="validate">
                                     <label for="password">Senha</label>
                                     <span class="helper-text left-align" data-error="Senha inválida" data-success="">Mínimo 8 caracteres</span>
                                 </div>
                             </div>
-                            <a href="cadEstac.php" class="waves-effect waves-light btn">Continuar</a>
+                            <input type="submit" name="cadEmpresa" class="waves-effect waves-light btn" value="Continuar">
+
                         </div>
                     </div>
                 </form>
