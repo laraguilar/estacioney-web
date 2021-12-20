@@ -32,10 +32,10 @@
                                             <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
                                                 <div class="section">
                                                     <div class="col s6">
-                                                        <h5 >Nome da Empresa</h5>
+                                                        <p>Nome da Empresa</p>
                                                     </div>
                                                     <div class="col s6 pull-s1 ">
-                                                        <h5>VIX PARK</h5>
+                                                        <p>VIX PARK</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -45,10 +45,10 @@
                                             <div class="row">
                                                 <div class="section">
                                                 <div class="col s6">
-                                                        <h5>E-MAIL</h5>
+                                                        <p>E-MAIL</p>
                                                     </div>
                                                     <div class="col s6 pull-s1 ">
-                                                        <h5>vixpark@email.com</h5>
+                                                        <p>vixpark@email.com</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -58,10 +58,10 @@
                                             <div class="row">
                                                 <div class="section">
                                                 <div class="col s6">
-                                                        <h5>CPF / CNPJ</h5>
+                                                        <p>CPF / CNPJ</p>
                                                     </div>
                                                     <div class="col s6 pull-s1 ">
-                                                        <h5>123.456.789-00</h5>
+                                                        <p>123.456.789-00</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -71,10 +71,10 @@
                                             <div class="row">
                                                 <div class="section">
                                                 <div class="col s6">
-                                                    <h5>Telefone</h5>
+                                                    <p>Telefone</p>
                                                     </div>
                                                     <div class="col s6 pull-s1 ">
-                                                        <h5>(27)1234-5678</h5>
+                                                        <p>(27)1234-5678</p>
                                                     </div>
                                                 </div>
                                             </div>
