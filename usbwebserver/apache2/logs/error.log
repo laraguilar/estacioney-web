@@ -1,8 +1,0 @@
-PHP Warning:  PHP Startup: Unable to load dynamic library 'D:/GitHub/trabalho2-pw2/usbwebserver\\php\\ext\\php_curl.dll' - %1 n\xef\xbf\xbdo \xef\xbf\xbd um aplicativo Win32 v\xef\xbf\xbdlido.\r\n in Unknown on line 0
-[Wed Dec 15 00:12:25.656314 2021] [mpm_winnt:notice] [pid 11128:tid 720] AH00455: Apache/2.4.29 (Win32) PHP/7.1.11 configured -- resuming normal operations
-[Wed Dec 15 00:12:25.656314 2021] [mpm_winnt:notice] [pid 11128:tid 720] AH00456: Server built: Nov  3 2017 01:01:54
-[Wed Dec 15 00:12:25.656314 2021] [core:notice] [pid 11128:tid 720] AH00094: Command line: 'D:\\GitHub\\trabalho2-pw2\\usbwebserver/apache2/bin/httpd_usbwv8.exe -d D:/GitHub/trabalho2-pw2/usbwebserver/apache2'
-[Wed Dec 15 00:12:25.659271 2021] [mpm_winnt:notice] [pid 11128:tid 720] AH00418: Parent: Created child process 19772
-PHP Warning:  PHP Startup: Unable to load dynamic library 'D:/GitHub/trabalho2-pw2/usbwebserver\\php\\ext\\php_curl.dll' - %1 n\xef\xbf\xbdo \xef\xbf\xbd um aplicativo Win32 v\xef\xbf\xbdlido.\r\n in Unknown on line 0
-[Wed Dec 15 00:12:26.770278 2021] [mpm_winnt:notice] [pid 19772:tid 716] AH00354: Child: Starting 64 worker threads.
-[Wed Dec 15 00:39:39.203702 2021] [php7:error] [pid 19772:tid 1224] [client ::1:60687] script 'D:/GitHub/trabalho2-pw2/usbwebserver/root/code/estacionamento.php' not found or unable to stat, referer: http://localhost/code/empresa.php
