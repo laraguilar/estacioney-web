@@ -1,4 +1,10 @@
-<?php include_once './conexao.php' ?>
+<?php
+//header
+include_once 'includes/headerDeslog.html';
+// mensagem
+include_once 'includes/message.php';
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -17,47 +23,10 @@
 </head>
 
 <body>
-    <?php include 'headerDeslog.html' ?>
-    <?php
-    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-    if (!empty($dados['cadEstac'])) {
-        $empty_input = false;
-        
-
-        $dados = array_map('trim', $dados);
-
-        if (in_array("", $dados)) {
-            $empty_input = true;
-        } elseif (!filter_var($dados['qtdVagas'], FILTER_VALIDATE_INT)) { // validação do email
-            $empty_input = true;
-            echo "<p style='color: red;'>Erro: Quantidade de vagas inválida.</p>";
-        } elseif (!filter_var($dados['valFixo'], FILTER_VALIDATE_FLOAT)) { // validação do email
-            $empty_input = true;
-            echo "<p style='color: red;'>Erro: Valor fixo inválido.</p>";
-        } elseif (!filter_var($dados['valAcresc'], FILTER_VALIDATE_FLOAT)) { // validação do email
-            $empty_input = true;
-            echo "<p style='color: red;'>Erro: Acréscimo/hora inválido.</p>";
-        }
-
-
-        if (!$empty_input) {
-            $query_estacionamento = "INSERT INTO estacionamento (nomEstac, qtdVagas, valFixo, valAcresc) values (:nomEstac,:qtdVagas,
-                    :valFixo, :valAcresc) ";
-
-            $cad_estacionamento = $conn->prepare($query_estacionamento);
-            $cad_estacionamento->bindParam(':nomEstac', $dados['nomEstac'], PDO::PARAM_STR);
-            $cad_estacionamento->bindParam(':qtdVagas', $dados['qtdVagas'], PDO::PARAM_INT);
-            $cad_estacionamento->bindParam(':valFixo', $dados['valFixo'], PDO::PARAM_STR);
-            $cad_estacionamento->bindParam(':valAcresc', $dados['valAcresc'], PDO::PARAM_STR);
-            $cad_estacionamento->execute();
-        }
-    }
-    ?>
-
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
             <form name="cad-Estac" method="POST" action="home.php" class="col s6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
-                <h2 style="text-align: center;">Cadastro do Estacionamento</h2>
+                <h3 style="text-align: center;">Cadastro do Estacionamento</h3>
                 <div class="row center-align">
                     <div class="col s12">
                         <div class="row">

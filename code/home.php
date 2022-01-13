@@ -1,3 +1,5 @@
+<?php include_once 'includes/headerLog.html' ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,8 +15,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<?php include 'headerLog.html' ?>
-
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
             <div class="col center-align">

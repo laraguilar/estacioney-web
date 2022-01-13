@@ -1,4 +1,4 @@
-<?php include_once './conexao.php';?>
+<?php require_once './conexao.php';?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +15,7 @@
     </head>
     <body>
 
-        <?php include 'headerLog.html' ?>
+        <?php include_once 'includes/headerLog.html' ?>
 
         <div class="container" style="margin: auto; width: 60%;">
             <div class="row">

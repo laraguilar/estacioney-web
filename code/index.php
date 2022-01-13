@@ -1,6 +1,10 @@
 <?php 
 session_start();
-include_once './conexao.php'?>
+
+//conexao BD
+include_once 'php_actions/conexao.php';
+// header
+include_once 'includes/headerDeslog.html'; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,46 +21,8 @@ include_once './conexao.php'?>
     </head>
     <body>
 
-        <?php include 'headerDeslog.html' ?>
-
         <div class="container" style="margin: auto; width: 60%;">
             <div class="row">
-                <?php
-                    // RECEBE OS DADOS DO FORMULARIO
-                    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-
-
-                    if(!empty($dados['sendLogin'])){
-                        var_dump($dados);
-                        $query_login = "SELECT idEmpresa, Email, Senha 
-                                        FROM Empresa 
-                                        WHERE Email = :Email 
-                                        LIMIT 1";
-                        $result_login = $conn->prepare($query_login);
-                        $result_login->bindParam(':Email', $dados['Email'], PDO::PARAM_STR);
-                        $result_login->execute();
-                        
-
-                        $row_usuario = $result_login->fetch(PDO::FETCH_ASSOC);
-                            var_dump($row_usuario);
-
-
-                        /*if(($result_login) AND ($result_login->rowCount() != 0)){
-                            $row_usuario = $result_login->fetch(PDO::FETCH_ASSOC);
-                            var_dump($row_usuario);
-                        }else{
-                            $_SESSION['msg'] = "Erro: Usuário ou senha inválida!";
-                        }*/
-
-                        
-                    }
-
-                    if(isset($_SESSION['msg'])){
-                        echo $_SESSION['msg'];
-                        unset($_SESSION['msg']);
-                    }
-                ?>
-
                 <form method="post" action="#" class="col s12 m6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
                     <h2 style="text-align: center;">Login</h2>
                     <div class="row center-align">

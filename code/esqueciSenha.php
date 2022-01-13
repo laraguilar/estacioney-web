@@ -1,3 +1,4 @@
+<?php include_once 'includes/headerDeslog.html' ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,9 +14,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-
-        <?php include 'headerDeslog.html' ?>
-
         <div class="container" style="margin: auto; width: 60%;">
             <div class="row">
                 <form method="post" class="col s12 m6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
