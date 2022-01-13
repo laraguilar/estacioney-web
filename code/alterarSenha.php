@@ -22,22 +22,22 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="password" id="password" class="validate">
+                                    <input type="password" id="Senha" class="validate">
                                     <label for="password">Senha Atual</label>
                                     
                                 </div>
                                 <div class="input-field col s12">
-                                    <input type="password" id="password" class="validate">
+                                    <input type="password" id="Newpassword" class="validate">
                                     <label for="password">Nova Senha</label>
                                     
                                 </div>
                                 <div class="input-field col s12">
-                                    <input type="password" id="password" class="validate">
+                                    <input type="password" id="Newpassword" class="validate">
                                     <label for="password">Repita a  Senha</label>
                                     <span class="helper-text left-align" data-error="As senhas não são iguais" data-success="">Repita a senha</span>
                                 </div>                                
                             </div>
-                            <a href="empresa.php" class="waves-effect waves-light btn">Confirmar</a>
+                            <input type="submit" name="btnAlterarSenha" class="waves-effect waves-light btn" value="Continuar">
                         </div>
                     </div>
                 </form>

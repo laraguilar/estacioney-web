@@ -1,10 +1,12 @@
-<?php 
-session_start();
-
-//conexao BD
+<?php
+// conexão BD
 include_once 'php_actions/conexao.php';
-// header
-include_once 'includes/headerDeslog.html'; ?>
+//header
+include_once 'includes/headerDeslog.html'; 
+// Mensagem
+include_once 'includes/message.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,24 +25,24 @@ include_once 'includes/headerDeslog.html'; ?>
 
         <div class="container" style="margin: auto; width: 60%;">
             <div class="row">
-                <form method="post" action="#" class="col s12 m6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
+                <form method="POST" action="php_actions/loginDB.php" class="col s12 m6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
                     <h2 style="text-align: center;">Login</h2>
                     <div class="row center-align">
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="email" id="email" class="validate">
+                                <input type="email" name="Email" id="email" class="validate">
                                     <label for="email">Email</label>
                                     <span class="helper-text left-align" data-error="Email inválido" data-success="">Digite o email cadastrado</span>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input type="password" id="password" class="validate">
+                                <input type="password" name="Senha" id="password" class="validate">
                                     <label for="password">Senha</label>
                                 </div>
                                 <a href="esqueciSenha.php">Esqueci minha senha</a><br>
                                 <a href="cadEmpresa.php">Cadastrar</a>
                             </div>
-                            <input type="submit" name="sendLogin" class="waves-effect waves-light btn" value="Entrar">
+                            <input type="submit" name="btnEntrar" class="waves-effect waves-light btn" value="Entrar">
                         </div>
                     </div>
                 </form>
