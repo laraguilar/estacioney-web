@@ -23,7 +23,7 @@ include_once 'includes/headerDeslog.html';
 <body>
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
-            <form name="cad-Estac" method="POST" action="home.php" class="col s6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
+            <form action="php_actions/cadEstacDB.php" method="POST" class="col s6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
                 <h3 style="text-align: center;">Cadastro do Estacionamento</h3>
                 <div class="row center-align">
                     <div class="col s12">
@@ -33,18 +33,42 @@ include_once 'includes/headerDeslog.html';
                                 <label for="text">Nome do Estacionamento</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="qtdVagas" type="number" min="1" id="qtdVagas" class="validate">
+                                <input name="qtdVagas" type="number" step="1" min="1" id="qtdVagas" class="validate">
                                 <label for="text">Quantidade de vagas</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="valFixo" type="number" min="0.1" step="any" id="valFixo" class="validate">
+                                <input name="valFixo" type="number" min="0,1" step="0.5" id="valFixo" class="validate">
                                 <label for="text">Valor Fixo</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="valAcresc" type="number" min="0.1" step="any" id="valAcresc" class="validate">
+                                <input name="valAcresc" type="number" min="0" step="0.5" id="valAcresc" class="validate">
                                 <label for="text">Acréscimo/hora</label>
                             </div>
-                            <input type="submit" name="cadEstac" value="Cadastrar" class="waves-effect waves-light btn">
+                            <div class="input-field col s12">
+                                <input name="cep" type="number" id="cep" class="validate">
+                                <label for="text">CEP</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="rua" type="text" id="rua" class="validate">
+                                <label for="text">Rua</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="num" type="number" id="num" class="validate">
+                                <label for="text">Número</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="bairro" type="text" id="bairro" class="validate">
+                                <label for="text">Bairro</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="cidade" type="text" id="cidade" class="validate">
+                                <label for="text">Cidade</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="estado" type="text" id="estado" class="validate">
+                                <label for="text">Estado</label>
+                            </div>
+                            <button type="submit" name="btnCadEstac" class="waves-effect waves-light btn indigo darken-2">Cadastrar</button>
                         </div>
                     </div>
             </form>

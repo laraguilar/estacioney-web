@@ -2,7 +2,7 @@
 // conexão BD
 include_once 'php_actions/conexao.php';
 //header
-include_once 'includes/headerDeslog.html'; 
+include_once 'includes/headerDeslog.html';
 // Mensagem
 include_once 'includes/message.php';
 ?>
@@ -17,10 +17,11 @@ include_once 'includes/message.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
 <body>
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
@@ -38,7 +39,7 @@ include_once 'includes/message.php';
                                 <label for="text">CPF ou CNPJ</label>
                             </div>
                             <div class="input-field col s12">
-                                <input type="text" name="Telefone" id="telefone" class="validate">
+                                <input type="tel" name="Telefone" id="telefone" class="validate">
                                 <label for="text">Telefone</label>
                             </div>
                             <div class="input-field col s12">
@@ -52,7 +53,7 @@ include_once 'includes/message.php';
                                 <span class="helper-text left-align" data-error="Senha inválida" data-success="">Mínimo 8 caracteres</span>
                             </div>
                         </div>
-                        <button type="submit" name="btnCadEmpresa" class="waves-effect waves-light btn indigo darken-2" >Cadastrar</button>
+                        <button type="submit" name="btnCadEmpresa" class="waves-effect waves-light btn indigo darken-2">Cadastrar</button>
                     </div>
                 </div>
             </form>

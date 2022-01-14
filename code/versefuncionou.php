@@ -1,10 +1,6 @@
 <?php
 require_once 'php_actions/sessaoLog.php';
-
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
