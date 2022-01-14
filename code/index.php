@@ -1,10 +1,11 @@
 <?php
+// Mensagem
+include 'includes/message.php';
 // conexão BD
 include_once 'php_actions/conexao.php';
 //header
 include_once 'includes/headerDeslog.html'; 
-// Mensagem
-include_once 'includes/message.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@ include_once 'includes/message.php';
                                 </div>
                                 <!-- <a href="esqueciSenha.php">Esqueci minha senha</a><br>-->
                             </div>
-                            <button type="submit" name="sendLogin" class="waves-effect waves-light btn indigo darken-2">Entrar</button><br><br>
+                            <button type="submit" name="btnEntrar" class="waves-effect waves-light btn indigo darken-2">Entrar</button><br><br>
                             <a href="cadEmpresa.php">Cadastrar</a>
                         </div>
                     </div>

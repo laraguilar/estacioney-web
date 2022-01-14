@@ -1,4 +1,12 @@
-<?php include_once 'includes/headerLog.html' ?>
+<?php 
+// Log na Sessao
+require_once 'php_actions/sessaoLog.php';
+// header
+include_once 'includes/headerLog.html';
+
+
+
+?>
 
 <!DOCTYPE html>
 <html>
