@@ -1,8 +1,6 @@
 <?php
 //header
 include_once 'includes/headerDeslog.html';
-// mensagem
-include_once 'includes/message.php';
 ?>
 
 
@@ -31,7 +29,7 @@ include_once 'includes/message.php';
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input name="nomEstac" type="text" id="nomeEstac" class="validate">
+                                <input name="nomEstac" type="text" id="nomeEstac" class="validate" autofocus>
                                 <label for="text">Nome do Estacionamento</label>
                             </div>
                             <div class="input-field col s12">

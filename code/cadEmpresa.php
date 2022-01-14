@@ -21,7 +21,6 @@ include_once 'includes/message.php';
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-
 <body>
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
@@ -31,7 +30,7 @@ include_once 'includes/message.php';
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="text" name="nomEmpresa" id="nomEmpresa" class="validate">
+                                <input type="text" name="nomEmpresa" id="nomEmpresa" class="validate" autofocus>
                                 <label for="text">Nome da Empresa</label>
                             </div>
                             <div class="input-field col s12">
@@ -53,7 +52,7 @@ include_once 'includes/message.php';
                                 <span class="helper-text left-align" data-error="Senha inválida" data-success="">Mínimo 8 caracteres</span>
                             </div>
                         </div>
-                        <input type="submit" name="btnCadEmpresa" class="waves-effect waves-light btn" value="Continuar">
+                        <button type="submit" name="btnCadEmpresa" class="waves-effect waves-light btn indigo darken-2" >Cadastrar</button>
                     </div>
                 </div>
             </form>

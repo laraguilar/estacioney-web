@@ -1,10 +1,9 @@
 <?php 
 session_start();
-
 //conexao BD
 include_once 'php_actions/conexao.php';
 // header
-include_once 'includes/headerDeslog.html'; ?>
+include_once 'includes/headerDeslog.html';?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,10 +36,10 @@ include_once 'includes/headerDeslog.html'; ?>
                                     <input type="password" id="password" class="validate">
                                     <label for="password">Senha</label>
                                 </div>
-                                <a href="esqueciSenha.php">Esqueci minha senha</a><br>
-                                <a href="cadEmpresa.php">Cadastrar</a>
+                                <!-- <a href="esqueciSenha.php">Esqueci minha senha</a><br>-->
                             </div>
-                            <input type="submit" name="sendLogin" class="waves-effect waves-light btn" value="Entrar">
+                            <button type="submit" name="sendLogin" class="waves-effect waves-light btn indigo darken-2">Entrar</button><br><br>
+                            <a href="cadEmpresa.php">Cadastrar</a>
                         </div>
                     </div>
                 </form>
