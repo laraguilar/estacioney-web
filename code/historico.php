@@ -1,4 +1,4 @@
-<?php include_once 'includes/headerLog.html' ?>
+<?php include_once 'includes/headerLog.php' ?>
 <!DOCTYPE html>
 <html>
     <head>

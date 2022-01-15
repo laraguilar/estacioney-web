@@ -1,4 +1,11 @@
-<?php include_once 'includes/headerLog.html' ?>
+<?php
+// conexão BD
+include_once 'php_actions/conexao.php';
+//header
+include_once 'includes/headerLog.php'; 
+// Mensagem
+include_once 'includes/message.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +23,7 @@
     <body>
         <div class="container" style="margin: auto; width: 60%;">
             <div class="row">
-                <form method="post" class="col s12 m6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
+            <form action="php_actions/cadEmpresaDB.php" method="POST" class="col s12 m6" name="cadEmpresa" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
                     <h2 style="text-align: center;">Alterar Senha</h2>
                     <div class="row center-align">
                         <div class="col s12">

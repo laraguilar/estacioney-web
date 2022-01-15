@@ -2,7 +2,7 @@
 // Log na Sessao
 require_once 'php_actions/sessaoLog.php';
 // header
-include_once 'includes/headerLog.html';
+include_once 'includes/headerLog.php';
 
 
 
@@ -89,7 +89,7 @@ include_once 'includes/headerLog.html';
 </div>
 
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>
+        <a href = "entrada.php"class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>
 
         </div>
 
