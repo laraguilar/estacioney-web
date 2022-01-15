@@ -1,4 +1,10 @@
-<?php require_once './conexao.php';?>
+<?php require_once 'php_actions/sessaoLog.php';
+
+//header
+include_once 'includes/headerLog.php'; ?>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,8 +20,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-
-        <?php include_once 'includes/headerLog.html' ?>
 
         <div class="container" style="margin: auto; width: 60%;">
             <div class="row">

@@ -1,10 +1,11 @@
 <?php
 // conexão BD
-include_once 'php_actions/conexao.php';
+require_once 'php_actions/sessaoLog.php';
+
 //header
-include_once 'includes/headerLog.html'; 
+include_once 'includes/headerLog.php'; 
+
 // Mensagem
-include_once 'includes/message.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,7 +44,7 @@ include_once 'includes/message.php';
                                 <label for="email">Vaga</label>
                             </div>
                         </div>
-                        <input type="submit" name="btnCadEmpresa" class="waves-effect waves-light btn" value="Continuar">
+                        <button href = "home.php" type="submit" name="btnCadCarro" class="waves-effect waves-light btn indigo darken-2">Continuar</button>
                     </div>
                 </div>
             </form>
