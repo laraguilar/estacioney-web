@@ -3,11 +3,7 @@
 require_once 'php_actions/sessaoLog.php';
 // header
 include_once 'includes/headerLog.php';
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +15,6 @@ include_once 'includes/headerLog.php';
         <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>

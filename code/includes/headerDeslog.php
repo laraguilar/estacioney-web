@@ -14,7 +14,6 @@
         </div>
     </nav>
 </div>
-
 <!-- Menu Mobile -->
 <ul id="mobile-navbar" class="sidenav">
     <li><a href="index.php">Login</a></li>

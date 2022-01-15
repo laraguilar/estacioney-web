@@ -1,5 +1,6 @@
 <?php
 // Conexão DB
+require_once 'conexao.php';
 require_once 'sessaoLog.php';
 
 // verifica se o botao foi clicado

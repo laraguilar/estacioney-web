@@ -1,6 +1,6 @@
+<?php include_once 'includes/headerLog.php' ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -15,8 +15,6 @@
 </head>
 
 <body>
-
-    <?php include 'headerLog.html' ?>
 
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">

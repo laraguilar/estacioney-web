@@ -2,7 +2,7 @@
 // conexão BD
 include_once 'php_actions/conexao.php';
 //header
-include_once 'includes/headerDeslog.html';
+include_once 'includes/headerDeslog.php';
 // Mensagem
 include_once 'includes/message.php';
 ?>

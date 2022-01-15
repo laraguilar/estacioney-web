@@ -1,5 +1,6 @@
 <?php
-require_once 'conexao.php';
+// conexao BD
+require_once 'php_actions/conexao.php';
 
 session_start();
 

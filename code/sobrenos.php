@@ -1,4 +1,4 @@
-<?php include_once 'includes/headerDeslog.html' ?>
+<?php include_once 'includes/headerDeslog.php' ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,18 +20,16 @@
                     <h2 style="text-align: center;">Sobre nós</h2>
                     <div class="row center-align">
                         <div class="col s12">
-                            <div class="row">
-                                <p class="flow-text" style="text-align: justify;">Pokem ipsum dolor sit amet Kabutops Rare Candy Feraligatr 
-                                    Luxio Vibrava Whimsicott. Ice a wild Pokemon appeared Hidden Machine Petilil 
-                                    Krookodile Swampert Surskit. Celadon City Crustle Butterfree Buneary Mightyena Slaking Raticate. 
-                                    Bubble Cherrim Bouffalant Larvesta Poison Sting Meloetta Wartortle. 
-                                    Vine Whip Tepig Anorith Snorunt Ash Ketchum Dustox Rotom.
-                                    Rock Blissey Togepi Kingdra Zekrom Phanpy Cherrim. 
-                                    Blastoise Flaaffy Mint Berry Barboach Wigglytuff Houndoom
-                                     Musharna. Dark Drilbur Combusken Pansage Sawk Thunder Badge Ralts
-                                     . Mineral Badge Gible Vulpix Pallet Town Mint Berry Blastoise et dolore magna aliqua. Pika-pi Lillipup Marsh
-                                      Badge Shaymin Torterra Plain Badge Bonsly.</p>
-                            </div>
+                            <p class="flow-text" style="text-align: justify;">Pokem ipsum dolor sit amet Kabutops Rare Candy Feraligatr 
+                                Luxio Vibrava Whimsicott. Ice a wild Pokemon appeared Hidden Machine Petilil 
+                                Krookodile Swampert Surskit. Celadon City Crustle Butterfree Buneary Mightyena Slaking Raticate. 
+                                Bubble Cherrim Bouffalant Larvesta Poison Sting Meloetta Wartortle. 
+                                Vine Whip Tepig Anorith Snorunt Ash Ketchum Dustox Rotom.
+                                Rock Blissey Togepi Kingdra Zekrom Phanpy Cherrim. 
+                                Blastoise Flaaffy Mint Berry Barboach Wigglytuff Houndoom
+                                    Musharna. Dark Drilbur Combusken Pansage Sawk Thunder Badge Ralts
+                                    . Mineral Badge Gible Vulpix Pallet Town Mint Berry Blastoise et dolore magna aliqua. Pika-pi Lillipup Marsh
+                                    Badge Shaymin Torterra Plain Badge Bonsly.</p>
                         </div>
                     </div>
                 </form>
