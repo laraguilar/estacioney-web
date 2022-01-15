@@ -35,7 +35,7 @@ include_once 'includes/message.php';
                                 <label for="text">Nome da Empresa</label>
                             </div>
                             <div class="input-field col s12">
-                                <input type="text" name="dscCpfCnpj" id="dsccpfcnpj" class="validate">
+                                <input type="text" name="dscCpfCnpj" id="dsccpfcnpj"  class="validate">
                                 <label for="text">CPF ou CNPJ</label>
                             </div>
                             <div class="input-field col s12">

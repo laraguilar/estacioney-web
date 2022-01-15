@@ -1,10 +1,9 @@
 <?php 
+// Log na Sessao
+require_once 'php_actions/sessaoLog.php';
 // header
+include_once 'includes/headerLog.html';
 
-// Mensagem
-include_once 'includes/message.php';
-// log de sessao
-include_once 'php_actions/sessaoLog.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +21,40 @@ include_once 'php_actions/sessaoLog.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-
+    <div class="container" style="margin: auto; width: 60%;">
+        <div class="row center-align">
+            <div class="col center-align">
+                <div class="row s12 m6 center-align">
+                    <div class="col s12 z-depth-1"> 
+                        <h3 class="center">Lista de Estacionamentos</h3>
+                            <a class="waves-effect waves-light btn-small indigo darken-4" href="cadEstac.php">Adicionar estacionamento</a><br>
+                        <div class="row center">
+                            <table>
+                                <style>
+                                    tr:hover{background:  #fafafa ;} td a {display:block; color: #424242 ;}
+                                </style>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="home.php">Estacionamento 1</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="home.php">Estacionamento 2</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="home.php">Estacionamento 3</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="home.php">Estacionamento 4</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="main.js"></script>
     </body>
   </html>

@@ -1,6 +1,9 @@
 <?php
 //header
-include_once 'includes/headerDeslog.html';
+include_once 'includes/headerLog.html';
+// sessao 
+require_once 'php_actions/sessaoLog.php';
+
 ?>
 
 

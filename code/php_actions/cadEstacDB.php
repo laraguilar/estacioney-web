@@ -74,8 +74,12 @@ if (isset($_POST['btnCadEstac'])) :
 
         else :
         // código SQL para inserir os dados
+        
         /*
-        $sql = "INSERT INTO empresa (nomEmpresa, dscCpfCnpj, Email, senha, Telefone) VALUES ('$nomEmpresa', '$dscCpfCnpj', '$email', '$senhaCrip', '$telefone')";
+        $sql = "INSERT INTO estacionamento (nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$id');
+                INSERT INTO endereco (dscLograd) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$id');";
+
+        
 
         if(mysqli_query($conn, $sql)):
             header('Location: ../index.php');
@@ -85,8 +89,7 @@ if (isset($_POST['btnCadEstac'])) :
             $_SESSION['mensagem'] = "Erro ao cadastrar empresa";
         endif;
         
-        */
-        endif;
+        endif;*/
     else:
         header('Location: ../cadEstac.php');
         $_SESSION['mensagem'] = "Preencha todos os campos";
