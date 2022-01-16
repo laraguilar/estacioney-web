@@ -35,25 +35,23 @@ include_once 'includes/headerLog.php';
                                 </style>
                                 <tbody>
                                     <?php
+                                        // mostra a lista de estacionamentos da empresa
                                         $sql = "SELECT * FROM estacionamento WHERE idEmpresa = $id";
-                                        
                                         $result = mysqli_query($conn, $sql);
                                         
+                                        // faz um while que mstra a informação de todos os estacionamentos da empresa
                                         while($dado = mysqli_fetch_array($result)):
                                             $idEstac = $dado['idEstac'];
-                                            $end = "SELECT * FROM endereco WHERE idEstac = $idEstac";
+                                            $end = "SELECT * FROM endereco WHERE idEstac = $idEstac"; // pega os dados de endereço
                                             $query = mysqli_query($conn, $end);
                                             $end = mysqli_fetch_assoc($query);
                                     ?>
                                     <tr>
                                         <td><a href="home.php" style="font-weight: bold;"><?php echo $dado['nomEstac'];?></a>
-                                        <a href="home.php"><p><?php echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep'];?></p></a>
+                                        <a href="home.php"><p><?php if(!empty($end)): echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep']; endif;?></p></a>
                                         </td>
                                     </tr>
-                                    <?php endwhile;?>
-
-                                
-                                    
+                                    <?php endwhile; // fecha o while iniciado acima?>                 
                                 </tbody>
                             </table>
                         </div>

@@ -35,24 +35,11 @@ include_once 'includes/headerLog.php'; ?>
                                         <div class="col s12"> <!-- LINHA -->
                                             <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
                                                 <div class="section">
-                                                    <div class="col s6">
-                                                        <p>Nome da Empresa</p>
+                                                    <div class="col s4">
+                                                        <p style="font-weight: bold;">Nome da Empresa</p>
                                                     </div>
-                                                    <div class="col s6 pull-s1 ">
-                                                        <p>VIX PARK</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col s12"> <!-- LINHA -->
-                                            <div class="divider"></div>
-                                            <div class="row">
-                                                <div class="section">
-                                                <div class="col s6">
-                                                        <p>E-MAIL</p>
-                                                    </div>
-                                                    <div class="col s6 pull-s1 ">
-                                                        <p>vixpark@email.com</p>
+                                                    <div class="col s8 pull-s1 ">
+                                                        <p><?php echo $dados['nomEmpresa'];?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,11 +48,11 @@ include_once 'includes/headerLog.php'; ?>
                                             <div class="divider"></div>
                                             <div class="row">
                                                 <div class="section">
-                                                <div class="col s6">
-                                                        <p>CPF / CNPJ</p>
+                                                <div class="col s4">
+                                                        <p style="font-weight: bold;">E-mail</p>
                                                     </div>
-                                                    <div class="col s6 pull-s1 ">
-                                                        <p>123.456.789-00</p>
+                                                    <div class="col s8 pull-s1 ">
+                                                        <p><?php echo $dados['Email'];?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,11 +61,24 @@ include_once 'includes/headerLog.php'; ?>
                                             <div class="divider"></div>
                                             <div class="row">
                                                 <div class="section">
-                                                <div class="col s6">
-                                                    <p>Telefone</p>
+                                                <div class="col s4">
+                                                        <p style="font-weight: bold;">CPF/CNPJ</p>
                                                     </div>
-                                                    <div class="col s6 pull-s1 ">
-                                                        <p>(27)1234-5678</p>
+                                                    <div class="col s8 pull-s1 ">
+                                                        <p><?php echo $dados['dscCpfCnpj'];?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12"> <!-- LINHA -->
+                                            <div class="divider"></div>
+                                            <div class="row">
+                                                <div class="section">
+                                                <div class="col s4">
+                                                    <p style="font-weight: bold;">Telefone</p>
+                                                    </div>
+                                                    <div class="col s8 pull-s1 ">
+                                                        <p><?php echo $dados['Telefone'];?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,12 +89,13 @@ include_once 'includes/headerLog.php'; ?>
                                                 <div class="col s6">
                                                 <a href="alterarSenha.php" class="waves-effect waves-light btn">Alterar Senha</a>   
                                                     </div>
-                                                    <div class="col s6 pull-s1 ">
+                                                    <!--<div class="col s6 pull-s1 ">
                                                     <a href="cadEstac.php" class="waves-effect waves-light btn">Adicionar Estacionamento</a>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

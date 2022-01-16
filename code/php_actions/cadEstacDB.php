@@ -89,6 +89,7 @@ if (isset($_POST['btnCadEstac'])) :
                 else:
                     header('Location: ../cadEstac.php');
                     echo "Erro ao cadastrar endereço";
+                    //$sql = "DELETE FROM estacionamento WHERE idEmpresa = $id;"; -> apagaria a empresa, caso nao tenha um endereço. Porem o endereco nao é algo que no momento deixa nosso codigo desfuncional, portanto nao é extremamente necessario que isso ocorra. A correcao de erro sera feita no listEstacs
                 endif;
             else:
                 header('Location: ../cadEstac.php');
