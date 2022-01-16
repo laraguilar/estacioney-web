@@ -31,27 +31,21 @@ include_once 'includes/headerLog.php';
                         <div class="row center">
                             <table>
                                 <style>
-                                    tr:hover{background:  #e0e0e0 ;} td a {display:block; color: #424242 ;}
+                                    tr:hover{background:  #fafafa ;} td a {display:block; color: #424242 ;}
                                 </style>
                                 <tbody>
-                                    <?php
-                                        // mostra a lista de estacionamentos da empresa
-                                        $sql = "SELECT * FROM estacionamento WHERE idEmpresa = $id";
-                                        $result = mysqli_query($conn, $sql);
-                                        
-                                        // faz um while que mstra a informação de todos os estacionamentos da empresa
-                                        while($dado = mysqli_fetch_array($result)):
-                                            $idEstac = $dado['idEstac'];
-                                            $end = "SELECT * FROM endereco WHERE idEstac = $idEstac"; // pega os dados de endereço
-                                            $query = mysqli_query($conn, $end);
-                                            $end = mysqli_fetch_assoc($query);
-                                    ?>
                                     <tr>
-                                        <td><a href="home.php" style="font-weight: bold;"><?php echo $dado['nomEstac'];?></a>
-                                        <a href="home.php"><p><?php if(!empty($end)): echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep']; endif;?></p></a>
-                                        </td>
+                                        <td><a href="home.php">Estacionamento 1</a></td>
                                     </tr>
-                                    <?php endwhile; // fecha o while iniciado acima?>                 
+                                    <tr>
+                                        <td><a href="home.php">Estacionamento 2</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="home.php">Estacionamento 3</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="home.php">Estacionamento 4</a></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

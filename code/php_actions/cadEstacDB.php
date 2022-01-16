@@ -1,11 +1,13 @@
 <?php
+// Sessão
+session_start();
 // Conexão DB
-require_once 'conexao.php';
-require_once 'sessaoLog.php';
+require_once './conexao.php';
 
 // verifica se o botao foi clicado
 if (isset($_POST['btnCadEstac'])) :
-// atribui os valores do formulario
+
+    // atribui os valores do formulario
     $nomEstac = mysqli_escape_string($conn, $_POST['nomEstac']);
     $qtdVagas = mysqli_escape_string($conn, $_POST['qtdVagas']);
     $valFixo = mysqli_escape_string($conn, $_POST['valFixo']);
@@ -18,7 +20,7 @@ if (isset($_POST['btnCadEstac'])) :
     $num = mysqli_escape_string($conn, $_POST['num']);
 
 
-    if(!empty($nomEstac) && !empty($qtdVagas) && !empty($valFixo) && !empty($valAcresc) && !empty($cep) && !empty($rua) && !empty($num)):
+    if(!empty($nomEstac) && !empty($qtdVagas) && !empty($valFixo) && !empty($valAcresc) && !empty($cep) && !empty($rua) && !empty($bairro) && !empty($cidade) && !empty($estado)):
         // Array de erros
         $erros = array();
 
@@ -47,7 +49,10 @@ if (isset($_POST['btnCadEstac'])) :
             $erros[] = "Acréscimo/hora deve ser float";
         endif;
 
-        $cep = filter_input(INPUT_POST, 'cep', FILTER_SANITIZE_SPECIAL_CHARS);
+        $cep = filter_input(INPUT_POST, 'cep', FILTER_SANITIZE_NUMBER_INT);
+        if (!filter_var($cep, FILTER_VALIDATE_INT)) :
+            $erros[] = "Cep deve conter apenas numeros";
+        endif;
 
         $num = filter_input(INPUT_POST, 'num', FILTER_SANITIZE_NUMBER_INT);
         if (!filter_var($num, FILTER_VALIDATE_INT)) :
@@ -62,42 +67,31 @@ if (isset($_POST['btnCadEstac'])) :
 
         // exibindo mensagens de erro
         if (!empty($erros)) :
-            header('Location: ../cadEstac.php');
+            header('Location: ../cadEmpresa.php');
             foreach ($erros as $erro) :
-                echo $erro;
+                $_SESSION['mensagem'] = $erro;
             endforeach;
 
         else :
-            // código SQL para inserir os dados
-            // codigo de cadastro do estacionamento
-            $sql = "INSERT INTO estacionamento (nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$id');";
-            // verifica se o insert retorna true
-            if(mysqli_query($conn, $sql)):
-                // pega o id do estacionamento cadastrado
-                $sqlIdEmp = "SELECT idEstac from Estacionamento WHERE idEmpresa = '$id');";
-                $query = mysqli_query($conn, $sqlIdEmp);
-                $resultQuery = mysqli_fetch_assoc($query);
-                $sqlIdEmp = $resultQuery['idEstac'] + 0;
+        // código SQL para inserir os dados
+        
+        /*
+        $sql = "INSERT INTO estacionamento (nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$id');
+                INSERT INTO endereco (dscLograd) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$id');";
 
-                // cadastro do endereço
-                $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, idEstac) VALUES ('$rua', '$num', '$cep', '$sqlIdEmp')";
+        
 
-                // verifica se o cadastro foi realizado com sucesso
-                if(mysqli_query($conn, $sqlCadEnd)):
-                    header('Location: ../listEstac.php');
-                    echo "Estacionamento e endereço cadastrados com sucesso!";
-                else:
-                    header('Location: ../cadEstac.php');
-                    echo "Erro ao cadastrar endereço";
-                    //$sql = "DELETE FROM estacionamento WHERE idEmpresa = $id;"; -> apagaria a empresa, caso nao tenha um endereço. Porem o endereco nao é algo que no momento deixa nosso codigo desfuncional, portanto nao é extremamente necessario que isso ocorra. A correcao de erro sera feita no listEstacs
-                endif;
-            else:
-                header('Location: ../cadEstac.php');
-                echo "Erro ao cadastrar estacionamento";
-            endif;
+        if(mysqli_query($conn, $sql)):
+            header('Location: ../index.php');
+            $_SESSION['mensagem'] = "Empresa cadastrada com sucesso!";
+        else:
+            header('Location: ../cadEmpresa.php');
+            $_SESSION['mensagem'] = "Erro ao cadastrar empresa";
         endif;
+        
+        endif;*/
     else:
         header('Location: ../cadEstac.php');
-        echo "Preencha todos os campos";
+        $_SESSION['mensagem'] = "Preencha todos os campos";
     endif;
 endif;
