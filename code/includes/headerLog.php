@@ -8,12 +8,20 @@ require_once 'php_actions/sessaoLog.php';
             <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
             </a>
-            <ul id="navbar-items" class="right hide-on-med-and-down" style="padding-right: 3%;">
+
+            <ul id="dropdown1" class="dropdown-content">
+                <li><a href="empresa.php">Dados da Empresa</a></li>
+                <li><a href="listEstacs.php">Lista de Estacionamento</a></li>
+                <li><a href="#!">Sair</a></li>
+            </ul>
+            
+            <ul id="navbar-items" class="right hide-on-med-and-down" style="padding-right: 1%;">
                 <li><a href="home.php">Home</a></li>
                 <li><a href="historico.php">Histórico</a></li>
-                <li><a href="empresa.php">Empresa</a></li>
                 <li><a href="estacionamento.php">Estacionamento</a></li>
-                <li><?php echo $dados['nomEmpresa']; ?>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1" style="margin-left:2%; margin-top: 0%; padding-right: 5%" ><b> <?php echo $dados['nomEmpresa']; ?> </b><img src="imagem/imagem_perf.png" alt="" width="35" height="35"><i class="material-icons right"></i></a></li>
+
+            </ul>
             </ul>
         </div>
     </nav>

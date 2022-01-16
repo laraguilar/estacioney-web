@@ -2,7 +2,6 @@
 //header
 include_once 'includes/headerLog.php';
 // sessao 
-require_once 'php_actions/conexao.php';
 require_once 'php_actions/sessaoLog.php';
 ?>
 

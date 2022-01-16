@@ -7,7 +7,11 @@ $port = 3306;
 
 $conn = new PDO("mysql:host=$host; port=$port; dbname=" . $db, $user, $pass);
 
+
+
 if(mysqli_connect_error()):
     echo "Falha na conexão: ". mysqli_connect_error();
 endif;
+
+
 ?>
