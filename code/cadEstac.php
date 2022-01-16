@@ -1,4 +1,7 @@
 <?php
+// verifica se o usuario esta logado
+$_SESSION['logado'] = $_SESSION['logado'] ?? NULL;
+if (!$_SESSION['logado']) die(header('Location: index.php'));
 //header
 include_once 'includes/headerLog.php';
 // sessao 

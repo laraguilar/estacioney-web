@@ -1,9 +1,11 @@
 <?php 
 // Log na Sessao
 require_once 'php_actions/sessaoLog.php';
+// verifica se o user ta logado
+$_SESSION['logado'] = $_SESSION['logado'] ?? NULL;
+if (!$_SESSION['logado']) die(header('Location: index.php'));
 // header
 include_once 'includes/headerLog.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -24,11 +26,11 @@ include_once 'includes/headerLog.php';
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row center-align">
             <div class="col center-align">
-                <div class="row s12 m6 center-align">
+                <div class="row center-align">
                     <div class="col s12 z-depth-1"> 
                         <h3 class="center">Lista de Estacionamentos</h3>
                             <a class="waves-effect waves-light btn-small indigo darken-4" href="cadEstac.php">Adicionar estacionamento</a><br>
-                        <div class="row center">
+                        <div class="row center" style="margin-top: 2%;">
                             <table>
                                 <style>
                                     tr:hover{background:  #fafafa ;} td a {display:block; color: #424242 ;}
@@ -48,22 +50,24 @@ include_once 'includes/headerLog.php';
                                             $end = mysqli_fetch_assoc($query);
                                     ?>
                                     <tr>
-                                        <td><a href="home.php">Estacionamento 4</a></td>
-                                        <td><a href="home.php" style="font-weight: bold;"><?php echo $dado['nomEstac'];?></a>
-                                        <a href="home.php"><p><?php if(!empty($end)): echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep']; endif;?></p></a>
+                                        <td>
+                                            <p style="font-weight: bold;"><a href="php_actions/estacLog.php"><?php echo $dado['nomEstac'];?></a></p>
+                                            <a href="php_actions/estacLog.php"><p><?php if(!empty($end)): echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep']; endif;?></p>
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php endwhile;?>
-
-                                
-                                    
                                 </tbody>
+                            
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <form method="$_GET">
+        <input type="submit" value="Sair" name="sair" class="btn" method="GET">
+        </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="main.js"></script>
