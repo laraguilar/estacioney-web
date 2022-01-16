@@ -1,3 +1,4 @@
+<?php include_once 'includes/headerLog.php' ?>
 <!DOCTYPE html>
 <html>
 
@@ -15,9 +16,6 @@
 </head>
 
 <body>
-
-    <?php include 'headerLog.html' ?>
-
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
             <div class="col center-align">
@@ -110,7 +108,7 @@
                                         <div class="row">
                                             <div class="section">
                                                 <div class="col s6">
-                                                    <a href="alterarSenha.php" class="waves-effect waves-light btn">Alterar Senha</a>
+                                                    <a href="listEstacs.php" class="waves-effect waves-light btn">Lista de Estacionamentos</a>
                                                 </div>
                                                 <div class="col s6 pull-s1 ">
                                                     <a href="cadEstac.php" class="waves-effect waves-light btn">Adicionar Estacionamento</a>
