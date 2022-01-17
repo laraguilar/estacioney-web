@@ -1,29 +1,13 @@
-<?php
-require 'php_actions/sessaoLog.php';
+<?php 
+// Log na Sessao
+require_once 'php_actions/sessaoLog.php';
+// header
+include_once 'includes/headerLog.php';
 
-$msg = false;
-if(isset($_FILES['arquivo'])){
-    $arquivo = $_FILES['arquivo']['name'];
-    $extensao = strtolower(pathinfo($arquivo, PATHINFO_EXTENSION));
-    
-    $novo_nome = md5(time()).".".$extensao;
-    
-    $diretorio = "imagem/";
-    
-    move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
-    
-    $sql_code = "INSERT INTO arquivo(id, arquivo, data) VALUES('','$novo_nome', NOW())";
-    
-    if(mysqli_query($conn, $sql_code))
-        $msg = "Arquivo enviado com sucesso!";
-    else
-        $msg = "Falha ao enviar arquivo!";
-}
-$sql_busca = "SELECT * FROM arquivo";
-$mostrar = mysqli_query($conn, $sql_busca);
-$qtd_arquivos = mysqli_num_rows($mostrar);
-$msg_sem = ($qtd_arquivos<=0)?"NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
+
 ?>
+
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset='utf-8'>
@@ -45,6 +29,7 @@ $msg_sem = ($qtd_arquivos<=0)?"NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
                         $_SESSION['estacLogado'] = true;
                         $_SESSION['idEstacSelected'] = "<script>document.write(idClicado)</script>";
                     ?>
+                    $("dropdown2").unbind();
                     //window.location.pathname('/home.php');
                     location.reload();
                 });
@@ -57,9 +42,9 @@ $msg_sem = ($qtd_arquivos<=0)?"NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
             <div class="col center-align">
             <div class="row s12 m6 center-align">
                 <div class="col s12 z-depth-1">
-                    <h3 class="center"><?php echo var_dump($dadosEstac)?></h3>
+                    <h3 class="center"><?php echo "Lara linda";?></h3>
                     <!-- Dropdown Trigger -->
-                    <a class='dropdown-trigger btn' href='#' data-target='dropdown2'><?php ?></a>
+                    <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Drop Dowwwn!</a>
 
                     <!-- Dropdown Structure -->
                     <?php
@@ -69,9 +54,14 @@ $msg_sem = ($qtd_arquivos<=0)?"NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
                         $result = mysqli_query($conn, $sql);
                         // cria a tabela
                         echo "<ul id='dropdown2' class='dropdown-content'>";
-                        // faz um while que mstra a  informação de todos os estacionamentos da empresa
+
+                        // faz um while que mstra a informação de todos os estacionamentos da empresa
                         while($dado = mysqli_fetch_array($result)):
                             $idEstac = $dado['idEstac'];
+                            $end = "SELECT * FROM endereco WHERE idEstac = $idEstac"; // pega os dados de endereço
+                            $query = mysqli_query($conn, $end);
+                            $end = mysqli_fetch_assoc($query);
+
                             echo "<li class='clicavel' id=".$idEstac.">";
                                 echo "<a>".$dado['nomEstac']."</a> ";
                             echo "</li>";
@@ -135,17 +125,16 @@ $msg_sem = ($qtd_arquivos<=0)?"NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
                 </div>
             </div>
         </div>
-        
-        <?php 
-        if(isset($msg) && $msg != false){
-            echo "<p>$msg</p>";
-        }
-        ?>
-        <br />
-        <form action="versefuncionou.php" method="post" enctype="multipart/form-data">
-            Selecione o arquivo: <input type="file" name="arquivo"/>
-            <input type="submit" value="Enviar"/>
-        </form>
+    </div>
+</div>
 
+        <div class="fixed-action-btn">
+        <a href = "entrada.php"class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>
+
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="main.js"></script>
     </body>
-</html>
+  </html>
