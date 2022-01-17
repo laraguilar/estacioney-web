@@ -64,8 +64,16 @@ $msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
                         }
                         ?>
                         <img class="center-align" style="width: 20%; height:20%;" src="imagem/<?= $arquivo ?>" />
-                        <form action="empresa.php" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="arquivo" />
+                        <form action="empresa.php" method="POST" enctype="multipart/form-data"><br>
+                            <div class="row file-field input-field">
+                                <div class="col s6 btn indigo darken-2" style="width: auto;">
+                                    <span>File</span>
+                                    <input type="file" name="arquivo">
+                                </div>
+                                <div class="col s6 file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
                             <button type="submit" name="enviarImg" class="waves-effect waves-light btn indigo darken-2">Enviar</button>
                         </form>
                         <div class="row center">
