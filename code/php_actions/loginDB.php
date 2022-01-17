@@ -1,6 +1,7 @@
 <?php 
 // Sessão
 session_start();
+$_SESSION['logado'] = $_SESSION['logado'] ?? NULL;
 // Conexão DB
 include_once './conexao.php';
 //

@@ -2,7 +2,7 @@
 // Conexão DB
 require_once 'conexao.php';
 require_once 'sessaoLog.php';
-
+$erros = array();
 // verifica se o botao foi clicado
 if (isset($_POST['btnCadEstac'])) :
 // atribui os valores do formulario
@@ -20,15 +20,14 @@ if (isset($_POST['btnCadEstac'])) :
 
     if(!empty($nomEstac) && !empty($qtdVagas) && !empty($valFixo) && !empty($valAcresc) && !empty($cep) && !empty($rua) && !empty($num)):
         // Array de erros
-        $erros = array();
+
 
         //Sanitize e Validate
         $nomEstac = filter_input(INPUT_POST, 'nomEstac', FILTER_SANITIZE_SPECIAL_CHARS);
-
-        // verifica se ja tem um estacionamento com esse nome cadastrado pela empresa
-        $estac = "select '$nomEstac' from estacionamento where idEmpresa = '$id';";
+        
+        $estac = "SELECT idEstac FROM estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';";
         $query = mysqli_query($conn, $estac);
-        if(mysqli_num_rows($query)>0):
+        if((mysqli_num_rows($query))>0):
             $erros[] = "Este nome já está sendo utilizado.";
         endif;
 
@@ -63,10 +62,6 @@ if (isset($_POST['btnCadEstac'])) :
         // exibindo mensagens de erro
         if (!empty($erros)) :
             header('Location: ../cadEstac.php');
-            foreach ($erros as $erro) :
-                echo $erro;
-            endforeach;
-
         else :
             // código SQL para inserir os dados
             // codigo de cadastro do estacionamento
@@ -74,30 +69,30 @@ if (isset($_POST['btnCadEstac'])) :
             // verifica se o insert retorna true
             if(mysqli_query($conn, $sql)):
                 // pega o id do estacionamento cadastrado
-                $sqlIdEmp = "SELECT idEstac from Estacionamento WHERE idEmpresa = '$id');";
+                $sqlIdEmp = "SELECT idEstac from Estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';";
                 $query = mysqli_query($conn, $sqlIdEmp);
                 $resultQuery = mysqli_fetch_assoc($query);
-                $sqlIdEmp = $resultQuery['idEstac'] + 0;
+                $sqlIdEmp = $resultQuery['idEstac'];
 
                 // cadastro do endereço
-                $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, idEstac) VALUES ('$rua', '$num', '$cep', '$sqlIdEmp')";
+                $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, idEstac) VALUES ('$rua', $num, '$cep', $sqlIdEmp)";
 
                 // verifica se o cadastro foi realizado com sucesso
                 if(mysqli_query($conn, $sqlCadEnd)):
-                    header('Location: ../listEstac.php');
-                    echo "Estacionamento e endereço cadastrados com sucesso!";
+                    header('Location: ../listEstacs.php');
+                    $erros[] = "Estacionamento e endereço cadastrados com sucesso!";
                 else:
                     header('Location: ../cadEstac.php');
-                    echo "Erro ao cadastrar endereço";
+                    $erros[] = "Erro ao cadastrar endereço";
                     //$sql = "DELETE FROM estacionamento WHERE idEmpresa = $id;"; -> apagaria a empresa, caso nao tenha um endereço. Porem o endereco nao é algo que no momento deixa nosso codigo desfuncional, portanto nao é extremamente necessario que isso ocorra. A correcao de erro sera feita no listEstacs
                 endif;
             else:
                 header('Location: ../cadEstac.php');
-                echo "Erro ao cadastrar estacionamento";
+                $erros[] = "Erro ao cadastrar estacionamento";
             endif;
         endif;
     else:
         header('Location: ../cadEstac.php');
-        echo "Preencha todos os campos";
+        $erros[] = "Preencha todos os campos";
     endif;
 endif;

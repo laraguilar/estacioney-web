@@ -1,4 +1,4 @@
 <?php
-require_once 'php_actions/sessaoLog.php';
+include_once 'php_actions/conexao.php';
 
 ?>

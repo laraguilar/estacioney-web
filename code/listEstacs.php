@@ -16,8 +16,8 @@ include_once 'includes/headerLog.php';
         <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <div class="container" style="margin: auto; width: 60%;">
@@ -30,8 +30,9 @@ include_once 'includes/headerLog.php';
                         <div class="row center" style="margin-top: 2%;">
                             <table>
                                 <style>
-                                    tr:hover{background:  #fafafa ;} td a {display:block; color: #424242 ;}
-                                    tr:hover{background:  #e0e0e0 ;} td a {display:block; color: #424242 ;}
+                                    tr:hover{background:  #fafafa ;}
+                                    tr:hover{background:  #e0e0e0 ; display: block;}
+                                    .estacList{display: block;text-decoration: none;}
                                 </style>
                                 <tbody>
                                     <?php
@@ -46,17 +47,16 @@ include_once 'includes/headerLog.php';
                                             $query = mysqli_query($conn, $end);
                                             $end = mysqli_fetch_assoc($query);
                                     ?>
-                                    <tr> <div class="classEstac" id="<?=$idEstac?>">
-                                        <td>
-                                            <p style="font-weight: bold;"><a ><?php echo $dado['nomEstac'];?></a></p>
-                                            <a id="<?php $idEstac?>"><p><?php if(!empty($end)): echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep']; endif;?></p>
-                                            </a>
-                                        </td>
-                                        </div>
+                                    <tr>
+                                        <a href="versefuncionou.php" class="estacList">
+                                            <td>
+                                                <p style="font-weight: bold;"><?php echo $dado['nomEstac'];?></p>
+                                                <p><?php if(!empty($end)): echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep']; endif;?></p>
+                                            </td>
+                                        </a>
                                     </tr>
                                     <?php endwhile;?>
                                 </tbody>
-                            
                             </table>
                         </div>
                     </div>
@@ -67,6 +67,11 @@ include_once 'includes/headerLog.php';
         <input type="submit" value="Sair" name="sair" class="btn" method="GET">
         </form>
     </div>
+    <script>
+        $('a').click(function(){
+            alert('Lara linda');
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="main.js"></script>
     </body>

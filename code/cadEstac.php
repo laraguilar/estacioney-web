@@ -24,6 +24,13 @@ include_once 'includes/headerLog.php';
         <div class="row">
             <form action="php_actions/cadEstacDB.php" method="POST" class="col s6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
                 <h3 style="text-align: center;">Cadastro do Estacionamento</h3>
+                <?php
+                    if (!empty($erros)) {
+                        foreach ($erros as $erro) :
+                            var_dump($erro);
+                        endforeach;
+                    }
+                            ?>
                 <div class="row center-align">
                     <div class="col s12">
                         <div class="row">
