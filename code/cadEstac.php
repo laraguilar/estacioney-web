@@ -29,8 +29,8 @@ include_once 'includes/headerLog.php';
                         foreach ($erros as $erro) :
                             var_dump($erro);
                         endforeach;
-                    }
-                            ?>
+                        }
+                ?>
                 <div class="row center-align">
                     <div class="col s12">
                         <div class="row">

@@ -17,7 +17,23 @@ include_once 'includes/headerLog.php';
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <script src="jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript">
+            var idClicado = null;
+            jQuery(document).ready(function($) {
+                $(".clicavel").click(function() {
+                    idClicado = $(this).attr('id');
+                    //window.alert(idClicado);
+                    <?php
+                        $_SESSION['estacLogado'] = true;
+                        $_SESSION['idEstacSelected'] = "<script>document.write(idClicado)</script>";
+                        header('Location: home.php');
+                    ?>
+                    $("table").unbind();
+                    //window.location.pathname('/home.php');
+                });
+            });
+        </script>
 </head>
 <body>
     <div class="container" style="margin: auto; width: 60%;">
@@ -27,37 +43,34 @@ include_once 'includes/headerLog.php';
                     <div class="col s12 z-depth-1"> 
                         <h3 class="center">Lista de Estacionamentos</h3>
                             <a class="waves-effect waves-light btn-small indigo darken-4" href="cadEstac.php">Adicionar estacionamento</a><br>
-                        <div class="row center" style="margin-top: 2%;">
-                            <table>
+                            <div class="row center" style="margin-top: 2%;">
                                 <style>
-                                    tr:hover{background:  #fafafa ;}
-                                    tr:hover{background:  #e0e0e0 ; display: block;}
+                                    tr:hover{background:  #e0e0e0 ; display: block; cursor: pointer;}
                                     .estacList{display: block;text-decoration: none;}
                                 </style>
-                                <tbody>
-                                    <?php
-                                        // mostra a lista de estacionamentos da empresa
-                                        $sql = "SELECT * FROM estacionamento WHERE idEmpresa = $id";
-                                        $result = mysqli_query($conn, $sql);
-                                        
-                                        // faz um while que mstra a informação de todos os estacionamentos da empresa
-                                        while($dado = mysqli_fetch_array($result)):
-                                            $idEstac = $dado['idEstac'];
-                                            $end = "SELECT * FROM endereco WHERE idEstac = $idEstac"; // pega os dados de endereço
-                                            $query = mysqli_query($conn, $end);
-                                            $end = mysqli_fetch_assoc($query);
-                                    ?>
-                                    <tr>
-                                        <a href="versefuncionou.php" class="estacList">
-                                            <td>
-                                                <p style="font-weight: bold;"><?php echo $dado['nomEstac'];?></p>
-                                                <p><?php if(!empty($end)): echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep']; endif;?></p>
-                                            </td>
-                                        </a>
-                                    </tr>
-                                    <?php endwhile;?>
-                                </tbody>
-                            </table>
+                                <?php
+                                    $_SESSION['idEstacSelected'] = NULL;
+                                    // mostra a lista de estacionamentos da empresa
+                                    $sql = "SELECT * FROM estacionamento WHERE idEmpresa = $id";
+                                    $result = mysqli_query($conn, $sql);
+                                    // cria a tabela
+                                    echo "<table>";
+
+                                    // faz um while que mstra a informação de todos os estacionamentos da empresa
+                                    while($dado = mysqli_fetch_array($result)):
+                                        $idEstac = $dado['idEstac'];
+                                        $end = "SELECT * FROM endereco WHERE idEstac = $idEstac"; // pega os dados de endereço
+                                        $query = mysqli_query($conn, $end);
+                                        $end = mysqli_fetch_assoc($query);
+
+                                        echo "<tr  class='clicavel' id='$idEstac'>";
+                                            echo "<td>";
+                                                echo "<b>".$dado['nomEstac']."</b> ";
+                                            echo "</td>";
+                                        echo "</tr>";
+                                    endwhile;
+                                    echo "</table>";
+                                ?>                
                         </div>
                     </div>
                 </div>
@@ -67,11 +80,6 @@ include_once 'includes/headerLog.php';
         <input type="submit" value="Sair" name="sair" class="btn" method="GET">
         </form>
     </div>
-    <script>
-        $('a').click(function(){
-            alert('Lara linda');
-        });
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="main.js"></script>
     </body>

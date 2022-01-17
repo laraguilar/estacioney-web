@@ -18,7 +18,6 @@ include_once 'includes/headerLog.php'; ?>
         <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
@@ -29,6 +28,8 @@ include_once 'includes/headerLog.php'; ?>
                 <div class="row s12 m6 center-align">
                         <div class="col s12 z-depth-1">
                             <h3 class="center">Dados da Empresa</h3>
+                            <br>
+                            <img src="imagem/imagem_perf.png" class="center-align" style="width: 20%; height:20%;"> 
                             <div class="row center">
                                 <div class="col s12 left-align">
                                     <!-- A partir de agora todas as cols são uma linha do "histórico"-->

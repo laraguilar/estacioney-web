@@ -2,6 +2,7 @@
 // Sessão
 session_start();
 $_SESSION['logado'] = $_SESSION['logado'] ?? NULL;
+$_SESSION['estacLogado'] = NULL;
 // Conexão DB
 include_once './conexao.php';
 //
@@ -33,7 +34,7 @@ if(isset($_POST['btnEntrar'])):
                     $dados = mysqli_fetch_array($resultado);
                     $_SESSION['logado'] = true;
                     $_SESSION['id_usuario'] = $dados['idEmpresa'];
-                    header('Location: ../listEstacs.php');
+                    header('Location: ../home.php');
                 else:
                     header('Location: ../index.php');
                     $_SESSION['mensagem'] = "Usuário e Senha não conferem";

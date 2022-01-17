@@ -2,7 +2,10 @@
 // Conexão DB
 require_once 'conexao.php';
 require_once 'sessaoLog.php';
+
+// Array de erros
 $erros = array();
+
 // verifica se o botao foi clicado
 if (isset($_POST['btnCadEstac'])) :
 // atribui os valores do formulario
@@ -19,9 +22,6 @@ if (isset($_POST['btnCadEstac'])) :
 
 
     if(!empty($nomEstac) && !empty($qtdVagas) && !empty($valFixo) && !empty($valAcresc) && !empty($cep) && !empty($rua) && !empty($num)):
-        // Array de erros
-
-
         //Sanitize e Validate
         $nomEstac = filter_input(INPUT_POST, 'nomEstac', FILTER_SANITIZE_SPECIAL_CHARS);
         
@@ -79,7 +79,7 @@ if (isset($_POST['btnCadEstac'])) :
 
                 // verifica se o cadastro foi realizado com sucesso
                 if(mysqli_query($conn, $sqlCadEnd)):
-                    header('Location: ../listEstacs.php');
+                    header('Location: ../home.php');
                     $erros[] = "Estacionamento e endereço cadastrados com sucesso!";
                 else:
                     header('Location: ../cadEstac.php');
