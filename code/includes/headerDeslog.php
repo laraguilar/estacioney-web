@@ -1,4 +1,3 @@
-
 <div class="navbar">
     <nav>
         <div class="nav-wrapper indigo darken-4">

@@ -1,5 +1,5 @@
 <?php
-require_once 'php_actions/sessaoLog.php';
+require_once 'php_actions/sessaoLog.php';   
 ?>
 <div class="navbar">
     <nav>

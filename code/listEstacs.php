@@ -1,9 +1,6 @@
 <?php 
 // Log na Sessao
 require_once 'php_actions/sessaoLog.php';
-// verifica se o user ta logado
-$_SESSION['logado'] = $_SESSION['logado'] ?? NULL;
-if (!$_SESSION['logado']) die(header('Location: index.php'));
 // header
 include_once 'includes/headerLog.php';
 ?>
@@ -49,12 +46,13 @@ include_once 'includes/headerLog.php';
                                             $query = mysqli_query($conn, $end);
                                             $end = mysqli_fetch_assoc($query);
                                     ?>
-                                    <tr>
+                                    <tr> <div class="classEstac" id="<?=$idEstac?>">
                                         <td>
-                                            <p style="font-weight: bold;"><a href="php_actions/estacLog.php"><?php echo $dado['nomEstac'];?></a></p>
-                                            <a href="php_actions/estacLog.php"><p><?php if(!empty($end)): echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep']; endif;?></p>
+                                            <p style="font-weight: bold;"><a ><?php echo $dado['nomEstac'];?></a></p>
+                                            <a id="<?php $idEstac?>"><p><?php if(!empty($end)): echo $end['dscLogradouro']. ", " .$end['numero']. " - " .$end['cep']; endif;?></p>
                                             </a>
                                         </td>
+                                        </div>
                                     </tr>
                                     <?php endwhile;?>
                                 </tbody>

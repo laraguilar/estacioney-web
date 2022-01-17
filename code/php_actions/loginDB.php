@@ -2,8 +2,8 @@
 // Sessão
 session_start();
 // Conexão DB
-require_once './conexao.php';
-
+include_once './conexao.php';
+//
 if(isset($_POST['btnEntrar'])):
     $email = mysqli_escape_string($conn, $_POST['Email']);
     $senha = mysqli_escape_string($conn, $_POST['Senha']);
@@ -14,8 +14,6 @@ if(isset($_POST['btnEntrar'])):
     else:
         $sql = "SELECT email FROM empresa WHERE Email = '$email'";
         $resultado = mysqli_query($conn, $sql);
-
-
 
         // verifica se o email esta cadastrado
         if(mysqli_num_rows($resultado) > 0):
