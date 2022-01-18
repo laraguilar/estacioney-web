@@ -20,12 +20,12 @@ if($_SESSION['estacLogado'] = 1):
 
     // dados do estac
     $idEstacio = $_SESSION['idEstacSelected']; 
-    $sql = "SELECT * FROM estacionamento WHERE idEstac = '$idEstacio';";
+    $sql = "SELECT * FROM estacionamento WHERE idEstac = '$idEstacio'";
     $resultado = mysqli_query($conn, $sql);
     $dadosEstac = mysqli_fetch_array($resultado);
 
     //endereco do estac
-    $sql = "SELECT * FROM endereco WHERE idEstac = '$idEstacio';";
+    $sql = "SELECT * FROM endereco WHERE idEstac = '$idEstacio'";
     $resultado = mysqli_query($conn, $sql);
     $endereco = mysqli_fetch_array($resultado);
 

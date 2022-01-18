@@ -1,6 +1,10 @@
 <?php
 //header
-include_once 'includes/headerLog.php' ?>
+include_once 'includes/headerLog.php';
+require_once 'php_actions/sessaoAloca.php';
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,7 +47,7 @@ include_once 'includes/headerLog.php' ?>
                                                 $sql = "SELECT * FROM aloca WHERE ";
                                             ?>
                                             <div class="col s6">
-                                                <h5>Giovanni</h5>
+                                                <h5><?php echo $dadosAloca['idPessoa']; ?></h5>
                                                 <span>CRN-0021</span>
                                                 <div>
                                                 <span>Hora de Entrada 10:50:45 14/12/2021</span>
