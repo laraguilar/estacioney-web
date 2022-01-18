@@ -28,7 +28,7 @@ $sql_busca = "SELECT * FROM arquivo";
 $mostrar = mysqli_query($conn, $sql_busca);
 $qtd_arquivos = mysqli_num_rows($mostrar);
 $msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
- 
+
 ?>
 
 
@@ -66,13 +66,11 @@ $msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
                         <img class="center-align" style="width: 20%; height:20%;" src="imagem/<?= $arquivo ?>" />
                         <form action="empresa.php" method="POST" enctype="multipart/form-data"><br>
                             <div class="row file-field input-field">
-                                <div class="col s12" >
-                                    <div class="btn indigo darken-2 center-align">
-                                        <span>File</span>
-                                        <input type="file" name="arquivo">
-                                    </div>
+                                <div class="col s6 btn indigo darken-2" style="width: auto;">
+                                    <span>File</span>
+                                    <input type="file" name="arquivo">
                                 </div>
-                                <div class="col s12 file-path-wrapper">
+                                <div class="col s6 file-path-wrapper">
                                     <input class="file-path validate" type="text">
                                 </div>
                             </div>

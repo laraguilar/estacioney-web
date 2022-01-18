@@ -1,6 +1,14 @@
-<?php 
+<?php
+// sessao
+require_once 'php_actions/sessaoEstac.php';
+
 //header
-include_once 'includes/headerLog.php';?>
+include_once 'includes/headerLog.php';
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -18,12 +26,14 @@ include_once 'includes/headerLog.php';?>
 </head>
 
 <body>
+
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
             <div class="col center-align">
                 <div class="row s12 m6 center-align">
                     <div class="col s12 z-depth-1">
                         <h3 class="center">Dados do Estacionamento</h3>
+                        <br>
                         <div class="row center">
                             <div class="col s12 left-align">
                                 <!-- A partir de agora todas as cols são uma linha do "histórico"-->
@@ -34,25 +44,11 @@ include_once 'includes/headerLog.php';?>
                                         <div class="row">
                                             <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
                                             <div class="section">
-                                                <div class="col s6">
-                                                    <h5>Nome do Estacionamento</h5>
+                                                <div class="col s4">
+                                                    <p style="font-weight: bold;">Nome do Estacionamento</p>
                                                 </div>
-                                                <div class="col s6 pull-s1 ">
-                                                    <h5>VIX PARK</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col s12">
-                                        <!-- LINHA -->
-                                        <div class="divider"></div>
-                                        <div class="row">
-                                            <div class="section">
-                                                <div class="col s6">
-                                                    <h5>E-MAIL</h5>
-                                                </div>
-                                                <div class="col s6 pull-s1 ">
-                                                    <h5>vixpark@email.com</h5>
+                                                <div class="col s8 pull-s1 ">
+                                                    <p><?php echo $dadosEstac['nomEstac']; ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,63 +58,53 @@ include_once 'includes/headerLog.php';?>
                                         <div class="divider"></div>
                                         <div class="row">
                                             <div class="section">
-                                                <div class="col s6">
-                                                    <h5>Qtd Vagas</h5>
+                                                <div class="col s4">
+                                                    <p style="font-weight: bold;">Quantidade de Vagas</p>
                                                 </div>
-                                                <div class="col s2 pull-s1 ">
-                                                    <h5>30</h5>
+                                                <div class="col s8 pull-s1 ">
+                                                    <p><?php echo $dadosEstac['qtdVagas']; ?></p>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12">
+                                        <!-- LINHA -->
+                                        <div class="divider"></div>
+                                        <div class="row">
+                                            <div class="section">
+                                                <div class="col s4">
+                                                    <p style="font-weight: bold;">Valor Fixo</p>
+                                                </div>
+                                                <div class="col s8 pull-s1 ">
+                                                    <p><?php echo 'R$'.$dadosEstac['valFixo']; ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12">
+                                        <!-- LINHA -->
+                                        <div class="divider"></div>
+                                        <div class="row">
+                                            <div class="section">
+                                                <div class="col s4">
+                                                    <p style="font-weight: bold;">Valor Acrescimo</p>
+                                                </div>
+                                                <div class="col s8 pull-s1 ">
+                                                    <p><?php echo 'R$'.$dadosEstac['valAcresc']; ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12">
+                                            <!-- LINHA -->
+                                            <div class="divider"></div>
+                                            <div class="row">
                                                 <div class="section">
-                                                    <div class="col s4 right align">
-                                                        <h8><a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">edit</i></a></h8>
+                                                    <div class="col s6">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col s12">
-                                        <!-- LINHA -->
-                                        <div class="divider"></div>
-                                        <div class="row">
-                                            <div class="section">
-                                                <div class="col s6">
-                                                    <h5>Valor Fixo</h5>
-                                                </div>
-                                                <div class="col s6 pull-s1 ">
-                                                    <h5>R$5,00</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col s12">
-                                        <!-- LINHA -->
-                                        <div class="divider"></div>
-                                        <div class="row">
-                                            <div class="section">
-                                                <div class="col s6">
-                                                    <h5>Acrescimo/Hora</h5>
-                                                </div>
-                                                <div class="col s6 pull-s1 ">
-                                                    <h5>R$1,50</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col s12">
-                                        <!-- LINHA -->
-                                        <div class="divider"></div>
-                                        <div class="row">
-                                            <div class="section">
-                                                <div class="col s6">
-                                                    <a href="listEstacs.php" class="waves-effect waves-light btn">Lista de Estacionamentos</a>
-                                                </div>
-                                                <div class="col s6 pull-s1 ">
-                                                    <a href="cadEstac.php" class="waves-effect waves-light btn">Adicionar Estacionamento</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -132,5 +118,4 @@ include_once 'includes/headerLog.php';?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="main.js"></script>
 </body>
-
 </html>
