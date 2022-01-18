@@ -28,15 +28,6 @@ include_once 'includes/headerLog.php' ?>
                             <h6>Lucro: R$51,00</h6>
                         </div>
                         <div class="col s12 m6">
-                            <a class='dropdown-trigger btn' href='#' data-target='dropdown-menu'>HOJE<i class="large material-icons">arrow_drop_down</i></a>
-                            <!--DROPDOWN CONTENT-->
-                            <ul id='dropdown-menu' class='dropdown-content'>
-                                <li><a href="#">Ultimos 7 Dias</a></li>
-                                <li class="divider" tabindex="-1"></li>
-                                <li><a href="#">Ultimos 15 dias</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s12 m6 pull-m6">
                             <h6>Rotatividade: 8 carros</h6>
                         </div>
                         <div class="col s12 left-align">
@@ -46,6 +37,11 @@ include_once 'includes/headerLog.php' ?>
                                 <div class="col s12"> <!-- LINHA -->
                                     <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
                                         <div class="section">
+                                            <?php
+
+                                            
+                                                $sql = "SELECT * FROM aloca WHERE ";
+                                            ?>
                                             <div class="col s6">
                                                 <h5>Giovanni</h5>
                                                 <span>CRN-0021</span>

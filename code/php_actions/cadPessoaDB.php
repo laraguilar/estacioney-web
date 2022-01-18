@@ -24,16 +24,25 @@ if(isset($_POST['btnCadPessoa'])):
 
         $cpfCliente = filter_input(INPUT_POST, 'cpfCliente', FILTER_SANITIZE_SPECIAL_CHARS);
 
+        // verifica se o cpf existe no BD
+        $cpfs = "SELECT cpfPessoa FROM pessoa WHERE cpfPessoa = $cpfCliente;";
+        $query = mysqli_query($conn, $cpfs);
+        if((mysqli_num_rows($query))>0):
+            $erros[] = "Este cpf já está cadastrado";
+        endif;
+
         // exibindo mensagens de erro
         if (!empty($erros)) :
             header('Location: ../cadPessoa.php');
         else :
             // código SQL para inserir os dados
 
+            
+
             $sql = "INSERT INTO pessoa (nomPessoa, cpfPessoa, datNasc, sexPessoa) VALUES ('$nomCliente', '$cpfCliente', '$datNasc', '$sexo')";
 
             if(mysqli_query($conn, $sql)):
-                header('Location: ../home.php'); // aqui deve ir para a tela de entrada
+                header('Location: ../entrada.php'); // aqui deve ir para a tela de entrada
                 //$_SESSION['mensagem'] = "Cliente cadastrado com sucesso!";
             else:
                 header('Location: ../cadPessoa.php');

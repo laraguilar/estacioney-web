@@ -13,15 +13,34 @@ if($_SESSION['estacLogado'] = 1):
         $listEstac = mysqli_fetch_array($resultado);
         $_SESSION['estacLogado'] = true;
         $_SESSION['idEstacSelected'] = $listEstac[0];
-        $idEstacio = $_SESSION['idEstacSelected']; 
+        $idEstacio = $_SESSION['idEstacSelected'];
     }
-    $sql = "SELECT * FROM estacionamento WHERE idEstac = '$idEstacio'";
+
+
+
+    // dados do estac
+    $idEstacio = $_SESSION['idEstacSelected']; 
+    $sql = "SELECT * FROM estacionamento WHERE idEstac = '$idEstacio';";
     $resultado = mysqli_query($conn, $sql);
     $dadosEstac = mysqli_fetch_array($resultado);
 
-    $sql = "SELECT * FROM endereco WHERE idEstac = '$idEstacio'";
+    //endereco do estac
+    $sql = "SELECT * FROM endereco WHERE idEstac = '$idEstacio';";
     $resultado = mysqli_query($conn, $sql);
     $endereco = mysqli_fetch_array($resultado);
+
+    //vagas do estacionamento
+    $vagas = "SELECT * FROM vaga WHERE idEstac = '$idEstacio';";
+    $queryVAGAS = mysqli_query($conn, $vagas);
+    $vagas = mysqli_fetch_array($query);
+
+    //$vagasEstac = array();
+
+    /*foreach($vagas as $vaga){
+        if(is_int(key($vaga))){
+            $vagasEstac[] = key($vaga)+1;
+        }
+    }*/
 
 endif;
 

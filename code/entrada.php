@@ -1,11 +1,10 @@
 <?php
-// conexão BD
+/// conexão BD
+include_once 'php_actions/conexao.php';
+// sessao
 require_once 'php_actions/sessaoEstac.php';
-
 //header
-include_once 'includes/headerLog.php'; 
-
-// Mensagem
+include_once 'includes/headerLog.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,8 +39,8 @@ include_once 'includes/headerLog.php';
                                 <label for="text">Placa do Carro</label>
                             </div>
                             <div class="input-field col s12">
-                                <input type="email" name="vagaCarro" id="vagaCarro" class="validate">
-                                <label for="email">Vaga</label>
+                                <input type="number" name="vagaCarro" id="vagaCarro" class="validate">
+                                <label for="number">Vaga</label>
                             </div>
                         </div>
                         <button href = "home.php" type="submit" name="btnCadCarro" class="waves-effect waves-light btn indigo darken-2">Continuar</button>

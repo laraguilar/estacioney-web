@@ -81,7 +81,7 @@ include_once 'includes/headerLog.php';
                             <h5>Disponibilidade: 27/30</h5>
                         </div>
                         <div class="col s12 m6">
-                            <h6>Acréscimo/hora: <?php echo number_format($dadosEstac['valAcresc'], 2);?></h6>
+                            <h6>Acréscimo/hora: R$<?php echo number_format($dadosEstac['valAcresc'], 2);?></h6>
                         </div>
                         <div class="col s12 left-align">
                             <!-- A partir de agora todas as cols são uma linha do "histórico"-->
@@ -91,7 +91,7 @@ include_once 'includes/headerLog.php';
                                     <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
                                         <div class="section">
                                             <div class="col s6">
-                                                <h5 >Augusto</h6>
+                                                <h5>Augusto</h6>
                                                 <span>HTM-1353</span>
                                                 <span>Hora de Entrada 10:50:45 14/12/2021</span>
                                             </div>
@@ -103,25 +103,6 @@ include_once 'includes/headerLog.php';
                                         </div>
                                     </div>
                                 </div>
-                                </div>
-                                
-                                <div class="col s12"> <!-- LINHA -->
-                                    <div class="divider"></div>
-                                    <div class="row">
-                                        <div class="section">
-                                            <div class="col s6">
-                                                <h5>Augusto</h5>
-                                                <span>HTM-1353</span>
-                                                <span>Hora de Entrada 10:50:45 14/12/2021</span>
-                                            </div>
-                                            <div class="section">
-                                            <div class="col s6 right-align">
-                                                <h5><a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">edit</i></a>
-                                                <a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">exit_to_app</i></a></h5>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
