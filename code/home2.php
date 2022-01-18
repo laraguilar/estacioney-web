@@ -3,10 +3,7 @@
 require_once 'php_actions/sessaoLog.php';
 // header
 include_once 'includes/headerLog.php';
-
-
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,22 +16,6 @@ include_once 'includes/headerLog.php';
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $(".clicavel").click(function() {
-                    idClicado = $(this).attr('id');
-                    //window.alert(idClicado);
-                    <?php
-                        $_SESSION['estacLogado'] = true;
-                        $_SESSION['idEstacSelected'] = "<script>document.write(idClicado)</script>";
-                    ?>
-                    $("dropdown2").unbind();
-                    //window.location.pathname('/home.php');
-                    location.reload();
-                });
-            });
-        </script>
 </head>
 <body>
     <div class="container" style="margin: auto; width: 60%;">
@@ -42,33 +23,7 @@ include_once 'includes/headerLog.php';
             <div class="col center-align">
             <div class="row s12 m6 center-align">
                 <div class="col s12 z-depth-1">
-                    <h3 class="center"><?php echo "Lara linda";?></h3>
-                    <!-- Dropdown Trigger -->
-                    <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Drop Dowwwn!</a>
-
-                    <!-- Dropdown Structure -->
-                    <?php
-                        $_SESSION['idEstacSelected'] = NULL;
-                        // mostra a lista de estacionamentos da empresa
-                        $sql = "SELECT * FROM estacionamento WHERE idEmpresa = $id";
-                        $result = mysqli_query($conn, $sql);
-                        // cria a tabela
-                        echo "<ul id='dropdown2' class='dropdown-content'>";
-
-                        // faz um while que mstra a informação de todos os estacionamentos da empresa
-                        while($dado = mysqli_fetch_array($result)):
-                            $idEstac = $dado['idEstac'];
-                            $end = "SELECT * FROM endereco WHERE idEstac = $idEstac"; // pega os dados de endereço
-                            $query = mysqli_query($conn, $end);
-                            $end = mysqli_fetch_assoc($query);
-
-                            echo "<li class='clicavel' id=".$idEstac.">";
-                                echo "<a>".$dado['nomEstac']."</a> ";
-                            echo "</li>";
-                        endwhile;
-                        echo "</ul>";
-                    ?>
-
+                    <h3 class="center">Estacionamento 1</h3>
                     <div class="row center">
                         <div class="col s12 m6">
                             <h6>Valor fixo: R$5,00</h6>
@@ -129,7 +84,7 @@ include_once 'includes/headerLog.php';
 </div>
 
         <div class="fixed-action-btn">
-        <a href = "entrada.php"class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>
+            <a class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>
 
         </div>
 

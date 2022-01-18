@@ -1,6 +1,6 @@
 <?php
 // sessao
-require_once 'php_actions/sessaoEstac.php';
+require_once 'php_actions/sessaoLog.php';
 
 //header
 include_once 'includes/headerLog.php';
@@ -48,7 +48,7 @@ include_once 'includes/headerLog.php';
                                                     <p style="font-weight: bold;">Nome do Estacionamento</p>
                                                 </div>
                                                 <div class="col s8 pull-s1 ">
-                                                    <p><?php echo $dadosEstac['nomEstac']; ?></p>
+                                                    <p><?php echo $nomEstac ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,7 +62,7 @@ include_once 'includes/headerLog.php';
                                                     <p style="font-weight: bold;">Quantidade de Vagas</p>
                                                 </div>
                                                 <div class="col s8 pull-s1 ">
-                                                    <p><?php echo $dadosEstac['qtdVagas']; ?></p>
+                                                    <p><?php echo $qtdVagas; ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -76,7 +76,7 @@ include_once 'includes/headerLog.php';
                                                     <p style="font-weight: bold;">Valor Fixo</p>
                                                 </div>
                                                 <div class="col s8 pull-s1 ">
-                                                    <p><?php echo 'R$'.$dadosEstac['valFixo']; ?></p>
+                                                    <p>R$<?php echo number_format($valFixo, 2); ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,7 +90,7 @@ include_once 'includes/headerLog.php';
                                                     <p style="font-weight: bold;">Valor Acrescimo</p>
                                                 </div>
                                                 <div class="col s8 pull-s1 ">
-                                                    <p><?php echo 'R$'.$dadosEstac['valAcresc']; ?></p>
+                                                    <p>R$<?php echo number_format($valAcresc, 2); ?></p>
                                                 </div>
                                             </div>
                                         </div>

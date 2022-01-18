@@ -1,6 +1,6 @@
 <?php 
 // Log na Sessao
-require_once 'php_actions/sessaoEstac.php';
+require_once 'php_actions/sessaoLog.php';
 // header
 include_once 'includes/headerLog.php';
 ?>
@@ -16,24 +16,6 @@ include_once 'includes/headerLog.php';
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-        
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                // funcao que percebe o evento de clique no item do dropdown
-                $(".clicavel").click(function() {
-                    var idClicado = $(this).attr('id'); // pega o ID do estacionamento selecionado
-                    //window.location.pathname('/home.php');
-                    <?php
-                        // abre as sessoes referentes
-                            $variav = "<script>document.write(idClicado)</script>";
-                            $_SESSION['estacLogado'] = true;
-                            $_SESSION['idEstacSelected'] = $variav;
-                    ?>
-                    location.reload(); // refresh na pagina
-                });
-            });
-        </script>   
 </head>
 
 <body>
@@ -42,50 +24,58 @@ include_once 'includes/headerLog.php';
             <div class="col center-align">
             <div class="row s12 m6 center-align">
                 <div class="col s12 z-depth-1">
-                    <h3 class="center"><?php echo $dadosEstac['nomEstac']?></h3>
-                    <!-- Dropdown Trigger -->
-                    <a class='dropdown-trigger btn' href='#' data-target='dropdown2'><?php echo $dadosEstac['nomEstac']?><i class="material-icons right">arrow_drop_down</i> </a>
+                    <h4 class="center"><?php echo $nomEstac?></h4>
+                    <!-- Dropdown Trigger
+                    <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>DROPDOWN??<?php //echo $dadosEstac['nomEstac']?><i class="material-icons right">arrow_drop_down</i> </a>
 
-                    <!-- Dropdown Structure -->
+                    Dropdown Structure -->
                     <?php
-                        echo $variav;
-                        $_SESSION['idEstacSelected'] = NULL;
+                        /*$_SESSION['idEstacSelected'] = NULL;
                         // mostra a lista de estacionamentos da empresa
                         $sql = "SELECT * FROM estacionamento WHERE idEmpresa = $id";
                         $result = mysqli_query($conn, $sql);
                         // cria a tabela
-                        echo "<ul id='dropdown2' class='dropdown-content'>";
+                        echo "<form action='php_actions/teste.php' method='POST'> <ol id='dropdown2' class='dropdown-content'>";
                         // faz um while que mstra a informação de todos os estacionamentos da empresa
                         while($dado = mysqli_fetch_array($result)):
                             $idEstac = $dado['idEstac'];
 
                             if(!($dadosEstac['idEstac'] == $idEstac)){
-                                echo "<li class='clicavel' id=".$idEstac.">";
-                                echo "<a>".$dado['nomEstac']."</a> ";
-                                echo "</li>";
+                                echo "<button type='submit' id=".$idEstac." name='entrarEstac'>";
+                                echo $dado['nomEstac'];
+                                echo "</button>";
                             }
                             
+                            
                         endwhile;
-                        echo "</ul>";
+                        echo "</ol></form>";*/
+
+                        $sql = "SELECT count(*) FROM vaga WHERE idEstac = '$idEstac';";
+                        $query = mysqli_query($conn, $sql);
+                        $vagasEstac = mysqli_fetch_array($query);
+
+                        var_dump($vagasEstac);
                     ?>
 
                     <div class="row center">
                         <div class="col s12 m6">
-                            <h6>Valor fixo: R$<?php echo number_format($dadosEstac['valFixo'], 2);?></h6>
+                            <h6><b>Valor fixo:</b> R$<?php echo number_format($valFixo, 2);?></h6>
                         </div>
                         <div class="col s12 m6">
                             <?php 
                                 //$sql = "SELECT count(*) AS 'vagas ocupadas' FROM vaga WHERE idEstac = '$idEstac' AND condVaga = 1;";
                                 //$query = mysqli_query($conn, $sql);
                             ?>
-                            <h5>Disponibilidade: 27/30</h5>
+                            <h6><b>Disponibilidade:</b> 27/<?php echo $qtdVagas ?></h6>
                         </div>
                         <div class="col s12 m6">
-                            <h6>Acréscimo/hora: R$<?php echo number_format($dadosEstac['valAcresc'], 2);?></h6>
+                            <h6><b>Acréscimo/hora:</b> R$<?php echo number_format($valAcresc, 2);?></h6>
                         </div>
                         <div class="col s12 left-align">
                             <!-- A partir de agora todas as cols são uma linha do "histórico"-->
                             <div class="row">
+                            <!-- AQUI COMEÇA A REPETIR -->
+
                                 <div class="divider"></div>
                                 <div class="col s12"> <!-- LINHA -->
                                     <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
@@ -105,6 +95,8 @@ include_once 'includes/headerLog.php';
                                 </div>
                                 </div>
                             </div>
+                            <!-- AQUI COMEÇA A REPETIR -->
+
                         </div>
                     </div>
                 </div>
