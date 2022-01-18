@@ -32,7 +32,7 @@ if($_SESSION['estacLogado'] = 1):
     //vagas do estacionamento
     $vagas = "SELECT * FROM vaga WHERE idEstac = '$idEstacio';";
     $queryVAGAS = mysqli_query($conn, $vagas);
-    $vagas = mysqli_fetch_array($query);
+    $vagas = mysqli_fetch_array($queryVAGAS);
 
     //$vagasEstac = array();
 

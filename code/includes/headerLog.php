@@ -11,7 +11,6 @@ require_once 'php_actions/sessaoLog.php';
 
             <ul id="dropdown1" class="dropdown-content">
                 <li><a href="empresa.php">Dados da Empresa</a></li>
-                <li><a href="listEstacs.php">Lista de Estacionamento</a></li>
                 <li><form method="$_GET">
                     <input type="submit" value="Sair" name="sair" class="btn" method="GET">
                 </form>

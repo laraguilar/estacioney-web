@@ -33,7 +33,7 @@ include_once 'includes/headerLog.php';
                     location.reload(); // refresh na pagina
                 });
             });
-        </script>
+        </script>   
 </head>
 
 <body>
@@ -75,8 +75,8 @@ include_once 'includes/headerLog.php';
                         </div>
                         <div class="col s12 m6">
                             <?php 
-                                $sql = "SELECT count(*) AS 'vagas ocupadas' FROM vaga WHERE idEstac = '$idEstac' AND condVaga = 1;";
-                                $query = mysqli_query($conn, $sql);
+                                //$sql = "SELECT count(*) AS 'vagas ocupadas' FROM vaga WHERE idEstac = '$idEstac' AND condVaga = 1;";
+                                //$query = mysqli_query($conn, $sql);
                             ?>
                             <h5>Disponibilidade: 27/30</h5>
                         </div>

@@ -16,25 +16,12 @@
     <body>
         <div class="container" style="margin: auto; width: 60%;">
             <div class="row">
-                <form method="post" class="col s6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
                     <h2 style="text-align: center;">Sobre nós</h2>
-                    <div class="row center-align">
-                        <div class="col s12">
-                            <div class="row">
-                                <p class="flow-text" style="text-align: justify;">Pokem ipsum dolor sit amet Kabutops Rare Candy Feraligatr 
-                                    Luxio Vibrava Whimsicott. Ice a wild Pokemon appeared Hidden Machine Petilil 
-                                    Krookodile Swampert Surskit. Celadon City Crustle Butterfree Buneary Mightyena Slaking Raticate. 
-                                    Bubble Cherrim Bouffalant Larvesta Poison Sting Meloetta Wartortle. 
-                                    Vine Whip Tepig Anorith Snorunt Ash Ketchum Dustox Rotom.
-                                    Rock Blissey Togepi Kingdra Zekrom Phanpy Cherrim. 
-                                    Blastoise Flaaffy Mint Berry Barboach Wigglytuff Houndoom
-                                     Musharna. Dark Drilbur Combusken Pansage Sawk Thunder Badge Ralts
-                                     . Mineral Badge Gible Vulpix Pallet Town Mint Berry Blastoise et dolore magna aliqua. Pika-pi Lillipup Marsh
-                                      Badge Shaymin Torterra Plain Badge Bonsly.</p>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                                <p class="flow-text" style="text-align: justify; font-size:medium;">O nosso trabalho consiste em um sistema de gerenciamento de estacionamentos rotativos, tendo o foco na melhoria de todo ecossistema do estacionamento. Essa melhoria se dará por meio dos relatórios criados, sendo gerados de 4 a 5 relatórios com os principais pontos que se deve ter atenção, como por exemplo, na quantidade de carros que frequentaram o estacionamento e a quantidade de horas estacionadas (diariamente, mensalmente e anualmente).Escolhemos esse tema pois percebemos que estacionamentos rotativos tem uma grande dificuldade no seu cuidado e com a ajuda de nosso aplicativo visamos o aumento de lucro e da meta de expansão dos estabelecimentos que quiserem ser nossos parceiros.</p>
+                                <h4>Equipe de Desenvolvimento</h4>
+                                <p class="flow-text" style="text-align: justify; font-size:medium;">
+                                Guilherme Silveira
+                                Lara Aguilar</p>
             </div>
         </div>
     </body>
