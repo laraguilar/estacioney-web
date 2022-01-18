@@ -1,5 +1,5 @@
 <?php
-require 'php_actions/sessaoLog.php';
+require_once 'php_actions/sessaoLog.php';
 
 $msg = false;
 if(isset($_FILES['arquivo'])){
@@ -52,6 +52,9 @@ $msg_sem = ($qtd_arquivos<=0)?"NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
         </script>
 </head>
 <body>
+    <?php
+
+    ?>
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
             <div class="col center-align">

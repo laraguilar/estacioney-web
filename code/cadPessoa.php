@@ -1,10 +1,11 @@
 <?php
 // conexão BD
 include_once 'php_actions/conexao.php';
+// sessao
+require_once 'php_actions/sessaoEstac.php';
 //header
 include_once 'includes/headerLog.php';
-// Mensagem
-include_once 'includes/message.php';
+
 ?>
 <!DOCTYPE html>
 <html>

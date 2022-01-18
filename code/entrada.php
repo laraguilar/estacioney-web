@@ -1,6 +1,6 @@
 <?php
 // conexão BD
-require_once 'php_actions/sessaoLog.php';
+require_once 'php_actions/sessaoEstac.php';
 
 //header
 include_once 'includes/headerLog.php'; 
@@ -26,7 +26,7 @@ include_once 'includes/headerLog.php';
 <body>
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
-            <form action="php_actions/cadEmpresaDB.php" method="POST" class="col s12 m6" name="cadEmpresa" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
+            <form action="php_actions/entradaDB.php" method="POST" class="col s12 m6" name="cadEmpresa" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
                 <h3 style="text-align: center;">Entrada</h3>
                 <div class="row center-align">
                     <div class="col s12">
@@ -45,6 +45,8 @@ include_once 'includes/headerLog.php';
                             </div>
                         </div>
                         <button href = "home.php" type="submit" name="btnCadCarro" class="waves-effect waves-light btn indigo darken-2">Continuar</button>
+                        <p style="text-decoration: none;"> 
+                        <a href="cadPessoa.php">Cadastrar Cliente</a></p>
                     </div>
                 </div>
             </form>

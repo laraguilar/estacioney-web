@@ -4,7 +4,6 @@ require_once 'php_actions/sessaoEstac.php';
 // header
 include_once 'includes/headerLog.php';
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,33 +17,38 @@ include_once 'includes/headerLog.php';
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        
         <script type="text/javascript">
             jQuery(document).ready(function($) {
+                // funcao que percebe o evento de clique no item do dropdown
                 $(".clicavel").click(function() {
-                    idClicado = $(this).attr('id');
-                    //window.alert(idClicado);
-                    <?php
-                        $_SESSION['estacLogado'] = true;
-                        $_SESSION['idEstacSelected'] = "<script>document.write(idClicado)</script>";
-                    ?>
+                    var idClicado = $(this).attr('id'); // pega o ID do estacionamento selecionado
                     //window.location.pathname('/home.php');
-                    location.reload();
+                    <?php
+                        // abre as sessoes referentes
+                            $variav = "<script>document.write(idClicado)</script>";
+                            $_SESSION['estacLogado'] = true;
+                            $_SESSION['idEstacSelected'] = $variav;
+                    ?>
+                    location.reload(); // refresh na pagina
                 });
             });
         </script>
 </head>
+
 <body>
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
             <div class="col center-align">
             <div class="row s12 m6 center-align">
                 <div class="col s12 z-depth-1">
-                    <h3 class="center"><?php echo $dadosEstac;?></h3>
+                    <h3 class="center"><?php echo $dadosEstac['nomEstac']?></h3>
                     <!-- Dropdown Trigger -->
-                    <a class='dropdown-trigger btn' href='#' data-target='dropdown2'><?php ?></a>
+                    <a class='dropdown-trigger btn' href='#' data-target='dropdown2'><?php echo $dadosEstac['nomEstac']?><i class="material-icons right">arrow_drop_down</i> </a>
 
                     <!-- Dropdown Structure -->
                     <?php
+                        echo $variav;
                         $_SESSION['idEstacSelected'] = NULL;
                         // mostra a lista de estacionamentos da empresa
                         $sql = "SELECT * FROM estacionamento WHERE idEmpresa = $id";
@@ -54,22 +58,30 @@ include_once 'includes/headerLog.php';
                         // faz um while que mstra a informação de todos os estacionamentos da empresa
                         while($dado = mysqli_fetch_array($result)):
                             $idEstac = $dado['idEstac'];
-                            echo "<li class='clicavel' id=".$idEstac.">";
+
+                            if(!($dadosEstac['idEstac'] == $idEstac)){
+                                echo "<li class='clicavel' id=".$idEstac.">";
                                 echo "<a>".$dado['nomEstac']."</a> ";
-                            echo "</li>";
+                                echo "</li>";
+                            }
+                            
                         endwhile;
                         echo "</ul>";
                     ?>
 
                     <div class="row center">
                         <div class="col s12 m6">
-                            <h6>Valor fixo: R$5,00</h6>
+                            <h6>Valor fixo: R$<?php echo number_format($dadosEstac['valFixo'], 2);?></h6>
                         </div>
                         <div class="col s12 m6">
+                            <?php 
+                                $sql = "SELECT count(*) AS 'vagas ocupadas' FROM vaga WHERE idEstac = '$idEstac' AND condVaga = 1;";
+                                $query = mysqli_query($conn, $sql);
+                            ?>
                             <h5>Disponibilidade: 27/30</h5>
                         </div>
                         <div class="col s12 m6">
-                            <h6>Acréscimo/hora: R$1,50</h6>
+                            <h6>Acréscimo/hora: <?php echo number_format($dadosEstac['valAcresc'], 2);?></h6>
                         </div>
                         <div class="col s12 left-align">
                             <!-- A partir de agora todas as cols são uma linha do "histórico"-->

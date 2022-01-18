@@ -10,9 +10,9 @@ $resultado = mysqli_query($conn, $sql);
 $dados = mysqli_fetch_array($resultado);
 $logado = $_SESSION['logado'];
 
-
 if(isset($_GET['sair'])):
     $_SESSION['logado'] = NULL;
+    $_SESSION['estacLogado'] = NULL;
     header('Location: ../code/index.php');
 endif;
 ?>

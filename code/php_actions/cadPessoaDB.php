@@ -2,7 +2,7 @@
 // Sessão
 session_start();
 // Conexão DB
-require_once './conexao.php';
+include_once './conexao.php';
 
 // verifica se o botao foi clicado
 if(isset($_POST['btnCadPessoa'])):
@@ -13,7 +13,7 @@ if(isset($_POST['btnCadPessoa'])):
     $datNasc = mysqli_escape_string($conn, $_POST['datNasc']);
     $sexo = mysqli_escape_string($conn, $_POST['sexo']);
     
-    if(!empty($nomEmpresa) && !empty($dscCpfCnpj) && !empty($telefone) && !empty($email) && !empty($senha)):
+    if(!empty($nomCliente) && !empty($cpfCliente) && !empty($datNasc) && !empty($sexo)):
 
         // Array de erros
         $erros = array();
@@ -27,10 +27,6 @@ if(isset($_POST['btnCadPessoa'])):
         // exibindo mensagens de erro
         if (!empty($erros)) :
             header('Location: ../cadPessoa.php');
-            foreach ($erros as $erro) :
-                $_SESSION['mensagem'] = $erro;
-            endforeach;
-
         else :
             // código SQL para inserir os dados
 
@@ -38,10 +34,10 @@ if(isset($_POST['btnCadPessoa'])):
 
             if(mysqli_query($conn, $sql)):
                 header('Location: ../home.php'); // aqui deve ir para a tela de entrada
-                $_SESSION['mensagem'] = "Cliente cadastrado com sucesso!";
+                //$_SESSION['mensagem'] = "Cliente cadastrado com sucesso!";
             else:
                 header('Location: ../cadPessoa.php');
-                $_SESSION['mensagem'] = "Erro ao cadastrar cliente.";
+                //$_SESSION['mensagem'] = "Erro ao cadastrar cliente.";
             endif;
         endif;
     else:
