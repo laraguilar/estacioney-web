@@ -18,7 +18,7 @@ if(isset($_GET['sair'])):
     header('Location: ../code/index.php');
 endif;
 
-(!empty($_SESSION['estacLogado'])) or die (header('Location: ../code/cadEstac.php'));
+
 
 $sql = "SELECT * FROM estacionamento WHERE idEmpresa = '$id'";
 $query = mysqli_query($conn, $sql);

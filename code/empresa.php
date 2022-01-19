@@ -4,7 +4,7 @@ require_once 'php_actions/sessaoLog.php';
 
 //header
 include_once 'includes/headerLog.php';
-
+/*
 $msg = false;
 if (isset($_FILES['arquivo'])) {
     $arquivo = $_FILES['arquivo']['name'];
@@ -28,7 +28,7 @@ $sql_busca = "SELECT * FROM arquivo";
 $mostrar = mysqli_query($conn, $sql_busca);
 $qtd_arquivos = mysqli_num_rows($mostrar);
 $msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
-
+*/
 ?>
 
 
@@ -58,12 +58,12 @@ $msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
                     <div class="col s12 z-depth-1">
                         <h3 class="center">Dados da Empresa</h3>
                         <br>
-                        <?php
+                        <!--<?php
                         while ($imgSistema = mysqli_fetch_array($mostrar)) {
                             $arquivo = $imgSistema['arquivo'];
                         }
                         ?>
-                        <img class="center-align" style="width: 20%; height:20%;" src="imagem/<?= $arquivo ?>" />
+                        <img class="center-align" style="width: 20%; height:20%;" src="imagem/<?= $arquivo ?>" />-->
                         <form action="empresa.php" method="POST" enctype="multipart/form-data"><br>
                             <div class="row file-field input-field">
                                 <div class="col s6 btn indigo darken-2" style="width: auto;">
@@ -104,7 +104,7 @@ $msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
                                                     <p style="font-weight: bold;">E-mail</p>
                                                 </div>
                                                 <div class="col s8 pull-s1 ">
-                                                    <p><?php echo $dados['Email']; ?></p>
+                                                    <p><?php echo $dados['email']; ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +132,7 @@ $msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
                                                     <p style="font-weight: bold;">Telefone</p>
                                                 </div>
                                                 <div class="col s8 pull-s1 ">
-                                                    <p><?php echo $dados['Telefone']; ?></p>
+                                                    <p><?php echo $dados['telefone']; ?></p>
                                                 </div>
                                             </div>
                                         </div>
