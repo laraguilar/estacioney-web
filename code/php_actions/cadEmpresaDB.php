@@ -13,6 +13,7 @@ if (isset($_POST['btnCadEmpresa'])) :
     $telefone = mysqli_escape_string($conn, $_POST['Telefone']);
     $email = mysqli_escape_string($conn, $_POST['Email']);
     $senha = mysqli_escape_string($conn, $_POST['Senha']);
+    $confirmar = mysqli_escape_string($conn, $_POST['Confirmar']);
 
 
     if(!empty($nomEmpresa) && !empty($dscCpfCnpj) && !empty($telefone) && !empty($email) && !empty($senha)):
@@ -47,7 +48,11 @@ if (isset($_POST['btnCadEmpresa'])) :
         $telefone = filter_input(INPUT_POST, 'Telefone', FILTER_SANITIZE_SPECIAL_CHARS);
 
         $senha = filter_input(INPUT_POST, 'Senha', FILTER_SANITIZE_SPECIAL_CHARS);
+        $confirmar = filter_input(INPUT_POST, 'Senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
+        if(!$senha == $confirmar){
+            $erros[] = "Senha não confere."; 
+        }
         // exibindo mensagens de erro
         if (!empty($erros)) :
             header('Location: ../cadEmpresa.php');
@@ -56,6 +61,8 @@ if (isset($_POST['btnCadEmpresa'])) :
             endforeach;
         else :
             // criptografia de senha
+
+
             $senhaCrip = password_hash($senha, PASSWORD_DEFAULT);
 
             // código SQL para inserir os dados

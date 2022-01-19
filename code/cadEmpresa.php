@@ -52,6 +52,11 @@ include_once 'includes/message.php';
                                 <label for="password">Senha</label>
                                 <span class="helper-text left-align" data-error="Senha inválida" data-success="">Mínimo 8 caracteres</span>
                             </div>
+                            <div class="input-field col s12">
+                                <input type="password" name="Confirmar" id="confirmar" class="validate">
+                                <label for="password">Confirmar Senha</label>
+                                <span class="helper-text left-align" data-error="Senha inválida" data-success="">Mínimo 8 caracteres</span>
+                            </div>
                         </div>
                         <button type="submit" name="btnCadEmpresa" class="waves-effect waves-light btn indigo darken-2">Cadastrar</button>
                     </div>
@@ -62,6 +67,8 @@ include_once 'includes/message.php';
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="main.js"></script>
+    <?php 
+        include_once 'includes/footer.php';?>
 </body>
 
 </html>

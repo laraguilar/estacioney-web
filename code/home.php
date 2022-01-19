@@ -17,7 +17,6 @@ include_once 'includes/headerLog.php';
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-
 <body>
     <div class="container" style="margin: auto; width: 60%;">
         <div class="row">
@@ -49,11 +48,6 @@ include_once 'includes/headerLog.php';
                             
                         endwhile;
                         echo "</ol></form>";*/
-
-
-                        
-                        
-                        
                     ?>
 
                     <div class="row center">
@@ -119,14 +113,16 @@ include_once 'includes/headerLog.php';
             </div>
         </div>
     </div>
-
+    </div>
         <div class="fixed-action-btn">
         <a href = "entrada.php"class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>
-
         </div>
-
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="main.js"></script>
+
+        <?php 
+        include_once 'includes/footer.php';?>
+
     </body>
+
   </html>
