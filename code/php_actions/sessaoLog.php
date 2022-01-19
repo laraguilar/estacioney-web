@@ -30,5 +30,4 @@ $valFixo = $dadosEstac['valFixo'];
 $valAcresc = $dadosEstac['valAcresc'];
 $qtdVagas = $dadosEstac['qtdVagas'];
 
-
 ?>

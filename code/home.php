@@ -50,11 +50,10 @@ include_once 'includes/headerLog.php';
                         endwhile;
                         echo "</ol></form>";*/
 
-                        $sql = "SELECT count(*) FROM vaga WHERE idEstac = '$idEstac';";
-                        $query = mysqli_query($conn, $sql);
-                        $vagasEstac = mysqli_fetch_array($query);
 
-                        var_dump($vagasEstac);
+                        
+                        
+                        
                     ?>
 
                     <div class="row center">
@@ -75,35 +74,49 @@ include_once 'includes/headerLog.php';
                             <!-- A partir de agora todas as cols são uma linha do "histórico"-->
                             <div class="row">
                             <!-- AQUI COMEÇA A REPETIR -->
+                            <?php
+                                $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
+                                $query = mysqli_query($conn, $sql);
 
-                                <div class="divider"></div>
-                                <div class="col s12"> <!-- LINHA -->
-                                    <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
-                                        <div class="section">
-                                            <div class="col s6">
-                                                <h5>Augusto</h6>
-                                                <span>HTM-1353</span>
-                                                <span>Hora de Entrada 10:50:45 14/12/2021</span>
-                                            </div>
-                                            <div class="section">
-                                            <div class="col s6 right-align">
-                                                <h5><a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">edit</i></a>
-                                                <a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">exit_to_app</i></a></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
+                                // percorre as vagas do estacionamento
+                                while($vaga = mysqli_fetch_array($query)):                                  
+                                    // verifica se a vaga está ocupada
+
+                                    var_dump($vaga);
+                                    if($vaga['condVaga']):
+                                        $codVaga = $vaga['codVaga'];
+
+                                        // pega os dados da vaga alocada
+                                        $sql = "SELECT * FROM aloca WHERE codVaga = '$codVaga';";
+                                        $query = mysqli_query($conn, $sql);
+                                        $alocado = mysqli_fetch_array($query);
+                                        
+                                        var_dump($alocado);
+
+                                        // dados da pessoa alocada
+                                        $idPessoa = $alocado['idPessoa'];
+                                        
+                                        // dados pessoa
+                                        $sql = "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa';";
+                                        $query = mysqli_query($conn, $sql);
+                                        $pessoa = mysqli_fetch_array($query);
+                                        
+                                        echo "
+                                        <h5>".$pessoa['nomPessoa']."</h5>
+                                        <span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br>
+                                        <span>Placa: ".$alocado['dscPlaca']."</span>
+                                        ";
+                                    endif;
+                                endwhile;
+                            ?>
+                                        
                             </div>
-                            <!-- AQUI COMEÇA A REPETIR -->
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
         <div class="fixed-action-btn">
         <a href = "entrada.php"class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>

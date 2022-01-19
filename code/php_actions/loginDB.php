@@ -14,20 +14,20 @@ if(isset($_POST['btnEntrar'])):
         header('Location: ../index.php');
         $_SESSION['mensagem'] = "Campo Email/Senha precisa ser preenchido";
     else:
-        $sql = "SELECT email FROM empresa WHERE Email = '$email'";
+        $sql = "SELECT email FROM empresa WHERE email = '$email'";
         $resultado = mysqli_query($conn, $sql);
 
         // verifica se o email esta cadastrado
         if(mysqli_num_rows($resultado) > 0):
             
             // verifica senha criptografada
-            $sqlSenha = "SELECT senha FROM empresa WHERE Email = '$email'";
+            $sqlSenha = "SELECT senha FROM empresa WHERE email = '$email'";
             $query = mysqli_query($conn, $sqlSenha);
             $resultQuery = mysqli_fetch_assoc($query);
             $senhaCripto = $resultQuery['senha'];
 
             if(password_verify($senha, $senhaCripto)): // se a senha esta correta, roda o codigo
-                $sql = "SELECT * FROM empresa WHERE Email = '$email'";
+                $sql = "SELECT * FROM empresa WHERE email = '$email'";
                 $resultado = mysqli_query($conn, $sql);
 
                 if(mysqli_num_rows($resultado) == 1):
