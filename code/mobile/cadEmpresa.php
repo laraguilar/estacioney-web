@@ -18,7 +18,7 @@ if (isset($_POST['newLogin']) && isset($_POST['newPassword'])) {
 	$newLogin = trim($_POST['newLogin']);
 	$newPassword = trim($_POST['newPassword']);
 	
-	$usuario_existe = mysqli_query($conn, "SELECT email FROM empresa WHERE login='$newLogin'");
+	$usuario_existe = mysqli_query($conn, "SELECT email FROM empresa WHERE email='$newLogin'");
 	// check for empty result
 	if (mysqli_num_rows($usuario_existe) > 0) {
 		$response["success"] = 0;
@@ -27,7 +27,7 @@ if (isset($_POST['newLogin']) && isset($_POST['newPassword'])) {
 	else {
 		$senhaCript = password_hash($newPassword, PASSWORD_DEFAULT);
 		// mysql inserting a new row
-		$result = mysqli_query($conn, "INSERT INTO empresa(email, password) VALUES('$newLogin', '$senhaCriptw')");
+		$result = mysqli_query($conn, "INSERT INTO empresa(email, senha) VALUES('$newLogin', '$senhaCriptw')");
 	 
 		if ($result) {
 			$response["success"] = 1;
