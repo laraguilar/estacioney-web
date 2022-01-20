@@ -13,7 +13,7 @@ include_once "conexao.php";
 $response = array();
  
 // check for required fields
-if (isset($_POST['newEmail']) && (isset($_POST['newPassword'])) && (isset($_POST['CpfCnpj'])) && (isset($_POST['nomEmpresa'])) && (isset($_POST['telefone']))) {
+if (isset($_POST['newEmail']) && (isset($_POST['newPassword'])) && (isset($_POST['newCpfCnpj'])) && (isset($_POST['newNomEmpresa'])) && (isset($_POST['newTelefone']))) {
  
 	$newEmail = trim($_POST['newEmail']);
 	$newPassword = trim($_POST['newPassword']);
