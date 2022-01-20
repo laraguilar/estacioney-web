@@ -71,31 +71,46 @@ include_once 'includes/headerLog.php';
                             <div class="row">
                             <!-- AQUI COMEÇA A REPETIR -->
                             <?php
-                                $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
+                                $sql = "SELECT idVaga FROM vaga WHERE idEstac = '$idEstac';";
                                 $query = mysqli_query($conn, $sql);
+                                //$vagas =  mysqli_fetch_array($query);
+
+                                
 
                                 // percorre as vagas do estacionamento
                                 while($vaga = mysqli_fetch_array($query)):                                  
                                     // verifica se a vaga está ocupada
                                     var_dump($vaga);
-                                    if($vaga['condVaga']):
-                                        $codVaga = $vaga['idVaga'];
 
-                                        // pega os dados da vaga alocada
-                                        $sql = "SELECT * FROM aloca WHERE idVaga = '$codVaga';";
-                                        $query = mysqli_query($conn, $sql);
-                                        $alocado = mysqli_fetch_array($query);
-                                    
+
+                                    /*$idVaga = $vaga['idVaga'];
+
+                                    $sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
+                                    $vagaQuery = mysqli_query($conn, $sql);
+                                    $result = mysqli_fetch_array($vagaQuery);
+
+                                    $condVaga = $result['condVaga'];
+
+                                    // pega os dados da vaga alocada
+                                    $sql = "SELECT idPessoa FROM aloca WHERE idVaga = '$idVaga';";
+                                    $query = mysqli_query($conn, $sql);
+                                    $alocado = mysqli_fetch_array($query);
+
+                                    if($condVaga){
+
+                                        
+                                        
+                                        var_dump($alocado);
                                         // dados da pessoa alocada
-                                        $idPessoa = $alocado['idPessoa'];
+                                        //$idPessoa = $alocado['idPessoa'];
                                         
                                         // dados pessoa
-                                        $sql = "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa';";
+                                        $sql = "SELECT * FROM pessoa WHERE idPessoa = '$alocado';";
                                         $query = mysqli_query($conn, $sql);
                                         $pessoa = mysqli_fetch_array($query);
                                         
                                         echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";
-                                    endif;
+                                    }*/
                                 endwhile;
                             ?>
                                         
