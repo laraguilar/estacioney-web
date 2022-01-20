@@ -82,19 +82,19 @@ include_once 'includes/headerLog.php';
 
 
                                     $idVaga = $vaga['idVaga'];
-                                    echo $idVaga;
-                                    /*$sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
+                                    //echo $idVaga;
+                                    $sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
                                     $vagaQuery = mysqli_query($conn, $sql);
                                     $result = mysqli_fetch_array($vagaQuery);
 
                                     $condVaga = $result['condVaga'];
 
                                     // pega os dados da vaga alocada
-                                    $sql = "SELECT idPessoa FROM aloca WHERE idVaga = '$idVaga';";
-                                    $query = mysqli_query($conn, $sql);
+                                    $sql2 = "SELECT idPessoa FROM aloca WHERE idVaga = '$idVaga';";
+                                    $query = mysqli_query($conn, $sql2);
                                     $alocado = mysqli_fetch_assoc($query);
 
-                                    echo $alocado;*/
+                                    echo $alocado;
 
                                     /*if($condVaga):
  
