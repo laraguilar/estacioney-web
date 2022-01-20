@@ -95,7 +95,9 @@ include_once 'includes/headerLog.php';
                                     $query = mysqli_query($conn, $sql);
                                     $alocado = mysqli_fetch_assoc($query);
 
-                                    if($condVaga):
+                                    echo $alocado;
+
+                                    /*if($condVaga):
  
                                         echo $alocado;
                                         // dados da pessoa alocada
@@ -107,7 +109,7 @@ include_once 'includes/headerLog.php';
                                         $pessoa = mysqli_fetch_array($query);
                                         
                                         echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";
-                                    endif;  
+                                    endif;  */
                                 endwhile;
                             ?>
                                         
