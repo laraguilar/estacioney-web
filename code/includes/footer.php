@@ -4,6 +4,17 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 </head>
+<style>
+    body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+</style>
 
 <footer class="page-footer indigo darken-4">
     <div class="footer-copyright">
@@ -19,3 +30,4 @@
         </div>
     </div>
   </footer>
+
