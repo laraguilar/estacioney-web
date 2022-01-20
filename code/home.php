@@ -105,8 +105,8 @@ include_once 'includes/headerLog.php';
                                         $query3 = mysqli_query($conn, $sql3);
                                         $pessoa = mysqli_fetch_array($query3);
                                         
-                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";
-                                    endif;*/
+                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";*/
+                                    endif;
                                 endwhile;
                             ?>
                                         
