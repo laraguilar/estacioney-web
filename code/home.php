@@ -94,7 +94,7 @@ include_once 'includes/headerLog.php';
                                     $query2 = mysqli_query($conn, $sql2);
 
                                     while($aloca = mysqli_fetch_array($query2)):
-                                        echo $aloca;
+                                        echo $aloca['idPessoa'];
                                     endwhile;
                                     
                                 endwhile;
