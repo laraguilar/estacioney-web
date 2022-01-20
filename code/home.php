@@ -84,7 +84,7 @@ include_once 'includes/headerLog.php';
 
                                     $idVaga = $vaga['idVaga'];
 
-                                    $sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
+                                    /*$sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
                                     $vagaQuery = mysqli_query($conn, $sql);
                                     $result = mysqli_fetch_array($vagaQuery);
 
@@ -95,7 +95,7 @@ include_once 'includes/headerLog.php';
                                     $query = mysqli_query($conn, $sql);
                                     $alocado = mysqli_fetch_assoc($query);
 
-                                    echo $alocado;
+                                    echo $alocado;*/
 
                                     /*if($condVaga):
  
