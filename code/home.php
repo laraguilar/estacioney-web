@@ -79,11 +79,10 @@ include_once 'includes/headerLog.php';
                                 // percorre as vagas do estacionamento
                                 while($vaga = mysqli_fetch_array($query)):                                  
                                     // verifica se a vaga está ocupada
-                                    var_dump($vaga);
 
 
                                     $idVaga = $vaga['idVaga'];
-
+                                    echo $idVaga;
                                     /*$sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
                                     $vagaQuery = mysqli_query($conn, $sql);
                                     $result = mysqli_fetch_array($vagaQuery);
@@ -109,7 +108,7 @@ include_once 'includes/headerLog.php';
                                         $pessoa = mysqli_fetch_array($query);
                                         
                                         echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";
-                                    endif;  */
+                                    endif; */
                                 endwhile;
                             ?>
                                         
