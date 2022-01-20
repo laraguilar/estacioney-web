@@ -1,7 +1,7 @@
 <?php
 
 // connnecting to db
-include "php_actions/conexao.php";
+include "conexao.php";
 
 // array for JSON response
 $response = array();

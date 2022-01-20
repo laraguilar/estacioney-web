@@ -7,7 +7,7 @@
  
 // connecting to db
 
-include_once "php_actions/conexao.php";
+include_once "conexao.php";
  
 // array for JSON response
 $response = array();
