@@ -79,7 +79,6 @@ include_once 'includes/headerLog.php';
                                 // percorre as vagas do estacionamento
                                 while($vaga = mysqli_fetch_array($query)):                                  
                                     // verifica se a vaga está ocupada
-                                    var_dump($vaga);
 
 
                                     $idVaga = $vaga['idVaga'];
