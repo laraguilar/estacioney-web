@@ -94,15 +94,14 @@ include_once 'includes/headerLog.php';
                                     $query2 = mysqli_query($conn, $sql2);
                                     $rows = mysqli_fetch_array($query2);
 
-                                    echo $rows;
-
-                                    /*if(mysqli_num_rows($rows)>0):
+                                    if($rows>0):
                                         echo $alocado;
                                         // dados da pessoa alocada
                                         //$idPessoa = $alocado['idPessoa'];
                                         
+                                        var_dump($rows);
                                         // dados pessoa
-                                        $sql3 = "SELECT * FROM pessoa WHERE idPessoa = '$alocado';";
+                                        /*$sql3 = "SELECT * FROM pessoa WHERE idPessoa = '$alocado';";
                                         $query3 = mysqli_query($conn, $sql3);
                                         $pessoa = mysqli_fetch_array($query3);
                                         
