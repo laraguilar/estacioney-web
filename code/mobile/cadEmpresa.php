@@ -30,7 +30,7 @@ if (isset($_POST['newEmail']) && (isset($_POST['newPassword'])) && (isset($_POST
 	else {
 		$senhaCript = password_hash($newPassword, PASSWORD_DEFAULT);
 		// mysql inserting a new row
-		$result = mysqli_query($conn, "INSERT INTO empresa(nomEmpresa, dscCpfCnpj,email, telefone, senha) VALUES('$newNomEmpresa', '$newCpfCnpj', '$newEmail', '$newTelefone','$senhaCript')");
+		$result = mysqli_query($conn, "INSERT INTO empresa(nomEmpresa, dscCpfCnpj,email, telefone, senha, idImg) VALUES('$newNomEmpresa', '$newCpfCnpj', '$newEmail', '$newTelefone','$senhaCript','')");
 	 
 		if ($result) {
 			$response["success"] = 1;
