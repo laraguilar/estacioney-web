@@ -1,7 +1,7 @@
 <?php
 
-// connecting to db
-$con = mysqli_connect(getenv("JAWSDB_URL"));
+// connnecting to db
+include 'conexao.php';
 
 // array for JSON response
 $response = array();
@@ -27,7 +27,7 @@ if(is_null($username)) {
 }
 // Se houve envio dos dados
 else {
-    $query = mysqli_query($con, "SELECT senha FROM empresa WHERE email='$username'");
+    $query = mysqli_query($conn, "SELECT senha FROM empresa WHERE email='$username'");
 
 	if(mysqli_num_rows($query) > 0){
 		$row = mysqli_fetch_array($query);
@@ -35,18 +35,18 @@ else {
 			$response["success"] = 1;
 		}
 		else {
-			// senha ou usuario nao confere
+			// senha ou usuario nao connfere
 			$response["success"] = 0;
 			$response["error"] = "usuario ou senha não confere";
 		}
 	}
 	else {
-		// senha ou usuario nao confere
+		// senha ou usuario nao connfere
 		$response["success"] = 0;
 		$response["error"] = "usuario ou senha não confere";
 	}
 }
 
-mysqli_close($con);
+mysqli_close($conn);
 echo json_encode($response);
 ?>
