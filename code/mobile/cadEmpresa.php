@@ -17,9 +17,9 @@ if (isset($_POST['newEmail']) && (isset($_POST['newPassword'])) && (isset($_POST
  
 	$newEmail = trim($_POST['newEmail']);
 	$newPassword = trim($_POST['newPassword']);
-	$nomEmpresa = ($_POST['newNomEmpresa']);
-	$CpfCnpj = trim($_POST['newCpfCnpj']);
-	$telefone = trim($_POST['newTelefone']);
+	$newNomEmpresa = ($_POST['newNomEmpresa']);
+	$newCpfCnpj = trim($_POST['newCpfCnpj']);
+	$newTelefone = trim($_POST['newTelefone']);
 	
 	$usuario_existe = mysqli_query($conn, "SELECT email FROM empresa WHERE email='$newEmail'");
 	// check for empty result
