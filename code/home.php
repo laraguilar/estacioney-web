@@ -91,12 +91,12 @@ include_once 'includes/headerLog.php';
 
                                     // pega os dados da vaga alocada
                                     $sql2 = "SELECT idPessoa FROM aloca WHERE idVaga = '$idVaga';";
-                                    $query = mysqli_query($conn, $sql2);
-                                    $alocado = mysqli_fetch_array($query);
+                                    $query2 = mysqli_query($conn, $sql2);
+                                    $alocado = mysqli_fetch_array($query2);
 
                                     var_dump($alocado);
 
-                                    if($condVaga):
+                                    /*if($condVaga):
  
                                         echo $alocado;
                                         // dados da pessoa alocada
@@ -104,11 +104,11 @@ include_once 'includes/headerLog.php';
                                         
                                         // dados pessoa
                                         $sql3 = "SELECT * FROM pessoa WHERE idPessoa = '$alocado';";
-                                        $query2 = mysqli_query($conn, $sql3);
-                                        $pessoa = mysqli_fetch_array($query2);
+                                        $query3 = mysqli_query($conn, $sql3);
+                                        $pessoa = mysqli_fetch_array($query3);
                                         
                                         echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";
-                                    endif;
+                                    endif;*/
                                 endwhile;
                             ?>
                                         
