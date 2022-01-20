@@ -13,15 +13,15 @@ include_once "conexao.php";
 $response = array();
  
 // check for required fields
-if (isset($_POST['newLogin']) && (isset($_POST['newPassword'])) && (isset($_POST['CpfCnpj'])) && (isset($_POST['nomEmpresa'])) && (isset($_POST['telefone']))) {
+if (isset($_POST['newEmail']) && (isset($_POST['newPassword'])) && (isset($_POST['newCpfCnpj'])) && (isset($_POST['newNomEmpresa'])) && (isset($_POST['newTelefone']))) {
  
-	$newLogin = trim($_POST['newLogin']);
+	$newEmail = trim($_POST['newEmail']);
 	$newPassword = trim($_POST['newPassword']);
-	$nomEmpresa = ($_POST['nomEmpresa']);
-	$CpfCnpj = trim($_POST['CpfCnpj']);
-	$telefone = trim($_POST['telefone']);
+	$nomEmpresa = ($_POST['newNomEmpresa']);
+	$CpfCnpj = trim($_POST['newCpfCnpj']);
+	$telefone = trim($_POST['newTelefone']);
 	
-	$usuario_existe = mysqli_query($conn, "SELECT email FROM empresa WHERE email='$newLogin'");
+	$usuario_existe = mysqli_query($conn, "SELECT email FROM empresa WHERE email='$newEmail'");
 	// check for empty result
 	if (mysqli_num_rows($usuario_existe) > 0) {
 		$response["success"] = 0;
@@ -30,14 +30,14 @@ if (isset($_POST['newLogin']) && (isset($_POST['newPassword'])) && (isset($_POST
 	else {
 		$senhaCript = password_hash($newPassword, PASSWORD_DEFAULT);
 		// mysql inserting a new row
-		$result = mysqli_query($conn, "INSERT INTO empresa(nomEmpresa, CpfCnpj,email, telefone, senha) VALUES('$nomEmpresa', '$CpfCnpj', '$newLogin', '$telefone','$senhaCript')");
+		$result = mysqli_query($conn, "INSERT INTO empresa(nomEmpresa, CpfCnpj,email, telefone, senha) VALUES('$newNomEmpresa', '$newCpfCnpj', '$newEmail', '$newTelefone','$senhaCript')");
 	 
 		if ($result) {
 			$response["success"] = 1;
 		}
 		else {
 			$response["success"] = 0;
-			$response["error"] = "Error BD: ". mysqli_connect_error($conn);
+			$response["error"] = "Error".mysqli_connect_error($conn);
 		}
 	}
 }
