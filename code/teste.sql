@@ -31,19 +31,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`imagem`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS imagem ;
-
-CREATE TABLE IF NOT EXISTS imagem (
-  idImg INT NOT NULL,
-  nome VARCHAR(45) NULL,
-  data DATETIME NULL,
-  PRIMARY KEY (idImg))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `mydb`.`empresa`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`empresa` ;
@@ -55,14 +42,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`empresa` (
   `email` VARCHAR(45) NULL,
   `telefone` VARCHAR(25) NULL,
   `senha` VARCHAR(255) NOT NULL,
-  idImg INT NOT NULL,
-  PRIMARY KEY (idEmpresa),
-  INDEX fk_empresa_imagem1_idx (idImg ASC) VISIBLE,
-  CONSTRAINT fk_empresa_imagem1
-    FOREIGN KEY (idImg)
-    REFERENCES imagem (idImg)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`idEmpresa`))
 ENGINE = InnoDB;
 
 
@@ -160,6 +140,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`aloca` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `mydb`.`imagem`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`imagem` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`imagem` (
+  `idImg` INT NOT NULL,
+  `nome` VARCHAR(45) NULL,
+  `data` DATETIME NULL,
+  `idEmpresa` INT NOT NULL,
+  PRIMARY KEY (`idImg`),
+  INDEX `fk_imagem_empresa1_idx` (`idEmpresa` ASC) VISIBLE,
+  CONSTRAINT `fk_imagem_empresa1`
+    FOREIGN KEY (`idEmpresa`)
+    REFERENCES `mydb`.`empresa` (`idEmpresa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -176,21 +176,11 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `mydb`.`imagem`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`imagem` (`idImg`, `nome`, `data`) VALUES (1, '00beb17e71130576fc17486ae1981b8a', '2022-01-20 13:22:46');
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `mydb`.`empresa`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mydb`;
-INSERT INTO `mydb`.`empresa` (`idEmpresa`, `nomEmpresa`, `dscCpfCnpj`, `email`, `telefone`, `senha`, `idImg`) VALUES (1, 'Empresa de Teste', '12345678966', 'teste@empresa.com', NULL, '$2y$10$VJVFrXnbIt1SyD2Ht8UY1O1Evywx4Sp/cJ/9stJV6ntqYjQio9yaC', 1);
+INSERT INTO `mydb`.`empresa` (`idEmpresa`, `nomEmpresa`, `dscCpfCnpj`, `email`, `telefone`, `senha`) VALUES (1, 'Empresa de Teste', '12345678966', 'teste@empresa.com', NULL, '$2y$10$VJVFrXnbIt1SyD2Ht8UY1O1Evywx4Sp/cJ/9stJV6ntqYjQio9yaC');
 
 COMMIT;
 
@@ -235,6 +225,16 @@ START TRANSACTION;
 USE `mydb`;
 INSERT INTO `mydb`.`aloca` (`idPessoa`, `idVaga`, `idAloca`, `hrEntrada`, `hrSaida`, `valTotal`, `dscPlaca`) VALUES (1, 1, 1, '2022-01-19 16:51:57', NULL, NULL, 'dfj4839');
 INSERT INTO `mydb`.`aloca` (`idPessoa`, `idVaga`, `idAloca`, `hrEntrada`, `hrSaida`, `valTotal`, `dscPlaca`) VALUES (2, 2, 2, '2022-01-19 16:51:57', NULL, NULL, 'abc1234');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`imagem`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`imagem` (`idImg`, `nome`, `data`, `idEmpresa`) VALUES (1, '00beb17e71130576fc17486ae1981b8a', '2022-01-20 13:22:46', 1);
 
 COMMIT;
 
