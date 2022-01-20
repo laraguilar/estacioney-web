@@ -94,7 +94,9 @@ include_once 'includes/headerLog.php';
                                     $query2 = mysqli_query($conn, $sql2);
                                     $rows = mysqli_fetch_array($query2);
 
-                                    if(mysqli_num_rows($rows)>0):
+                                    echo $rows;
+
+                                    /*if(mysqli_num_rows($rows)>0):
                                         echo $alocado;
                                         // dados da pessoa alocada
                                         //$idPessoa = $alocado['idPessoa'];
@@ -105,7 +107,7 @@ include_once 'includes/headerLog.php';
                                         $pessoa = mysqli_fetch_array($query3);
                                         
                                         echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";
-                                    endif;
+                                    endif;*/
                                 endwhile;
                             ?>
                                         
