@@ -92,9 +92,8 @@ include_once 'includes/headerLog.php';
                                     // pega os dados da vaga alocada
                                     $sql2 = "SELECT idPessoa FROM aloca WHERE idVaga = '$idVaga';";
                                     $query2 = mysqli_query($conn, $sql2);
-                                    $aloca = mysqli_fetch_array($query2);
 
-                                    while($aloca = mysqli_fetch_array($query2);):
+                                    while($aloca = mysqli_fetch_array($query2)):
                                         echo $aloca;
                                     endwhile;
                                     
