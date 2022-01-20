@@ -27,7 +27,7 @@ if (isset($_POST['newLogin']) && isset($_POST['newPassword'])) {
 	else {
 		$senhaCript = password_hash($newPassword, PASSWORD_DEFAULT);
 		// mysql inserting a new row
-		$result = mysqli_query($conn, "INSERT INTO empresa(email, senha) VALUES('$newLogin', '$senhaCriptw')");
+		$result = mysqli_query($conn, "INSERT INTO empresa(email, senha) VALUES('$newLogin', '$senhaCript')");
 	 
 		if ($result) {
 			$response["success"] = 1;
