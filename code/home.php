@@ -82,33 +82,32 @@ include_once 'includes/headerLog.php';
 
 
                                     $idVaga = $vaga['idVaga'];
-                                    echo $idVaga;
-                                    /*$sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
+                                    //echo $idVaga;
+                                    $sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
                                     $vagaQuery = mysqli_query($conn, $sql);
                                     $result = mysqli_fetch_array($vagaQuery);
 
                                     $condVaga = $result['condVaga'];
 
                                     // pega os dados da vaga alocada
-                                    $sql = "SELECT idPessoa FROM aloca WHERE idVaga = '$idVaga';";
-                                    $query = mysqli_query($conn, $sql);
-                                    $alocado = mysqli_fetch_assoc($query);
+                                    $sql2 = "SELECT idPessoa FROM aloca WHERE idVaga = '$idVaga';";
+                                    $query2 = mysqli_query($conn, $sql2);
+                                    $rows = mysqli_fetch_array($query2);
 
-                                    echo $alocado;*/
+                                    echo $rows;
 
-                                    /*if($condVaga):
- 
+                                    /*if(mysqli_num_rows($rows)>0):
                                         echo $alocado;
                                         // dados da pessoa alocada
                                         //$idPessoa = $alocado['idPessoa'];
                                         
                                         // dados pessoa
-                                        $sql = "SELECT * FROM pessoa WHERE idPessoa = '$alocado';";
-                                        $query = mysqli_query($conn, $sql);
-                                        $pessoa = mysqli_fetch_array($query);
+                                        $sql3 = "SELECT * FROM pessoa WHERE idPessoa = '$alocado';";
+                                        $query3 = mysqli_query($conn, $sql3);
+                                        $pessoa = mysqli_fetch_array($query3);
                                         
                                         echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";
-                                    endif; */
+                                    endif;*/
                                 endwhile;
                             ?>
                                         
