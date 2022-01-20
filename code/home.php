@@ -44,16 +44,9 @@ include_once 'includes/headerLog.php';
                                 echo "<button type='submit' id=".$idEstac." name='entrarEstac'>";
                                 echo $dado['nomEstac'];
                                 echo "</button>";
-                            }
-                            
-                            
+                            }  
                         endwhile;
                         echo "</ol></form>";*/
-
-
-                        
-                        
-                        
                     ?>
 
                     <div class="row center">
@@ -70,6 +63,9 @@ include_once 'includes/headerLog.php';
                         <div class="col s12 m6">
                             <h6><b>Acréscimo/hora:</b> R$<?php echo number_format($valAcresc, 2);?></h6>
                         </div>
+                        <div class="col s12 m6">
+                            <a href="entrada.php" class="btn indigo darken-4">entrada veiculo</a>
+                        </div>
                         <div class="col s12 left-align">
                             <!-- A partir de agora todas as cols são uma linha do "histórico"-->
                             <div class="row">
@@ -81,18 +77,15 @@ include_once 'includes/headerLog.php';
                                 // percorre as vagas do estacionamento
                                 while($vaga = mysqli_fetch_array($query)):                                  
                                     // verifica se a vaga está ocupada
-
                                     var_dump($vaga);
                                     if($vaga['condVaga']):
-                                        $codVaga = $vaga['codVaga'];
+                                        $codVaga = $vaga['idVaga'];
 
                                         // pega os dados da vaga alocada
-                                        $sql = "SELECT * FROM aloca WHERE codVaga = '$codVaga';";
+                                        $sql = "SELECT * FROM aloca WHERE idVaga = '$codVaga';";
                                         $query = mysqli_query($conn, $sql);
                                         $alocado = mysqli_fetch_array($query);
-                                        
-                                        var_dump($alocado);
-
+                                    
                                         // dados da pessoa alocada
                                         $idPessoa = $alocado['idPessoa'];
                                         
@@ -101,13 +94,7 @@ include_once 'includes/headerLog.php';
                                         $query = mysqli_query($conn, $sql);
                                         $pessoa = mysqli_fetch_array($query);
                                         
-                                        /*echo "
-                                        <h5>".$pessoa['nomPessoa']."</h5>
-                                        <span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br>
-                                        <span>Placa: ".$alocado['dscPlaca']."</span>
-                                        ";*/
-
-                                        echo $codVaga;
+                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";
                                     endif;
                                 endwhile;
                             ?>
@@ -119,13 +106,6 @@ include_once 'includes/headerLog.php';
             </div>
         </div>
     </div>
-
-        <div class="fixed-action-btn">
-        <a href = "entrada.php"class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>
-
-        </div>
-
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="main.js"></script>
     </body>

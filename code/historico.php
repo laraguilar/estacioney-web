@@ -1,5 +1,5 @@
 <?php
-require_once 'php_actions/sessaoEstac.php';
+require_once 'php_actions/sessaoLog.php';
 
 //header
 include_once 'includes/headerLog.php';
