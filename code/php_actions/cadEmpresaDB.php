@@ -61,8 +61,6 @@ if (isset($_POST['btnCadEmpresa'])) :
             endforeach;
         else :
             // criptografia de senha
-
-
             $senhaCrip = password_hash($senha, PASSWORD_DEFAULT);
 
             // código SQL para inserir os dados
