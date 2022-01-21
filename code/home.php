@@ -66,37 +66,45 @@ include_once 'includes/headerLog.php';
                             <a href="entrada.php" class="btn indigo darken-4">entrada veiculo</a>
                         </div>
                         <div class="col s12 left-align">
-                            <br>
-                            <div class="divider"></div>
-                            <?php
-                                // pega dados da vaga
-                                $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
-                                $query = mysqli_query($conn, $sql);
+                            <div class="row">
+                                <br>
+                                <div class="divider"></div>
+                                <div class="col s8">
+                                    <?php
+                                        // pega dados da vaga
+                                        $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
+                                        $query = mysqli_query($conn, $sql);
 
-                                // percorre as vagas do estacionamento
-                                while($vaga = mysqli_fetch_array($query)):                                  
-                                    // verifica se a vaga está ocupada
+                                        // percorre as vagas do estacionamento
+                                        while($vaga = mysqli_fetch_array($query)):                                  
+                                            // verifica se a vaga está ocupada
 
 
-                                    $idVaga = $vaga['idVaga'];
-                                    $condVaga = $vaga['condVaga'];
+                                            $idVaga = $vaga['idVaga'];
+                                            $condVaga = $vaga['condVaga'];
 
-                                    // pega os dados da vaga alocada
-                                    $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga';";
-                                    $query2 = mysqli_query($conn, $sql2);
+                                            // pega os dados da vaga alocada
+                                            $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga';";
+                                            $query2 = mysqli_query($conn, $sql2);
 
-                                    while($aloca = mysqli_fetch_array($query2)):
-                                        $idPessoa = $aloca['idPessoa'];
+                                            while($aloca = mysqli_fetch_array($query2)):
+                                                $idPessoa = $aloca['idPessoa'];
 
-                                        // dados do cliente que alocou a vaga
-                                        $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
-                                        $pessoa = mysqli_fetch_array($query3);
+                                                // dados do cliente que alocou a vaga
+                                                $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
+                                                $pessoa = mysqli_fetch_array($query3);
 
-                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
-                                        echo "<div class='divider'></div>";
-                                    endwhile;
-                                endwhile;
-                            ?>
+                                                echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                                echo "</div>";
+                                                echo "<div class='divider'></div>";
+                                            endwhile;
+                                        endwhile;
+                                    ?>
+                                <div class="col s4 right-align">
+                                    <a class="btn-floating btn-small waves-effect waves-light indigo darken-4"><i class="material-icons">exit_to_app</i></a>
+                                    <a class="btn-floating btn-small waves-effect waves-light indigo darken-4"><i class="material-icons">delete_forever</i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
