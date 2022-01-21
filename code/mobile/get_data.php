@@ -40,7 +40,7 @@ if($isAuth) {
 	$response["success"] = 1;
 	
 	// codigo sql da sua consulta
-	$response["email"] = "Dados da app";
+	$response["data"] = "Dados da app";
 }
 else {
 	$response["success"] = 0;
