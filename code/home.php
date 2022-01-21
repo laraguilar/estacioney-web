@@ -66,10 +66,8 @@ include_once 'includes/headerLog.php';
                             <a href="entrada.php" class="btn indigo darken-4">entrada veiculo</a>
                         </div>
                         <div class="col s12 left-align">
-                            <div class="row">
                                 <br>
                                 <div class="divider"></div>
-                                <div class="col s8">
                                     <?php
                                         // pega dados da vaga
                                         $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
@@ -95,16 +93,10 @@ include_once 'includes/headerLog.php';
                                                 $pessoa = mysqli_fetch_array($query3);
 
                                                 echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
-                                                echo "</div>";
-                                                echo "<div class='divider'></div>";
+                                                echo "<a class='btn-floating btn-medium indigo darken-4'><i class='material-icons'>exit_to_app</i></a><a class='btn-floating btn-medium indigo darken-4'><i class='material-icons'>delete_forever</i></a>";
                                             endwhile;
                                         endwhile;
                                     ?>
-                                <div class="col s4 right-align">
-                                    <a class="btn-floating btn-small waves-effect waves-light indigo darken-4"><i class="material-icons">exit_to_app</i></a>
-                                    <a class="btn-floating btn-small waves-effect waves-light indigo darken-4"><i class="material-icons">delete_forever</i></a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
