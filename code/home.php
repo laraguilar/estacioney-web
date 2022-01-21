@@ -99,7 +99,7 @@ include_once 'includes/headerLog.php';
                                             echo "</div>";
 
                                             echo "<div class='col s4'>";
-                                                echo "<div class='right-align'>";
+                                                echo "<div class='right-align' style='position: relative;top: 50%;transform: translateY(-50%);'>";
                                                 echo "<a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>exit_to_app</i></a><a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>delete_forever</i></a>";
                                                 echo "</div>";
                                             echo "</div>";
