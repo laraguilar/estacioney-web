@@ -16,6 +16,12 @@ include_once 'includes/headerLog.php';
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            .botao-lista{
+                display: block;
+                top:50%; 
+            }
+        </style>
 </head>
 <body>
     <div class="container" style="margin: auto; width: 60%;">
@@ -67,18 +73,18 @@ include_once 'includes/headerLog.php';
                         </div>
                         <div class="col s12 left-align">
                             <br>
-                            <div class="divider"></div>
                             <div class="row">
+                            <div class='divider'></div>
+                            <div class="col s12">
                                 <?php
                                     // pega dados da vaga
                                     $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
                                     $query = mysqli_query($conn, $sql);
 
                                     // percorre as vagas do estacionamento
-                                    while($vaga = mysqli_fetch_array($query)):                                  
+                                    while($vaga = mysqli_fetch_array($query)):     
+
                                         // verifica se a vaga está ocupada
-
-
                                         $idVaga = $vaga['idVaga'];
                                         $condVaga = $vaga['condVaga'];
 
@@ -92,21 +98,30 @@ include_once 'includes/headerLog.php';
                                             // dados do cliente que alocou a vaga
                                             $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
                                             $pessoa = mysqli_fetch_array($query3);
-
-                                
-                                            echo "<div class='col s8'>";
-                                            echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
-                                            echo "</div>";
-
-                                            echo "<div class='col s4'>";
-                                                echo "<div class='right-align'>";
-                                                echo "<a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>exit_to_app</i></a>   <a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>delete_forever</i></a>";
+                                            $hrEntrada = $aloca['hrEntrada'];
+                                            echo "<div class='row'>";
+                                                echo "<div class='section'>";
+                                                    echo "<div class='col s8'>";
+                                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                                    echo "</div>";
+                                                    echo "<div class='section'>";
+                                                        echo "<div class='col s4'>";
+                                                            echo "<div class='botao-lista right-align'>";
+                                                                echo "<form action='php_actions/liberarvaga.php' method='POST' name='liberar'";
+                                                                    echo "<input type='number' name='idVaga' value='.$idVaga.'>";
+                                                                    echo "<button type='submit' class='btn red darken-4' name='btnLiberar'>liberar vaga</button>";
+                                                                echo "</form>";
+                                                            echo "</div>";
+                                                        echo "</div>";
+                                                    echo "</div>";
                                                 echo "</div>";
                                             echo "</div>";
                                             echo "<div class='divider'></div>";
+                                            
                                         endwhile;
                                     endwhile;
                                 ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -116,26 +131,6 @@ include_once 'includes/headerLog.php';
     </div>
 </div>
 
-<!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger" href="#modal">Modal</a>
-
-<!-- Modal Structure -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, options);
-    });
-</script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="main.js"></script>
 
