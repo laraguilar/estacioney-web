@@ -40,7 +40,7 @@ if ($isAuth) {
 	$response["success"] = 1;
 
 	// codigo sql da sua consulta
-	$query = mysqli_query($conn, "SELECT idEstac, nomEstac, idEnd from estacionamento");
+	$query1 = mysqli_query($conn, "SELECT idEstac, nomEstac, idEnd from estacionamento");
 	$estacs = mysqli_fetch_array($query);
 	$idEstac = $estacs['idEstac'];
 	$nomEstac = $estacs['nomEstac'];
