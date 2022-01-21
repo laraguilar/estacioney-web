@@ -23,57 +23,90 @@ include_once 'includes/headerLog.php';
             <div class="col center-align">
             <div class="row s12 m6 center-align">
                 <div class="col s12 z-depth-1">
-                    <h3 class="center">Estacionamento 1</h3>
+                    <h4 class="center"><?php echo $nomEstac?></h4>
+                    <!-- Dropdown Trigger
+                    <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>DROPDOWN??<?php //echo $dadosEstac['nomEstac']?><i class="material-icons right">arrow_drop_down</i> </a>
+
+                    Dropdown Structure -->
+                    <?php
+                        /*$_SESSION['idEstacSelected'] = NULL;
+                        // mostra a lista de estacionamentos da empresa
+                        $sql = "SELECT * FROM estacionamento WHERE idEmpresa = $id";
+                        $result = mysqli_query($conn, $sql);
+                        // cria a tabela
+                        echo "<form action='php_actions/teste.php' method='POST'> <ol id='dropdown2' class='dropdown-content'>";
+                        // faz um while que mstra a informação de todos os estacionamentos da empresa
+                        while($dado = mysqli_fetch_array($result)):
+                            $idEstac = $dado['idEstac'];
+
+                            if(!($dadosEstac['idEstac'] == $idEstac)){
+                                echo "<button type='submit' id=".$idEstac." name='entrarEstac'>";
+                                echo $dado['nomEstac'];
+                                echo "</button>";
+                            }  
+                        endwhile;
+                        echo "</ol></form>";*/
+                    ?>
+
                     <div class="row center">
                         <div class="col s12 m6">
-                            <h6>Valor fixo: R$5,00</h6>
+                            <h6><b>Valor fixo:</b> R$<?php echo number_format($valFixo, 2);?></h6>
                         </div>
                         <div class="col s12 m6">
-                            <h5>Disponibilidade: 27/30</h5>
+                            <?php 
+                                //$sql = "SELECT count(*) AS 'vagas ocupadas' FROM vaga WHERE idEstac = '$idEstac' AND condVaga = 1;";
+                                //$query = mysqli_query($conn, $sql);
+                            ?>
+                            <h6><b>Disponibilidade:</b> 27/<?php echo $qtdVagas ?></h6>
                         </div>
                         <div class="col s12 m6">
-                            <h6>Acréscimo/hora: R$1,50</h6>
+                            <h6><b>Acréscimo/hora:</b> R$<?php echo number_format($valAcresc, 2);?></h6>
+                        </div>
+                        <div class="col s12 m6">
+                            <a href="entrada.php" class="btn indigo darken-4">entrada veiculo</a>
                         </div>
                         <div class="col s12 left-align">
-                            <!-- A partir de agora todas as cols são uma linha do "histórico"-->
+                            <br>
+                            <div class="divider"></div>
                             <div class="row">
-                                <div class="divider"></div>
-                                <div class="col s12"> <!-- LINHA -->
-                                    <div class="row"> <!-- Cria duas colunas para os dados e os botoes ficarem na mesma linha e em sentidos opostos -->
-                                        <div class="section">
-                                            <div class="col s6">
-                                                <h5 >Augusto</h6>
-                                                <span>HTM-1353</span>
-                                                <span>Hora de Entrada 10:50:45 14/12/2021</span>
-                                            </div>
-                                            <div class="section">
-                                            <div class="col s6 right-align">
-                                                <h5><a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">edit</i></a>
-                                                <a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">exit_to_app</i></a></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
+                                <?php
+                                    // pega dados da vaga
+                                    $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
+                                    $query = mysqli_query($conn, $sql);
+
+                                    // percorre as vagas do estacionamento
+                                    while($vaga = mysqli_fetch_array($query)):                                  
+                                        // verifica se a vaga está ocupada
+
+
+                                        $idVaga = $vaga['idVaga'];
+                                        $condVaga = $vaga['condVaga'];
+
+                                        // pega os dados da vaga alocada
+                                        $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga';";
+                                        $query2 = mysqli_query($conn, $sql2);
+
+                                        while($aloca = mysqli_fetch_array($query2)):
+                                            $idPessoa = $aloca['idPessoa'];
+
+                                            // dados do cliente que alocou a vaga
+                                            $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
+                                            $pessoa = mysqli_fetch_array($query3);
+
                                 
-                                <div class="col s12"> <!-- LINHA -->
-                                    <div class="divider"></div>
-                                    <div class="row">
-                                        <div class="section">
-                                            <div class="col s6">
-                                                <h5>Augusto</h5>
-                                                <span>HTM-1353</span>
-                                                <span>Hora de Entrada 10:50:45 14/12/2021</span>
-                                            </div>
-                                            <div class="section">
-                                            <div class="col s6 right-align">
-                                                <h5><a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">edit</i></a>
-                                                <a class="btn-floating btn-medium waves-effect waves-light indigo"><i class="material-icons">exit_to_app</i></a></h5>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                            echo "<div class='col s8'>";
+                                            echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                            echo "</div>";
+
+                                            echo "<div class='col s4'>";
+                                                echo "<div class='right-align'>";
+                                                echo "<a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>exit_to_app</i></a>   <a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>delete_forever</i></a>";
+                                                echo "</div>";
+                                            echo "</div>";
+                                            echo "<div class='divider'></div>";
+                                        endwhile;
+                                    endwhile;
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -83,13 +116,32 @@ include_once 'includes/headerLog.php';
     </div>
 </div>
 
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large waves-effect waves-light indigo right" style="margin-bottom:0px;"><i class="material-icons">add</i></a>
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" href="#modal">Modal</a>
 
-        </div>
+<!-- Modal Structure -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
 
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+    });
+</script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="main.js"></script>
+
+        <?php 
+        include_once 'includes/footer.php';?>
+
     </body>
+
   </html>
