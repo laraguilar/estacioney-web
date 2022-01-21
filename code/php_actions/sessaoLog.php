@@ -28,6 +28,5 @@ $nomEstac = $dadosEstac['nomEstac'];
 $valFixo = $dadosEstac['valFixo'];
 $valAcresc = $dadosEstac['valAcresc'];
 $qtdVagas = $dadosEstac['qtdVagas'];
-$idEnd = $dadosEstac['idEnd'];
 
 ?>

@@ -60,7 +60,14 @@ CREATE TABLE endereco (
   bairro VARCHAR(45) NULL,
   cidade VARCHAR(45) NULL,
   estado VARCHAR(45) NULL,
-  PRIMARY KEY (idEnd))
+  idEstac INT NOT NULL,
+  PRIMARY KEY (idEnd),
+  INDEX fk_endereco_estacionamento1_idx (idEstac ASC) VISIBLE,
+  CONSTRAINT fk_endereco_estacionamento1
+    FOREIGN KEY (idEstac)
+    REFERENCES estacionamento (idEstac)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -75,18 +82,11 @@ CREATE TABLE estacionamento (
   valFixo DOUBLE NOT NULL,
   valAcresc DOUBLE NULL,
   idEmpresa INT NOT NULL,
-  idEnd INT NOT NULL,
   PRIMARY KEY (idEstac),
   INDEX fk_estacionamento_empresa_idx (idEmpresa ASC) VISIBLE,
-  INDEX fk_estacionamento_endereco1_idx (idEnd ASC) VISIBLE,
   CONSTRAINT fk_estacionamento_empresa
     FOREIGN KEY (idEmpresa)
     REFERENCES empresa (idEmpresa)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_estacionamento_endereco1
-    FOREIGN KEY (idEnd)
-    REFERENCES endereco (idEnd)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -162,14 +162,14 @@ INSERT INTO empresa (nomEmpresa, dscCpfCnpj, email, telefone, senha) VALUES ('Em
 -- -----------------------------------------------------
 -- Data for table `mydb`.`endereco`
 -- -----------------------------------------------------
-INSERT INTO endereco (idEnd, dscLogradouro, numero, cep, bairro, cidade, estado) VALUES (1, 'Rua Alceu Valença', 63, '29174938', 'São Vincente', 'Serra', 'ES');
+INSERT INTO endereco (idEnd, dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES (1, 'Rua Alceu Valença', '63', '29174938', 'São Vincente', 'Serra', 'ES', 1)
 
 
 
 -- -----------------------------------------------------
 -- Data for table `mydb`.`estacionamento`
 -- -----------------------------------------------------
-INSERT INTO estacionamento (idEstac, nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa, idEnd) VALUES (1, 'Teste', 30, 5, 2.5, 1, 1);
+INSERT INTO estacionamento (idEstac, nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa) VALUES (1, 'Teste', 30, 5, 2.5, 1);
 
 
 

@@ -4,6 +4,7 @@ include_once './conexao.php';
 // verifica se o botao foi clicado
 if (isset($_POST['btnLiberar'])) :
 
+    echo $_POST['btnLiberar'];
     // atribui os valores do formulario
     $idVaga = $_POST['vaga'];
 
