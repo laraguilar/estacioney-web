@@ -99,7 +99,8 @@ include_once 'includes/headerLog.php';
                                         $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
                                         $pessoa = mysqli_fetch_array($query3);
 
-                                        var_dump($pessoa);
+                                        echo $pessoa['nomPessoa'];
+                                        echo $pessoa['cpfPessoa'];
                                     endwhile;
                                     
                                 endwhile;
