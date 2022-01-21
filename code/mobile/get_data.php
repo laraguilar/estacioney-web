@@ -26,7 +26,7 @@ elseif(isset( $_SERVER['HTTP_AUTHORIZATION'])) {
 
 // Se a autenticação não foi enviada
 if(!is_null($username)){
-    $query = mysqli_query($con, "SELECT senha FROM empresa WHERE email='$username'");
+    $query = mysqli_query($conn, "SELECT senha FROM empresa WHERE email='$username'");
 
 	if(mysqli_num_rows($query) > 0){
 		$row = mysqli_fetch_array($query);
