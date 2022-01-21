@@ -1,11 +1,10 @@
 <?php
+
+// conecta ao BD
+include_once "conexao.php";
  
 // array for JSON response
 $response = array();
-
-// conecta ao BD
-
-$con = mysqli_connect('DATABASE_URL');
 
 if(mysqli_connect_error()):
     echo "Falha na conexão: ". mysqli_connect_error();

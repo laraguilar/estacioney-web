@@ -33,6 +33,7 @@ else {
 		$row = mysqli_fetch_array($query);
 		if(password_verify($password, $row['senha'])){
 			$response["success"] = 1;
+			
 		}
 		else {
 			// senha ou usuario nao connfere
