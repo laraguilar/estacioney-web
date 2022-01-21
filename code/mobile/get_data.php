@@ -40,7 +40,10 @@ if($isAuth) {
 	$response["success"] = 1;
 	
 	// codigo sql da sua consulta
-	$response["data"] = "Dados da app";
+	$testando = "SELECT nomEstac, idEnd FROM estacionamento WHERE idEmpresa = '$id';";
+    $resultado = mysqli_query($conn, $testando);
+    $testeFinal = mysqli_fetch_array($resultado);
+	$response["data"] = $testeFinal;
 }
 else {
 	$response["success"] = 0;
