@@ -66,8 +66,8 @@ include_once 'includes/headerLog.php';
                             <a href="entrada.php" class="btn indigo darken-4">entrada veiculo</a>
                         </div>
                         <div class="col s12 left-align">
+                            <br>
                             <div class="divider"></div>
-                            <div class="row">
                             <?php
                                 // pega dados da vaga
                                 $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
@@ -77,13 +77,8 @@ include_once 'includes/headerLog.php';
                                 while($vaga = mysqli_fetch_array($query)):                                  
                                     // verifica se a vaga está ocupada
 
+
                                     $idVaga = $vaga['idVaga'];
-
-                                    // pega os dados da vaga
-                                    //$sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
-                                    //$vagaQuery = mysqli_query($conn, $sql);
-                                    //$result = mysqli_fetch_array($vagaQuery);
-
                                     $condVaga = $vaga['condVaga'];
 
                                     // pega os dados da vaga alocada
@@ -92,6 +87,8 @@ include_once 'includes/headerLog.php';
 
                                     while($aloca = mysqli_fetch_array($query2)):
                                         $idPessoa = $aloca['idPessoa'];
+
+                                        // dados do cliente que alocou a vaga
                                         $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
                                         $pessoa = mysqli_fetch_array($query3);
 
@@ -100,8 +97,6 @@ include_once 'includes/headerLog.php';
                                     endwhile;
                                 endwhile;
                             ?>
-                                        
-                            </div>
                         </div>
                     </div>
                 </div>
