@@ -30,7 +30,7 @@ if(!is_null($username)){
 
 	if(mysqli_num_rows($query) > 0){
 		$row = mysqli_fetch_array($query);
-		if($password == $row['password']){
+		if($password == $row['senha']){
 			$isAuth = true;
 		}
 	}
