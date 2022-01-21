@@ -50,7 +50,7 @@ if ($isAuth) {
 	$logradouro = $endereco['dscLogradouro'];
 
 
-	$response["data"] = $nomEstac;
+	$response["data"] = $nomEstac.$logradouro;
 
 } else {
 	$response["success"] = 0;
