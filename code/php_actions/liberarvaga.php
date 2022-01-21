@@ -1,28 +1,32 @@
 <?php
-require_once './sessaoLog.php';
+include_once './conexao.php';
 
 // verifica se o botao foi clicado
 if (isset($_POST['btnLiberar'])) :
 
     // atribui os valores do formulario
-    $vaga = mysqli_escape_string($conn, $_POST['idVaga']);
+    $idVaga = $_POST['vaga'];
 
-    $vaga = filter_input(INPUT_POST, 'idVaga', FILTER_SANITIZE_NUMBER_INT);
+    echo $idVaga;
+    //$idVaga = filter_input(INPUT_POST, 'idVaga', FILTER_SANITIZE_NUMBER_INT);
 
     // código SQL para editar os dados
-    $query = mysqli_query($conn, "select now();");
+    $query = mysqli_query($conn, "select now() as 'agora';");
     $hoje = mysqli_fetch_assoc($query);
+    $agora = $hoje['agora'];
 
-    $query2 = mysqli_query($conn, "SELECT hrEntrada FROM aloca WHERE idVaga = '$idVaga';");
+    $query2 = mysqli_query($conn, "SELECT hrEntrada FROM aloca WHERE idVaga = '$idVaga'");
     $hrEntrada = mysqli_fetch_assoc($query2);
-    echo $hrEntrada;
+    var_dump($hrEntrada);
 
-    $tempoEstac = $hoje - $hrEntrada;
+    //$tempoEstac = $agora - $hrEntrada;
     //Adicionar horário de saida na tabela aloca e o valor da estadia
     // setar a vaga como desocupada
 
-    $tempoEstac = $tempoEstac - 1;
-    $custo = $valFixo + ($valAcresc * $tempoEstac);
+    //$tempoEstac = $tempoEstac - 1;
+    //$custo = $valFixo + ($valAcresc * $tempoEstac);
 
-    echo $custo;
+    //echo $custo;
 endif;
+
+?>

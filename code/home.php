@@ -94,26 +94,31 @@ include_once 'includes/headerLog.php';
 
                                         while($aloca = mysqli_fetch_array($query2)):
                                             $idPessoa = $aloca['idPessoa'];
+                                            $idVaga = $vaga['idVaga'];
 
                                             // dados do cliente que alocou a vaga
                                             $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
                                             $pessoa = mysqli_fetch_array($query3);
-                                            
+                                            $hrEntrada = $aloca['hrEntrada'];
                                             echo "<div class='row'>";
                                                 echo "<div class='section'>";
                                                     echo "<div class='col s8'>";
-                                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
                                                     echo "</div>";
                                                     echo "<div class='section'>";
                                                         echo "<div class='col s4'>";
                                                             echo "<div class='botao-lista right-align'>";
-                                                                echo "<a href='#' class='btn red darken-4'>liberar vaga</a>";
+                                                                echo "<form action='php_actions/liberarvaga.php' method='POST' name='liberarVaga'";
+                                                                    echo "<input type='text' name='vaga' value=".$idVaga.">";
+                                                                    echo "<button type='submit' class='btn orange' name='btnLiberar'>liberar vaga</button>";
+                                                                echo "</form>";
                                                             echo "</div>";
                                                         echo "</div>";
                                                     echo "</div>";
                                                 echo "</div>";
                                             echo "</div>";
                                             echo "<div class='divider'></div>";
+                                            
                                         endwhile;
                                     endwhile;
                                 ?>
