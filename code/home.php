@@ -65,29 +65,26 @@ include_once 'includes/headerLog.php';
                         <div class="col s12 m6">
                             <a href="entrada.php" class="btn indigo darken-4">entrada veiculo</a>
                         </div>
-                        <div class="divider"></div>
                         <div class="col s12 left-align">
+                            <div class="divider"></div>
                             <div class="row">
-                            <!-- AQUI COMEÇA A REPETIR -->
                             <?php
-                                $sql = "SELECT idVaga FROM vaga WHERE idEstac = '$idEstac';";
+                                // pega dados da vaga
+                                $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
                                 $query = mysqli_query($conn, $sql);
-                                //$vagas =  mysqli_fetch_array($query);
-
-                                
 
                                 // percorre as vagas do estacionamento
                                 while($vaga = mysqli_fetch_array($query)):                                  
                                     // verifica se a vaga está ocupada
 
-
                                     $idVaga = $vaga['idVaga'];
-                                    //echo $idVaga;
-                                    $sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
-                                    $vagaQuery = mysqli_query($conn, $sql);
-                                    $result = mysqli_fetch_array($vagaQuery);
 
-                                    $condVaga = $result['condVaga'];
+                                    // pega os dados da vaga
+                                    //$sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
+                                    //$vagaQuery = mysqli_query($conn, $sql);
+                                    //$result = mysqli_fetch_array($vagaQuery);
+
+                                    $condVaga = $vaga['condVaga'];
 
                                     // pega os dados da vaga alocada
                                     $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga';";
