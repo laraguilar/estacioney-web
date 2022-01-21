@@ -96,7 +96,7 @@ include_once 'includes/headerLog.php';
                                     while($aloca = mysqli_fetch_array($query2)):
                                         $idPessoa = $aloca['idPessoa'];
 
-                                        $query3 = mysqli_query("SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
+                                        $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
                                         $pessoa = mysqli_fetch_array($query3);
 
                                         echo $pessoa;
