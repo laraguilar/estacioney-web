@@ -5,6 +5,17 @@ require_once 'php_actions/sessaoLog.php';
 //header
 include_once 'includes/headerLog.php';
 
+// pega os dados de endereço
+$sql = "SELECT * FROM endereco WHERE idEnd = '$idEnd'";
+$query = mysqli_query($conn, $sql);
+$endEstac = mysqli_fetch_array($query);
+
+$logr = $endEstac['dscLogradouro'];
+$numero = $endEstac['numero'];
+$cep = $endEstac['cep'];
+$bairro = $endEstac['bairro'];
+$cidade = $endEstac['cidade'];
+$estado = $endEstac['estado'];
 ?>
 
 
@@ -94,6 +105,21 @@ include_once 'includes/headerLog.php';
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col s12">
+                                        <!-- LINHA -->
+                                        <div class="divider"></div>
+                                        <div class="row">
+                                            <div class="section">
+                                                <div class="col s4">
+                                                    <p style="font-weight: bold;">Endereço</p>
+                                                </div>
+                                                <div class="col s8 pull-s1 ">
+                                                    <p><?php echo $logr.", ".$numero." - ".$bairro;?></p>
+                                                    <p><?php echo $cep." - ".$cidade." - ".$estado;?></p>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col s12">
                                             <!-- LINHA -->
                                             <div class="divider"></div>
@@ -117,5 +143,7 @@ include_once 'includes/headerLog.php';
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="main.js"></script>
+
+    <?php include_once 'includes/footer.php';?>
 </body>
 </html>

@@ -61,7 +61,7 @@ if(isset($_POST['btnCadCarro'])):
             $idPessoa = mysqli_fetch_assoc($query);
 
             // faz a inserção dos dados
-            $sql = "INSERT INTO aloca (idPessoa, codVaga, hrEntrada, dscPlaca) VALUES ($idPessoa, '$vagaCarro', CURRENT_TIMESTAMP, '$placaCarro'; 
+            $sql = "INSERT INTO aloca (idPessoa, idVaga, hrEntrada, dscPlaca) VALUES ($idPessoa, '$vagaCarro', CURRENT_TIMESTAMP, '$placaCarro'; 
                 UPDATE vaga SET condVaga = 1 WHERE codVaga = '$vagaCarro' and idEstac = '$idEstacio';";
 
             if(mysqli_query($conn, $sql)):

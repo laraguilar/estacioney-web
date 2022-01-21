@@ -4,7 +4,7 @@ require_once 'php_actions/sessaoLog.php';
 
 //header
 include_once 'includes/headerLog.php';
-/*
+
 $msg = false;
 if (isset($_FILES['arquivo'])) {
     $arquivo = $_FILES['arquivo']['name'];
@@ -15,20 +15,35 @@ if (isset($_FILES['arquivo'])) {
     $diretorio = "imagem/";
 
     move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
+    
+    $sql = "SELECT idImg FROM empresa WHERE idEmpresa = '$id'";
+    $query = mysqli_query($conn, $sql);
+    $idImg = mysqli_fetch_assoc($query);
 
-    $sql_code = "INSERT INTO arquivo(id, arquivo, data) VALUES('','$novo_nome', NOW())";
-
-    if (mysqli_query($conn, $sql_code))
+    if(!empty($idImg)){
+        $sql_code = "UPDATE imagem SET nome = '$novo_nome', dataImg = NOW() WHERE idEmpresa = '$id';";
+    if (mysqli_query($conn, $sql_code)):
         $msg = "Arquivo enviado com sucesso!";
-    else
+    else:
         $msg = "Falha ao enviar arquivo!";
-}
+    endif;
+    }
+    } else{
+        $sql = "INSERT INTO imagem (nome, dataImg) VALUES ('$novo_nome', NOW());";
+        // pegar o id da imagem gerado
+        // fazer um update na tabela empresa com o id gerado;
+        // gerar um if para veririfcar se o arq foi enviado com sucesso
+        
 
-$sql_busca = "SELECT * FROM arquivo";
-$mostrar = mysqli_query($conn, $sql_busca);
-$qtd_arquivos = mysqli_num_rows($mostrar);
-$msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
-*/
+    }
+
+
+
+//$sql_busca = "SELECT * FROM arquivo";
+//$mostrar = mysqli_query($conn, $sql_busca);
+//$qtd_arquivos = mysqli_num_rows($mostrar);
+//$msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
+
 ?>
 
 
@@ -58,12 +73,12 @@ $msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
                     <div class="col s12 z-depth-1">
                         <h3 class="center">Dados da Empresa</h3>
                         <br>
-                        <!--<?php
+                        <?php
                         while ($imgSistema = mysqli_fetch_array($mostrar)) {
                             $arquivo = $imgSistema['arquivo'];
                         }
                         ?>
-                        <img class="center-align" style="width: 20%; height:20%;" src="imagem/<?= $arquivo ?>" />-->
+                        <img class="center-align" style="width: 20%; height:20%;" src="imagem/<?= $arquivo ?>" />
                         <form action="empresa.php" method="POST" enctype="multipart/form-data"><br>
                             <div class="row file-field input-field">
                                 <div class="col s6 btn indigo darken-2" style="width: auto;">

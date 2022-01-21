@@ -66,53 +66,47 @@ include_once 'includes/headerLog.php';
                             <a href="entrada.php" class="btn indigo darken-4">entrada veiculo</a>
                         </div>
                         <div class="col s12 left-align">
-                            <!-- A partir de agora todas as cols são uma linha do "histórico"-->
+                            <br>
+                            <div class="divider"></div>
                             <div class="row">
-                            <!-- AQUI COMEÇA A REPETIR -->
-                            <?php
-                                $sql = "SELECT idVaga FROM vaga WHERE idEstac = '$idEstac';";
-                                $query = mysqli_query($conn, $sql);
-                                //$vagas =  mysqli_fetch_array($query);
+                                <?php
+                                    // pega dados da vaga
+                                    $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
+                                    $query = mysqli_query($conn, $sql);
+
+                                    // percorre as vagas do estacionamento
+                                    while($vaga = mysqli_fetch_array($query)):                                  
+                                        // verifica se a vaga está ocupada
+
+
+                                        $idVaga = $vaga['idVaga'];
+                                        $condVaga = $vaga['condVaga'];
+
+                                        // pega os dados da vaga alocada
+                                        $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga';";
+                                        $query2 = mysqli_query($conn, $sql2);
+
+                                        while($aloca = mysqli_fetch_array($query2)):
+                                            $idPessoa = $aloca['idPessoa'];
+
+                                            // dados do cliente que alocou a vaga
+                                            $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
+                                            $pessoa = mysqli_fetch_array($query3);
 
                                 
+                                            echo "<div class='col s8'>";
+                                            echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                            echo "</div>";
 
-                                // percorre as vagas do estacionamento
-                                while($vaga = mysqli_fetch_array($query)):                                  
-                                    // verifica se a vaga está ocupada
-                                    var_dump($vaga);
-
-
-                                    /*$idVaga = $vaga['idVaga'];
-
-                                    $sql = "SELECT * FROM vaga WHERE idVaga = '$idVaga';";
-                                    $vagaQuery = mysqli_query($conn, $sql);
-                                    $result = mysqli_fetch_array($vagaQuery);
-
-                                    $condVaga = $result['condVaga'];
-
-                                    // pega os dados da vaga alocada
-                                    $sql = "SELECT idPessoa FROM aloca WHERE idVaga = '$idVaga';";
-                                    $query = mysqli_query($conn, $sql);
-                                    $alocado = mysqli_fetch_array($query);
-
-                                    if($condVaga){
-
-                                        
-                                        
-                                        var_dump($alocado);
-                                        // dados da pessoa alocada
-                                        //$idPessoa = $alocado['idPessoa'];
-                                        
-                                        // dados pessoa
-                                        $sql = "SELECT * FROM pessoa WHERE idPessoa = '$alocado';";
-                                        $query = mysqli_query($conn, $sql);
-                                        $pessoa = mysqli_fetch_array($query);
-                                        
-                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$alocado['hrEntrada']."</span><br><span>Placa: ".$alocado['dscPlaca']."</span>";
-                                    }*/
-                                endwhile;
-                            ?>
-                                        
+                                            echo "<div class='col s4'>";
+                                                echo "<div class='right-align'>";
+                                                echo "<a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>exit_to_app</i></a><a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>delete_forever</i></a>";
+                                                echo "</div>";
+                                            echo "</div>";
+                                            echo "<div class='divider'></div>";
+                                        endwhile;
+                                    endwhile;
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -120,6 +114,7 @@ include_once 'includes/headerLog.php';
             </div>
         </div>
     </div>
+</div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="main.js"></script>
 

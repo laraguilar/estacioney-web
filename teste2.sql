@@ -1,9 +1,10 @@
 
 DROP TABLE IF EXISTS
-	Aloca,
-	Vaga,
-	Pessoa,
-	Endereco,
+	aloca,
+	vaga,
+	pessoa,
+	endereco,
+  	imagem,
 	estacionamento,
 	empresa;
     
@@ -16,7 +17,22 @@ CREATE TABLE pessoa (
   PRIMARY KEY (idPessoa))
 ENGINE = InnoDB;
 
-
+-- -----------------------------------------------------
+-- Table imagem
+-- -----------------------------------------------------
+CREATE table imagem (
+  idImg INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NULL,
+  dataImg DATETIME NULL,
+  idEmpresa INT NOT NULL,
+  PRIMARY KEY (idImg),
+  INDEX fk_imagem_empresa1_idx (idEmpresa ASC) VISIBLE,
+  CONSTRAINT fk_imagem_empresa1
+    FOREIGN KEY (idEmpresa)
+    REFERENCES empresa (idEmpresa)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table empresa
 -- -----------------------------------------------------
@@ -28,7 +44,6 @@ CREATE TABLE empresa (
   email VARCHAR(45) NULL,
   telefone VARCHAR(25) NULL,
   senha VARCHAR(255) NOT NULL,
-  nomImg VARCHAR(100) NULL,
   PRIMARY KEY (idEmpresa))
 ENGINE = InnoDB;
 
@@ -132,10 +147,14 @@ INSERT INTO pessoa (idPessoa, nomPessoa, datNasc, sexPessoa, cpfPessoa) VALUES (
 
 
 
+
+INSERT INTO imagem (nome, dataImg, idEmpresa) VALUES ('00beb17e71130576fc17486ae1981b8a', '2022-01-20 13:22:46', 1);
+
+
 -- -----------------------------------------------------
 -- Data for table `mydb`.`empresa`
 -- -----------------------------------------------------
-INSERT INTO empresa (idEmpresa, nomEmpresa, dscCpfCnpj, email, telefone, senha, nomImg) VALUES (1, 'Empresa de Teste', '12345678966', 'teste@empresa.com', '2793658329', '$2y$10$VJVFrXnbIt1SyD2Ht8UY1O1Evywx4Sp/cJ/9stJV6ntqYjQio9yaC', NULL);
+INSERT INTO empresa (nomEmpresa, dscCpfCnpj, email, telefone, senha) VALUES ('Empresa de Teste', '12345678966', 'teste@empresa.com', '2793658329', '$2y$10$VJVFrXnbIt1SyD2Ht8UY1O1Evywx4Sp/cJ/9stJV6ntqYjQio9yaC');
 
 
 
@@ -158,7 +177,7 @@ INSERT INTO estacionamento (idEstac, nomEstac, qtdVagas, valFixo, valAcresc, idE
 -- Data for table `mydb`.`vaga`
 -- -----------------------------------------------------
 
-INSERT INTO vaga (idVaga, condVaga, idEstac) VALUES (1, 1, 1), (2, 1, 1), (3, 0, 1);
+INSERT INTO vaga (idVaga, condVaga, idEstac) VALUES (1, 1, 1), (2, 1, 1), (3, 0, 1), (4, 0, 1);
 
 
 -- -----------------------------------------------------
