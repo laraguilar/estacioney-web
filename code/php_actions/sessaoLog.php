@@ -19,7 +19,6 @@ if(isset($_GET['sair'])):
 endif;
 
 
-
 $sql = "SELECT * FROM estacionamento WHERE idEmpresa = '$id'";
 $query = mysqli_query($conn, $sql);
 $dadosEstac = mysqli_fetch_array($query);
@@ -30,7 +29,5 @@ $valFixo = $dadosEstac['valFixo'];
 $valAcresc = $dadosEstac['valAcresc'];
 $qtdVagas = $dadosEstac['qtdVagas'];
 $idEnd = $dadosEstac['idEnd'];
-
-
 
 ?>

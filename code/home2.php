@@ -94,6 +94,7 @@ include_once 'includes/headerLog.php';
 
                                         while($aloca = mysqli_fetch_array($query2)):
                                             $idPessoa = $aloca['idPessoa'];
+                                            $idVaga = $vaga['idVaga'];
 
                                             // dados do cliente que alocou a vaga
                                             $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
@@ -107,9 +108,9 @@ include_once 'includes/headerLog.php';
                                                     echo "<div class='section'>";
                                                         echo "<div class='col s4'>";
                                                             echo "<div class='botao-lista right-align'>";
-                                                                echo "<form action='php_actions/liberarvaga.php' method='POST' name='liberar'";
-                                                                    echo "<input type='number' name='idVaga' value='.$idVaga.'>";
-                                                                    echo "<button type='submit' class='btn red darken-4' name='btnLiberar'>liberar vaga</button>";
+                                                                echo "<form action='php_actions/liberarvaga.php' method='POST' name='liberarVaga'";
+                                                                    echo "<input type='text' name='vaga' value=".$idVaga.">";
+                                                                    echo "<button type='submit' class='btn orange' name='btnLiberar'>liberar vaga</button>";
                                                                 echo "</form>";
                                                             echo "</div>";
                                                         echo "</div>";
