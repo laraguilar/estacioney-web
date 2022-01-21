@@ -16,6 +16,12 @@ include_once 'includes/headerLog.php';
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            .botao-lista{
+                display: block;
+                top:50%; 
+            }
+        </style>
 </head>
 <body>
     <div class="container" style="margin: auto; width: 60%;">
@@ -67,18 +73,18 @@ include_once 'includes/headerLog.php';
                         </div>
                         <div class="col s12 left-align">
                             <br>
-                            <div class="divider"></div>
                             <div class="row">
+                            <div class='divider'></div>
+                            <div class="col s12">
                                 <?php
                                     // pega dados da vaga
                                     $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
                                     $query = mysqli_query($conn, $sql);
 
                                     // percorre as vagas do estacionamento
-                                    while($vaga = mysqli_fetch_array($query)):                                  
+                                    while($vaga = mysqli_fetch_array($query)):     
+
                                         // verifica se a vaga está ocupada
-
-
                                         $idVaga = $vaga['idVaga'];
                                         $condVaga = $vaga['condVaga'];
 
@@ -92,21 +98,26 @@ include_once 'includes/headerLog.php';
                                             // dados do cliente que alocou a vaga
                                             $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
                                             $pessoa = mysqli_fetch_array($query3);
-
-                                
-                                            echo "<div class='col s8'>";
-                                            echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
-                                            echo "</div>";
-
-                                            echo "<div class='col s4'>";
-                                                echo "<div class='right-align'>";
-                                                echo "<a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>exit_to_app</i></a><a class='btn-floating btn-medium indigo darken-4 right-align'><i class='material-icons'>delete_forever</i></a>";
+                                            
+                                            echo "<div class='row'>";
+                                                echo "<div class='section'>";
+                                                    echo "<div class='col s8'>";
+                                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                                    echo "</div>";
+                                                    echo "<div class='section'>";
+                                                        echo "<div class='col s4'>";
+                                                            echo "<div class='botao-lista right-align'>";
+                                                                echo "<a href='#' class='btn red darken-4'>liberar vaga</a>";
+                                                            echo "</div>";
+                                                        echo "</div>";
+                                                    echo "</div>";
                                                 echo "</div>";
                                             echo "</div>";
                                             echo "<div class='divider'></div>";
                                         endwhile;
                                     endwhile;
                                 ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -115,6 +126,7 @@ include_once 'includes/headerLog.php';
         </div>
     </div>
 </div>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="main.js"></script>
 
