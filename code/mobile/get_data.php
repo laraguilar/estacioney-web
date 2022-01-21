@@ -46,6 +46,6 @@ else {
 	$response["success"] = 0;
 	$response["error"] = "falha de autenticação";
 }
-mysqli_close($con);
+mysqli_close($conn);
 echo json_encode($response);
 ?>
