@@ -65,8 +65,8 @@ include_once 'includes/headerLog.php';
                         <div class="col s12 m6">
                             <a href="entrada.php" class="btn indigo darken-4">entrada veiculo</a>
                         </div>
+                        <div class="divider"></div>
                         <div class="col s12 left-align">
-                            <!-- A partir de agora todas as cols são uma linha do "histórico"-->
                             <div class="row">
                             <!-- AQUI COMEÇA A REPETIR -->
                             <?php
@@ -95,13 +95,12 @@ include_once 'includes/headerLog.php';
 
                                     while($aloca = mysqli_fetch_array($query2)):
                                         $idPessoa = $aloca['idPessoa'];
-
                                         $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
                                         $pessoa = mysqli_fetch_array($query3);
 
                                         echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$aloca['hrEntrada']."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                        echo "<div class='divider'></div>";
                                     endwhile;
-                                    
                                 endwhile;
                             ?>
                                         
