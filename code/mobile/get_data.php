@@ -40,7 +40,8 @@ if($isAuth) {
 	$response["success"] = 1;
 	
 	// codigo sql da sua consulta
-	$response["data"] = "Dados da app";
+	$testando = "SELECT nomEstac FROM estacionamento" and "SELECT (dscLogradouro, numero, bairro, cidade, estado) FROM endereço ";
+	$response["data"] = $testando;
 }
 else {
 	$response["success"] = 0;
