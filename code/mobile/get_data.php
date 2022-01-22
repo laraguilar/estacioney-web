@@ -2,6 +2,7 @@
 
 // conecta ao BD
 include_once "conexao.php";
+session_start();
 
 // array for JSON response
 $response = array();
@@ -42,6 +43,7 @@ if ($isAuth) {
 	$query = mysqli_query($conn, "SELECT idEmpresa from empresa where email='$username'");
 	$empresa = mysqli_fetch_assoc($query);
 	$idEmpresa = $empresa['idEmpresa'];
+	$_SESSION['idEmpresa'] = $idEmpresa;
 
 	// codigo sql da sua consulta
 	$query1 = mysqli_query($conn, "SELECT idEstac, nomEstac from estacionamento where idEmpresa = '$idEmpresa'");
