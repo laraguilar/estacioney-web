@@ -41,8 +41,7 @@ if ($isAuth) {
 
 	$query = mysqli_query($conn, "SELECT idEmpresa from empresa where email='$username'");
 	$empresa = mysqli_fetch_assoc($query);
-	$idEmpresa = $emailArr['idEmpresa'];
-	echo $idEmpresa;
+	$idEmpresa = $empresa['idEmpresa'];
 
 	// codigo sql da sua consulta
 	$query1 = mysqli_query($conn, "SELECT idEstac, nomEstac from estacionamento where idEmpresa = '$idEmpresa'");
