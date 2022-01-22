@@ -39,12 +39,8 @@ if (!is_null($username)) {
 if ($isAuth) {
 	$response["success"] = 1;
 
-	$query = mysqli_query($conn, "SELECT idEmpresa from empresa where email='$username'");
-	$empresa = mysqli_fetch_assoc($query);
-	$idEmpresa = $emailArr['idEmpresa'];
-
 	// codigo sql da sua consulta
-	$query1 = mysqli_query($conn, "SELECT idEstac, nomEstac from estacionamento where idEmpresa = '$idEmpresa'");
+	$query1 = mysqli_query($conn, "SELECT idEstac, nomEstac from estacionamento");
 	$estacs = mysqli_fetch_array($query1);
 	$idEstac = $estacs['idEstac'];
 	$nomEstac = $estacs['nomEstac'];
@@ -52,6 +48,7 @@ if ($isAuth) {
 	$query2 = mysqli_query($conn, "SELECT * from endereco where idEstac = '$idEstac'");
 	$endereco = mysqli_fetch_array($query2);
 	$logradouro = $endereco['dscLogradouro'];
+
 
 	$response["data"] = $nomEstac." ".$logradouro;
 

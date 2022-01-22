@@ -29,12 +29,10 @@ if (isset($_FILES['arquivo'])) {
     endif;
     }
     } else{
-        $sql = "INSERT INTO imagem (nome, dataImg) VALUES ('$novo_nome', NOW());";
+        $sql = "INSERT INTO imagem (nome, dataImg, idEmpresa) VALUES ('$novo_nome', NOW(), '$id');";
         // pegar o id da imagem gerado
         // fazer um update na tabela empresa com o id gerado;
         // gerar um if para veririfcar se o arq foi enviado com sucesso
-        
-
     }
 
 

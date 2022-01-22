@@ -23,8 +23,12 @@
                 <div class="col s4" style="margin-left: -10%;">
                     © 2022 Copyright Text
                 </div>
-                <div class="col s8">
-                    <li><a class="grey-text text-lighten-3" href="sobrenos.php">Sobre nós</a></li>
+                <div class="col s2">
+                    <a class="grey-text text-lighten-3" href="sobrenos.php">Sobre nós</a>
+                </div>
+                <div class="col s2">
+                    <a class="grey-text text-lighten-3" href="https://github.com/laraguilar/trabalho2-pw2">GitHub</a>
+                </div>
                 </div>
             </div>
         </div>
