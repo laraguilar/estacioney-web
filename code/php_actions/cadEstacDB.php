@@ -21,7 +21,7 @@ if (isset($_POST['btnCadEstac'])) :
     $num = mysqli_escape_string($conn, $_POST['num']);
 
 
-    if(!empty($nomEstac) && !empty($qtdVagas) && !empty($valFixo) && !empty($valAcresc) && !empty($cep) && !empty($rua) && !empty($num)):
+    if(!empty($nomEstac) && !empty($qtdVagas) && !empty($valFixo) && !empty($valAcresc) && !empty($cep) && !empty($rua) && !empty($bairro) && !empty($cidade) && !empty($estado) && !empty($num)):
         //Sanitize e Validate
         $nomEstac = filter_input(INPUT_POST, 'nomEstac', FILTER_SANITIZE_SPECIAL_CHARS);
         
@@ -75,7 +75,7 @@ if (isset($_POST['btnCadEstac'])) :
                 $sqlIdEmp = $resultQuery['idEstac'];
 
                 // cadastro do endereço
-                $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, idEstac) VALUES ('$rua', $num, '$cep', $sqlIdEmp)";
+                $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', $num, '$cep', $bairro, $cidade, $estado, $sqlIdEmp)";
 
                 // verifica se o cadastro foi realizado com sucesso
                 if(mysqli_query($conn, $sqlCadEnd)):
