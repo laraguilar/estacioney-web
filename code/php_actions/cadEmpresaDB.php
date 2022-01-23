@@ -64,9 +64,16 @@ if (isset($_POST['btnCadEmpresa'])) :
             $senhaCrip = password_hash($senha, PASSWORD_DEFAULT);
 
             // código SQL para inserir os dados
-            $sql = "INSERT INTO empresa (nomEmpresa, dscCpfCnpj, Email, senha, Telefone) VALUES ('$nomEmpresa', '$dscCpfCnpj', '$email', '$senhaCrip', '$telefone')";
+            $sql = "INSERT INTO empresa (nomEmpresa, dscCpfCnpj, email, senha, telefone) VALUES ('$nomEmpresa', '$dscCpfCnpj', '$email', '$senhaCrip', '$telefone')";
 
             if (mysqli_query($conn, $sql)) :
+                $sql = "SELECT idEmpresa FROM empresa WHERE email = '$email'";
+                $query = mysqli_query($conn, $sql);
+                $resultado = mysqli_fetch_array($query);
+                $idEmpresa = $resultado['idEmpresa'];
+                $sql2 = "INSERT INTO imagem(nome, dataImg, idEmpresa) VALUES ('img_perf', NOW(), '$idEmpresa')";
+                $query2 = mysqli_query($conn, $sql2);
+                
                 header('Location: ../index.php');
                 $_SESSION['mensagem'] = "Empresa cadastrada com sucesso!";
             else :

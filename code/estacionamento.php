@@ -6,7 +6,7 @@ require_once 'php_actions/sessaoLog.php';
 include_once 'includes/headerLog.php';
 
 // pega os dados de endereço
-$sql = "SELECT * FROM endereco WHERE idEnd = '$idEnd'";
+$sql = "SELECT * FROM endereco WHERE idEstac = '$idEstac'";
 $query = mysqli_query($conn, $sql);
 $endEstac = mysqli_fetch_array($query);
 

@@ -16,7 +16,7 @@ if (isset($_FILES['arquivo'])) {
 
     move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome);
     
-    $sql = "SELECT idImg FROM empresa WHERE idEmpresa = '$id'";
+    $sql = "SELECT idImg, nome FROM imagem WHERE idEmpresa = '$id'";
     $query = mysqli_query($conn, $sql);
     $idImg = mysqli_fetch_assoc($query);
 
@@ -29,7 +29,7 @@ if (isset($_FILES['arquivo'])) {
     endif;
     }
     } else{
-        $sql = "INSERT INTO imagem (nome, dataImg, idEmpresa) VALUES ('$novo_nome', NOW(), '$id');";
+        
         // pegar o id da imagem gerado
         // fazer um update na tabela empresa com o id gerado;
         // gerar um if para veririfcar se o arq foi enviado com sucesso
@@ -38,7 +38,7 @@ if (isset($_FILES['arquivo'])) {
 
 
 //$sql_busca = "SELECT * FROM arquivo";
-//$mostrar = mysqli_query($conn, $sql_busca);
+$mostrar = mysqli_query($conn, $sql);
 //$qtd_arquivos = mysqli_num_rows($mostrar);
 //$msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
 
@@ -73,10 +73,16 @@ if (isset($_FILES['arquivo'])) {
                         <br>
                         <?php
                         while ($imgSistema = mysqli_fetch_array($mostrar)) {
-                            $arquivo = $imgSistema['arquivo'];
+                            $arquivo = $imgSistema['nome'];
+                            if($arquivo == null){
+                                echo "<img class='circle responsive-img' style='width: 20%; height:20%' src='imagem/img_perf.png'>";
+                            }
+                            else{
+                                echo "<img class='center-align' style='width: 20%; height:20%;' src='imagem/<?= $arquivo ?>'>";
+                            }
                         }
                         ?>
-                        <img class="center-align" style="width: 20%; height:20%;" src="imagem/<?= $arquivo ?>" />
+                        
                         <form action="empresa.php" method="POST" enctype="multipart/form-data"><br>
                             <div class="row file-field input-field">
                                 <div class="col s6 btn indigo darken-2" style="width: auto;">
