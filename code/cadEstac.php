@@ -1,8 +1,8 @@
 <?php
-// sessao 
-require_once 'php_actions/sessaoLog.php';
 //header
 include_once 'includes/headerLog.php';
+// sessao
+require_once 'php_actions/sessaoLog.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,13 +24,6 @@ include_once 'includes/headerLog.php';
         <div class="row">
             <form action="php_actions/cadEstacDB.php" method="POST" class="col s6" style="margin-left: 50%; margin-right:50%; transform: translate(-50%, 0%);">
                 <h3 style="text-align: center;">Cadastro do Estacionamento</h3>
-                <?php
-                    if (!empty($erros)) {
-                        foreach ($erros as $erro) :
-                            var_dump($erro);
-                        endforeach;
-                        }
-                ?>
                 <div class="row center-align">
                     <div class="col s12">
                         <div class="row">
@@ -80,6 +73,7 @@ include_once 'includes/headerLog.php';
             </form>
         </div>
     </div>
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="main.js"></script>

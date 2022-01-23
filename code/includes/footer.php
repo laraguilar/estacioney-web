@@ -17,7 +17,6 @@
 </style>
 
 <footer class="page-footer indigo darken-4">
-    <div class="footer-copyright">
         <div class="container">
             <div class="row">
                 <div class="col s4" style="margin-left: -10%;">
@@ -27,11 +26,11 @@
                     <a class="grey-text text-lighten-3" href="sobrenos.php">Sobre nós</a>
                 </div>
                 <div class="col s2">
-                    <a class="grey-text text-lighten-3" href="https://github.com/laraguilar/trabalho2-pw2">GitHub</a>
+                    <a class="grey-text text-lighten-3" href="https://github.com/laraguilar/trabalho2-pw2" target="_blank">GitHub</a>
                 </div>
                 </div>
             </div>
         </div>
-    </div>
+    
   </footer>
 

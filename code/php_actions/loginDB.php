@@ -1,8 +1,6 @@
 <?php 
 // Sessão
 session_start();
-$_SESSION['logado'] = $_SESSION['logado'] ?? NULL;
-$_SESSION['estacLogado'] = $_SESSION['logado'] ?? NULL;
 // Conexão DB
 include_once './conexao.php';
 //
@@ -14,7 +12,7 @@ if(isset($_POST['btnEntrar'])):
         header('Location: ../index.php');
         $_SESSION['mensagem'] = "Campo Email/Senha precisa ser preenchido";
     else:
-        $sql = "SELECT email FROM empresa WHERE email = '$email'";
+        $sql = "SELECT * FROM empresa WHERE email = '$email';";
         $resultado = mysqli_query($conn, $sql);
 
         // verifica se o email esta cadastrado
@@ -27,22 +25,46 @@ if(isset($_POST['btnEntrar'])):
             $senhaCripto = $resultQuery['senha'];
 
             if(password_verify($senha, $senhaCripto)): // se a senha esta correta, roda o codigo
+                
+                // verifica se o email esta correto
                 $sql = "SELECT * FROM empresa WHERE email = '$email'";
                 $resultado = mysqli_query($conn, $sql);
 
-                if(mysqli_num_rows($resultado) == 1):
+                if(mysqli_num_rows($resultado) > 0):
                     $dados = mysqli_fetch_array($resultado);
                     $_SESSION['logado'] = true;
                     $_SESSION['id_usuario'] = $dados['idEmpresa'];
-                    header('Location: ../home.php');
+                    $id = $dados['idEmpresa'];
+                    
+                    // verifica se tem estacionamentos cadastrados
+                    $sql2 = "SELECT * FROM estacionamento WHERE idEmpresa = '$id'";
+                    $query2 = mysqli_query($conn, $sql2);
+
+
+                    if(mysqli_num_rows($query2) > 0):
+
+                        // Log na Sessao
+                        $sql3 = "SELECT * FROM estacionamento WHERE idEmpresa = '$id'";
+                        $query3 = mysqli_query($conn, $sql3);
+
+                        $dadosEstac = mysqli_fetch_array($query3);
+                        $_SESSION['dadosEstac'] = $dadosEstac;
+    
+                        header('Location: ../home.php');
+                    else:
+                        header('Location: ../cadEstac.php');
+                    endif;
                 else:
                     header('Location: ../index.php');
                     $_SESSION['mensagem'] = "Usuário e Senha não conferem";
                 endif;
             else:
-                $_SESSION['mensagem'] = "Usuário não cadastrado no sistema";
                 header('Location: ../index.php');
+                $_SESSION['mensagem'] = "Usuário não cadastrado no sistema";
             endif;
+        else:
+            $_SESSION['mensagem'] = "Email não cadastrado no sistema";
+            header('Location: ../index.php');
         endif;
     endif;
 endif;

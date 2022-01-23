@@ -16,6 +16,32 @@ include_once 'includes/headerLog.php';
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                function escreverArquivo() {  
+
+                    var fso  = new ActiveXObject("Scripting.FileSystemObject");
+
+                    var fh = fso.CreateTextFile("C:TesteEstac.txt", true); 
+
+                    fh.WriteLine(idClicadoJson);
+
+                    fh.Close();}
+
+                // funcao que percebe o evento de clique no item do dropdown
+                $(".liberar").click(function() {
+                    var idClicado = $(this).attr('id'); // pega o ID da vaga selecionada
+
+                    // tranforma o id em um objetojava
+                    var objId = new Object();
+                    objId.id = idClicado;
+
+                    // transforma o objeto em json
+                    let idClicadoJson = JSON.stringify(objId);
+                });
+            });
+        </script>   
         <style>
             .botao-lista{
                 display: block;
@@ -108,9 +134,8 @@ include_once 'includes/headerLog.php';
                                                     echo "<div class='section'>";
                                                         echo "<div class='col s4'>";
                                                             echo "<div class='botao-lista right-align'>";
-                                                                echo "<form action='php_actions/liberarvaga.php' method='POST' name='liberarVaga'";
-                                                                    echo "<input type='text' name='vaga' value=".$idVaga.">";
-                                                                    echo "<button type='submit' class='btn orange' name='btnLiberar'>liberar vaga</button>";
+                                                                echo "<form action='php_actions/liberarvaga.php' method='POST' name='liberarVaga'"; 
+                                                                    echo "<button type='submit' class='btn orange liberar' name='btnLiberar' id=".$idVaga.">liberar vaga</button>";
                                                                 echo "</form>";
                                                             echo "</div>";
                                                         echo "</div>";
