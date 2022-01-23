@@ -72,13 +72,12 @@ $mostrar = mysqli_query($conn, $sql);
                         <h3 class="center">Dados da Empresa</h3>
                         <br>
                         <?php
-                        while ($imgSistema = mysqli_fetch_array($mostrar)) {
-                            $arquivo = $imgSistema['nome'];
+                        if($imgSistema = mysqli_fetch_array($mostrar) > 0){
                             if($arquivo == null){
                                 echo "<img class='circle responsive-img' style='width: 20%; height:20%' src='imagem/img_perf.png'>";
                             }
                             else{
-                                echo "<img class='center-align' style='width: 20%; height:20%;' src='imagem/<?= $arquivo ?>'>";
+                                echo "<img class='center-align' style='width: 20%; height:20%;' src='imagem/".$arquivo."'>";
                             }
                         }
                         ?>
@@ -174,11 +173,10 @@ $mostrar = mysqli_query($conn, $sql);
             </div>
         </div>
     </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="main.js"></script>
     <?php 
         include_once 'includes/footer.php';?>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="main.js"></script>
+</body>                 
 </html>
+
