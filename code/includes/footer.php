@@ -23,7 +23,7 @@
                     © 2022 Copyright Text
                 </div>
                 <div class="col s2">
-                    <a class="grey-text text-lighten-3" href="sobrenos.php">Sobre nós</a>
+                    <a class="grey-text text-lighten-3" href="sobrenos.php" target="_blank">Sobre nós</a>
                 </div>
                 <div class="col s2">
                     <a class="grey-text text-lighten-3" href="https://github.com/laraguilar/trabalho2-pw2" target="_blank">GitHub</a>

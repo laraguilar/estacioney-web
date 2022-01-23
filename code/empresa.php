@@ -22,23 +22,24 @@ if (isset($_FILES['arquivo'])) {
 
     if(!empty($idImg)){
         $sql_code = "UPDATE imagem SET nome = '$novo_nome', dataImg = NOW() WHERE idEmpresa = '$id';";
-    if (mysqli_query($conn, $sql_code)):
-        $msg = "Arquivo enviado com sucesso!";
-    else:
-        $msg = "Falha ao enviar arquivo!";
-    endif;
-    }
+        if (mysqli_query($conn, $sql_code)):
+            $msg = "Arquivo enviado com sucesso!";
+        else:
+            $msg = "Falha ao enviar arquivo!";
+        endif;
     } else{
-        
-        // pegar o id da imagem gerado
-        // fazer um update na tabela empresa com o id gerado;
-        // gerar um if para veririfcar se o arq foi enviado com sucesso
+        $query2 = mysqli_query($conn, "INSERT INTO imagem (nome, dataImg, idEmpresa) VALUES ('$novo_nome', now(), '$id')");
+        $query3 = mysqli_query($conn, "SELECT nome from imagem WHERE idEmpresa = '$id'");
+        $nomImg = mysqli_fetch_array($query3);
+        $nomImg = $nomImg['nome'];
+        $arquivo = $nomImg;
     }
+}
 
 
 
-//$sql_busca = "SELECT * FROM arquivo";
-$mostrar = mysqli_query($conn, $sql);
+$sql3 = "SELECT * FROM imagem where idEmpresa = '$id'";
+$mostrar = mysqli_query($conn, $sql3);
 //$qtd_arquivos = mysqli_num_rows($mostrar);
 //$msg_sem = ($qtd_arquivos <= 0) ? "NÃO HÁ ARQUIVOS NO SISTEMA!" : "";
 
@@ -72,27 +73,30 @@ $mostrar = mysqli_query($conn, $sql);
                         <h3 class="center">Dados da Empresa</h3>
                         <br>
                         <?php
-                        if($imgSistema = mysqli_fetch_array($mostrar) > 0){
-                            if($arquivo == null){
+                        while($imgSistema = mysqli_fetch_array($mostrar)){
+                            if($imgSistema == null){
                                 echo "<img class='circle responsive-img' style='width: 20%; height:20%' src='imagem/img_perf.png'>";
                             }
                             else{
+                                $arquivo = $imgSistema['nome'];
                                 echo "<img class='center-align' style='width: 20%; height:20%;' src='imagem/".$arquivo."'>";
                             }
                         }
                         ?>
                         
                         <form action="empresa.php" method="POST" enctype="multipart/form-data"><br>
-                            <div class="row file-field input-field">
-                                <div class="col s6 btn indigo darken-2" style="width: auto;">
+                            <div class="row file-field input-field center-align">
+                                <div class="col s4 btn indigo darken-2" style="width: auto;">
                                     <span>File</span>
                                     <input type="file" name="arquivo">
                                 </div>
-                                <div class="col s6 file-path-wrapper">
+                                <div class="col s4 file-path-wrapper">
                                     <input class="file-path validate" type="text">
                                 </div>
+                                <div class="col s4">
+                                    <button type="submit" name="enviarImg" class="waves-effect waves-light btn indigo darken-2">Enviar</button>
+                                </div>
                             </div>
-                            <button type="submit" name="enviarImg" class="waves-effect waves-light btn indigo darken-2">Enviar</button>
                         </form>
                         <div class="row center">
                             <div class="col s12 left-align">
@@ -179,4 +183,3 @@ $mostrar = mysqli_query($conn, $sql);
     <script src="main.js"></script>
 </body>                 
 </html>
-

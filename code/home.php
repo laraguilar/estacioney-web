@@ -128,9 +128,6 @@ require_once 'php_actions/sessaoLog.php';
                                             echo "<div class='divider'></div>";                                            
                                         endwhile;
                                     endwhile;
-                                    if(!mysqli_num_rows($query2) > 0){
-                                        echo "<p class='center-align' style:'color: red;'>Todas as vagas estão disponíveis</p>";
-                                    }
                                 ?>
                                 </div>
                             </div>
