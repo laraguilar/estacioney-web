@@ -2,21 +2,11 @@
 DROP TABLE IF EXISTS
 	aloca,
 	vaga,
-	pessoa,
 	endereco,
   	imagem,
 	estacionamento,
 	empresa;
     
-CREATE TABLE pessoa (
-  idPessoa INT NOT NULL AUTO_INCREMENT,
-  nomPessoa VARCHAR(45) NULL,
-  datNasc DATE NULL,
-  sexPessoa VARCHAR(5) NULL,
-  cpfPessoa VARCHAR(45) NOT NULL,
-  PRIMARY KEY (idPessoa))
-ENGINE = InnoDB;
-
 -- -----------------------------------------------------
 -- Table imagem
 -- -----------------------------------------------------
@@ -116,35 +106,21 @@ ENGINE = InnoDB;
 
 CREATE TABLE aloca (
   idAloca INT NOT NULL AUTO_INCREMENT,
-  idPessoa INT NOT NULL,
   idVaga INT NOT NULL,
+  nomCliente VARCHAR(45) NULL,
+  cpfCliente VARCHAR(45) NULL,
   hrEntrada TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   hrSaida TIMESTAMP NULL,
   valTotal DOUBLE NULL,
   dscPlaca VARCHAR(25) NULL,
   INDEX fk_pessoa_has_vaga_vaga1_idx (idVaga ASC) VISIBLE,
-  INDEX fk_pessoa_has_vaga_pessoa1_idx (idPessoa ASC) VISIBLE,
   PRIMARY KEY (idAloca),
-  CONSTRAINT fk_pessoa_has_vaga_pessoa1
-    FOREIGN KEY (idPessoa)
-    REFERENCES pessoa (idPessoa)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT fk_pessoa_has_vaga_vaga1
     FOREIGN KEY (idVaga)
     REFERENCES vaga (idVaga)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
-
--- -----------------------------------------------------
--- Data for table `mydb`.`pessoa`
--- -----------------------------------------------------
-INSERT INTO pessoa (idPessoa, nomPessoa, datNasc, sexPessoa, cpfPessoa) VALUES (1, 'João Abreu', '1974-12-31', 'M', '908.443.740-32'),
-(2, 'Juriscreide', '1983-10-24', 'F', '103.421.541-56');
-
 
 
 
@@ -183,6 +159,6 @@ INSERT INTO vaga (idVaga, condVaga, idEstac) VALUES (1, 1, 1), (2, 1, 1), (3, 0,
 -- -----------------------------------------------------
 -- Data for table `mydb`.`aloca`
 -- -----------------------------------------------------
-INSERT INTO aloca (idPessoa, idVaga, idAloca, hrEntrada, hrSaida, valTotal, dscPlaca) VALUES (1, 1, 1, '2022-01-19 16:51:57', NULL, NULL, 'dfj4839'),
-(2, 2, 2, '2022-01-19 16:51:57', NULL, NULL, 'abc1234');
+INSERT INTO aloca (idPessoa, idVaga, idAloca, nomCliente, cpfCliente, hrEntrada, hrSaida, valTotal, dscPlaca) VALUES (1, 1, 1, 'Josefina Chaves', '123.456.789-44', '2022-01-19 16:51:57', NULL, NULL, 'dfj4839'),
+(2, 2, 2, 'Augusto Gonçalo', '743.753.347-42', '2022-01-19 16:51:57', NULL, NULL, 'abc1234');
 

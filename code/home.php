@@ -62,10 +62,16 @@ require_once 'php_actions/sessaoLog.php';
                         </div>
                         <div class="col s12 m6">
                             <?php 
-                                //$sql = "SELECT count(*) AS 'vagas ocupadas' FROM vaga WHERE idEstac = '$idEstac' AND condVaga = 1;";
-                                //$query = mysqli_query($conn, $sql);
+                                // calcula a quantidade de vagas ocupadas
+                                $sql3 = "SELECT count(*) as 'vagasOcup' from vaga where condVaga = 1 and idEstac ='$idEstac'";
+                                $query3 = mysqli_query($conn, $sql3);
+                                $resulta = mysqli_fetch_assoc($query3);
+                                $vagasOcup = $resulta['vagasOcup'];
+
+                                // quantidade de vagas disponíveis
+                                $vagasDisp = $qtdVagas - $vagasOcup;
                             ?>
-                            <h6><b>Disponibilidade:</b> 27/<?php echo $qtdVagas ?></h6>
+                            <h6><b>Disponibilidade:</b> <?php echo $vagasDisp."/".$qtdVagas ?></h6>
                         </div>
                         <div class="col s12 m6">
                             <h6><b>Acréscimo/hora:</b> R$<?php echo number_format($valAcresc, 2);?></h6>
@@ -119,10 +125,12 @@ require_once 'php_actions/sessaoLog.php';
                                                     echo "</div>";
                                                 echo "</div>";
                                             echo "</div>";
-                                            echo "<div class='divider'></div>";
-                                            
+                                            echo "<div class='divider'></div>";                                            
                                         endwhile;
                                     endwhile;
+                                    if(!mysqli_num_rows($query2) > 0){
+                                        echo "<p class='center-align' style:'color: red;'>Todas as vagas estão disponíveis</p>";
+                                    }
                                 ?>
                                 </div>
                             </div>
