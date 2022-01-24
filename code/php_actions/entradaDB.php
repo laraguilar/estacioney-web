@@ -36,11 +36,11 @@ if(isset($_POST['btnCadCarro'])):
             // verifica se a vaga esta desocupada
             $vagaVazia = "SELECT condVaga FROM vaga WHERE codVaga = $vagaCarro";
             $query = mysqli_query($conn, $vagaVazia);
-        if(mysqli_fetch_assoc($query)):
+            $result = mysqli_fetch_assoc($query);
+        if($result['condVaga']):
             $erros[] = "vaga ocupada";
         endif;
         }
-
 
         // exibindo mensagens de erro
         if (!empty($erros)) :

@@ -20,9 +20,10 @@
         <div class="container">
             <div class="row">
                 <div class="col s4" style="margin-left: -10%;">
-                    © 2022 Copyright Text
+                Copyright © 2022 Estacioney. 
+                Todos os direitos reservados.
                 </div>
-                <div class="col s2">
+                <div class="col s2" style="margin-left: 10%;">
                     <a class="grey-text text-lighten-3" href="sobrenos.php" target="_blank">Sobre nós</a>
                 </div>
                 <div class="col s2">
