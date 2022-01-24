@@ -27,7 +27,7 @@ elseif (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
 // Se a autenticação não foi enviada
 if (!is_null($username)) {
-	$query = mysqli_query($conn, "SELECT senha FROM empresa WHERE email='$username'");
+	$query = mysqli_query($conn, "SELECT senha, idEmpresa FROM empresa WHERE email='$username'");
 
 	if (mysqli_num_rows($query) > 0) {
 		$row = mysqli_fetch_array($query);
@@ -42,7 +42,10 @@ if ($isAuth) {
 
 	$estacionamentos = array();
 
-    $idEmpresa = $_SESSION['idEmpresa'];
+    $query = mysqli_query($conn, "SELECT idEmpresa from empresa where email='$username'");
+	$empresa = mysqli_fetch_assoc($query);
+	$idEmpresa = $empresa['idEmpresa'];
+
 
 	// codigo sql da sua consulta
 	$query1 = mysqli_query($conn, "SELECT * from estacionamento where idEmpresa = '$idEmpresa'");
