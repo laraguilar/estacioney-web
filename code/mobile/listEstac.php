@@ -44,20 +44,54 @@ if ($isAuth) {
 
 	// codigo sql da sua consulta
 	$query1 = mysqli_query($conn, "SELECT * from estacionamento where idEmpresa = '$idEmpresa'");
-	$estacs = mysqli_fetch_array($query1);
-	$estacionamentos['idEstac'] = $estacs['idEstac'];
-	$estacionamentos['nomEstac'] = $estacs['nomEstac'];
 
-    $idEstac = $estacionamentos['idEstac'];
+    if (mysqli_num_rows($query1) > 0) {
+        // Caso existam produtos no BD, eles sao armazenados na 
+        // chave "products". O valor dessa chave e formado por um 
+        // array onde cada elemento e um produto.
+        $response["estacionamentos"] = array();
+     
+        while ($row = mysqli_fetch_array($query1)) {
+            // Para cada produto, sao retornados somente o 
+            // pid (id do produto) e o nome do produto. Nao ha necessidade 
+            // de retornar nesse momento todos os campos de todos os produtos 
+            // pois a app cliente, inicialmente, so precisa do nome do mesmo para 
+            // exibir na lista de produtos. O campo pid e usado pela app cliente 
+            // para buscar os detalhes de um produto especifico quando o usuario 
+            // o seleciona. Esse tipo de estrategia poupa banda de rede, uma vez 
+            // os detalhes de um produto somente serao transferidos ao cliente 
+            // em caso de real interesse.
+            $estacionamento = array();
+            $estacionamento["nomEstac"] = $row["nomEstac"];
+            $estacionamento["idEstac"] = $row["idEstac"];
 
-	$query2 = mysqli_query($conn, "SELECT * from endereco where idEstac = '$idEstac'");
-	$endereco = mysqli_fetch_array($query2);
-	$estacionamentos['dscLogradouro'] = $endereco['dscLogradouro'];
-	$estacionamentos['cep'] = $endereco['cep'];
-	
-    array_push($response["estac"], $estacionamentos);
-
-	$response["data"] = $nomEstac." ".$estacionamentos['dscLogradouro'];
+            
+     
+            // Adiciona o produto no array de produtos.
+            array_push($response["products"], $product);
+        }
+        // Caso haja produtos no BD, o cliente 
+        // recebe a chave "success" com valor 1.
+        $response["success"] = 1;
+        
+        pg_close($con);
+     
+        // Converte a resposta para o formato JSON.
+        echo json_encode($response);
+        
+    } else {
+        // Caso nao haja produtos no BD, o cliente 
+        // recebe a chave "success" com valor 0. A chave "message" indica o 
+        // motivo da falha.
+        $response["success"] = 0;
+        $response["message"] = "Nao ha produtos";
+        
+        // Fecha a conexao com o BD
+        pg_close($con);
+     
+        // Converte a resposta para o formato JSON.
+        echo json_encode($response);
+    }
 
 } else {
 	$response["success"] = 0;
