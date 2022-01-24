@@ -61,5 +61,4 @@ if ($isAuth) {
 	$response["success"] = 0;
 	$response["error"] = "falha de autenticação";
 }
-mysqli_close($conn);
 echo json_encode($response);
