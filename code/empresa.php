@@ -84,17 +84,18 @@ $mostrar = mysqli_query($conn, $sql3);
                         }
                         ?>
                         
+                        
                         <form action="empresa.php" method="POST" enctype="multipart/form-data"><br>
+                        <div class="center-align">
                             <div class="row file-field input-field center-align">
-                                <div class="col s4 btn indigo darken-2" style="width: auto;">
-                                    <span>File</span>
-                                    <input type="file" name="arquivo">
-                                </div>
-                                <div class="col s4 file-path-wrapper">
-                                    <input class="file-path validate" type="text">
-                                </div>
-                                <div class="col s4">
-                                    <button type="submit" name="enviarImg" class="waves-effect waves-light btn indigo darken-2">Enviar</button>
+                                
+                                    <div class="col s4 btn indigo darken-2 center-align" style="width: auto;">
+                                        <span><i class="material-icons">file_upload</i></span>
+                                        <input type="file" name="arquivo">
+                                    </div>
+                                    <div class="col s4 center-align">
+                                        <button type="submit" name="enviarImg" class="waves-effect waves-light btn indigo darken-2">Enviar</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
