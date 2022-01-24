@@ -65,16 +65,16 @@ if ($isAuth) {
             $estacionamento["nomEstac"] = $row["nomEstac"];
             $estacionamento["idEstac"] = $row["idEstac"];
 
-            
+
      
             // Adiciona o produto no array de produtos.
-            array_push($response["products"], $product);
+            array_push($response["estacionamentos"], $estacionamento);
         }
         // Caso haja produtos no BD, o cliente 
         // recebe a chave "success" com valor 1.
         $response["success"] = 1;
         
-        pg_close($con);
+        mysqli_close($conn);
      
         // Converte a resposta para o formato JSON.
         echo json_encode($response);
@@ -87,7 +87,7 @@ if ($isAuth) {
         $response["message"] = "Nao ha produtos";
         
         // Fecha a conexao com o BD
-        pg_close($con);
+        mysqli_close($conn);
      
         // Converte a resposta para o formato JSON.
         echo json_encode($response);
