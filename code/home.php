@@ -97,28 +97,29 @@ require_once 'php_actions/sessaoLog.php';
                                         $condVaga = $vaga['condVaga'];
 
                                         // pega os dados da vaga alocada
-                                        $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga';";
+                                        $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga' and hrSaida IS NULL;";
                                         $query2 = mysqli_query($conn, $sql2);
 
+                                        var_dump($vaga);
+
                                         while($aloca = mysqli_fetch_array($query2)):
-                                            $idPessoa = $aloca['idPessoa'];
+                                            $nomCliente = $aloca['nomCliente'];
+
                                             $idVaga = $vaga['idVaga'];
 
                                             // dados do cliente que alocou a vaga
-                                            $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
-                                            $pessoa = mysqli_fetch_array($query3);
                                             $hrEntrada = $aloca['hrEntrada'];
                                             echo "<div class='row'>";
                                                 echo "<div class='section'>";
                                                     echo "<div class='col s8'>";
-                                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                                        echo "<h5>".$nomCliente."</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
                                                     echo "</div>";
                                                     echo "<div class='section'>";
                                                         echo "<div class='col s4'>";
                                                             echo "<div class='botao-lista right-align'>";
                                                                 echo "<form action='php_actions/liberarvaga.php' method='POST' name='liberarVaga'";
                                                                     echo "<input type='text' name='vaga' value=".$idVaga.">";
-                                                                    echo "<button type='submit' class='btn orange' name='btnLiberar'>liberar vaga</button>";
+                                                                    echo "<button type='submit' class='btn-flat orange' name='btnLiberar'>liberar vaga</button>";
                                                                 echo "</form>";
                                                             echo "</div>";
                                                         echo "</div>";

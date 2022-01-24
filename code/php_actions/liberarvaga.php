@@ -1,11 +1,9 @@
 <?php
 include_once './conexao.php';
 
-// verifica se o botao foi clicado
-if (isset($_POST['btnLiberar'])) :
+    $_SESSION['idVagaSelect'] = $_POST['id'];
 
-    echo $_POST['btnLiberar'];
-    // atribui os valores do formulario
+    /* atribui os valores do formulario
     $idVaga = $_POST['vaga'];
 
     echo $idVaga;
@@ -27,7 +25,6 @@ if (isset($_POST['btnLiberar'])) :
     //$tempoEstac = $tempoEstac - 1;
     //$custo = $valFixo + ($valAcresc * $tempoEstac);
 
-    //echo $custo;
-endif;
+    //echo $custo;*/
 
 ?>
