@@ -118,16 +118,6 @@ $estado = $endEstac['estado'];
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col s12">
-                                            <!-- LINHA -->
-                                            <div class="divider"></div>
-                                            <div class="row">
-                                                <div class="section">
-                                                    <div class="col s6">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -139,9 +129,10 @@ $estado = $endEstac['estado'];
     </div>
 
 
+    <?php include_once 'includes/footer.php';?>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="main.js"></script>
 
-    <?php include_once 'includes/footer.php';?>
 </body>
 </html>
