@@ -75,7 +75,7 @@ if (isset($_POST['btnCadEstac'])) :
                 $sqlIdEmp = $resultQuery['idEstac'];
 
                 // cadastro do endereço
-                $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', $num, '$cep', $bairro, $cidade, $estado, $sqlIdEmp)";
+                $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', '$num', '$cep', '$bairro', '$cidade', '$estado', '$sqlIdEmp')";
 
                 // verifica se o cadastro foi realizado com sucesso
                 if(mysqli_query($conn, $sqlCadEnd)):
