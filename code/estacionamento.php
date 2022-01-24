@@ -18,8 +18,6 @@ $cidade = $endEstac['cidade'];
 $estado = $endEstac['estado'];
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 
