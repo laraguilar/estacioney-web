@@ -74,7 +74,6 @@ if ($isAuth) {
         // recebe a chave "success" com valor 1.
         $response["success"] = 1;
         
-        mysqli_close($conn);
      
         // Converte a resposta para o formato JSON.
         echo json_encode($response);
@@ -87,7 +86,6 @@ if ($isAuth) {
         $response["message"] = "Nao ha produtos";
         
         // Fecha a conexao com o BD
-        mysqli_close($conn);
      
         // Converte a resposta para o formato JSON.
         echo json_encode($response);
