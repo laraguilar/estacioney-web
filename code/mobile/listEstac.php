@@ -53,11 +53,11 @@ if ($isAuth) {
 	$query2 = mysqli_query($conn, "SELECT * from endereco where idEstac = '$idEstac'");
 	$endereco = mysqli_fetch_array($query2);
 	$estacionamentos['dscLogradouro'] = $endereco['dscLogradouro'];
-	$estacionamentos['num'] = $endereco['num'];
+	$estacionamentos['cep'] = $endereco['cep'];
 	
     array_push($response["estac"], $estacionamentos);
 
-	$response["data"] = $nomEstac." ".$end['dscLogradouro'];
+	$response["data"] = $nomEstac." ".$estacionamentos['dscLogradouro'];
 
 } else {
 	$response["success"] = 0;

@@ -14,6 +14,9 @@ while($resultado = mysqli_fetch_array($query)){
     $vaga[$id] = $idVaga;
     $id ++;
 }
+
+$idVag = $vaga[$vagaCarro];
+echo $idVag;
 ?>
 <!DOCTYPE html>
 <html>
