@@ -15,8 +15,7 @@ while($resultado = mysqli_fetch_array($query)){
     $id ++;
 }
 
-$idVag = $vaga[$vagaCarro];
-echo $idVag;
+$_SESSION['vaga'] = $vaga;
 ?>
 <!DOCTYPE html>
 <html>

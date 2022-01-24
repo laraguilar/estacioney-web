@@ -37,7 +37,8 @@ if(isset($_POST['btnCadCarro'])):
         $query2 = mysqli_query($conn, "SELECT * FROM vaga where idEstac = '$idEstac'");
         $vagas = mysqli_fetch_array($query2);
 
-        $idVag = $vaga[$vagaCarro];
+        $vag = $_SESSION['vaga'];
+        $idVag = $vag[$vagaCarro];
 
         //verifica se as vagas sao do estacionamento
         if(in_array($idVag, $vagas)){
