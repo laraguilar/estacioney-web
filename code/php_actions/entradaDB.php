@@ -60,7 +60,10 @@ if(isset($_POST['btnCadCarro'])):
             $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$idVag', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente');";
             $sql2 = "UPDATE vaga SET condVaga = 1 WHERE idVaga = '$idVag' and idEstac = '$idEstac';";
 
-            if ((mysqli_query($conn, $sql)) &&  (mysqli_query($conn, $sql2))):
+            $teste = mysqli_query($conn, $sql);
+            $teste2 = mysqli_query($conn, $sql2);
+
+            if($teste && $teste2):
                 header('Location: ../home.php'); // aqui deve ir para a tela home
                 //$_SESSION['mensagem'] = "";
             else:
