@@ -69,8 +69,6 @@ if ($isAuth) {
             $estacionamento = array();
             $estacionamento["nomEstac"] = $row["nomEstac"];
             $estacionamento["idEstac"] = $row["idEstac"];
-
-
      
             // Adiciona o produto no array de produtos.
             array_push($response["estacionamentos"], $estacionamento);
