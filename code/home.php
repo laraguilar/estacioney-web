@@ -100,8 +100,6 @@ require_once 'php_actions/sessaoLog.php';
                                         $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga' and hrSaida IS NULL;";
                                         $query2 = mysqli_query($conn, $sql2);
 
-                                        var_dump($vaga);
-
                                         while($aloca = mysqli_fetch_array($query2)):
                                             $nomCliente = $aloca['nomCliente'];
 

@@ -26,9 +26,9 @@ if (isset($_POST['btnCadEmpresa'])) :
         $nomEmpresa = filter_input(INPUT_POST, 'nomEmpresa', FILTER_SANITIZE_SPECIAL_CHARS);
 
         $dscCpfCnpj = filter_input(INPUT_POST, 'dscCpfCnpj', FILTER_SANITIZE_SPECIAL_CHARS);
-
+        
         // verifica se o cpf ou cnpj ja esta cadastrado
-        $validaCpfCnpj = mysqli_query($conn, "select * from empresa where dscCpfCnpj = $dscCpfCnpj;");
+        $validaCpfCnpj = mysqli_query($conn, "SELECT * FROM empresa WHERE dscCpfCnpj = '$dscCpfCnpj'");
         if(mysqli_num_rows($validaCpfCnpj) > 0):
             $erros[] = "CPF/CNPJ já cadastrado";
         endif;

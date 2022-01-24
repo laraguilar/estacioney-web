@@ -31,6 +31,10 @@ include_once 'includes/headerLog.php';
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
+                                <input type="text" name="nomCliente" id="cpfCliente" class="validate">
+                                <label for="text">Nome do Cliente</label>
+                            </div>
+                            <div class="input-field col s12">
                                 <input type="text" name="cpfCliente" id="cpfCliente" class="validate">
                                 <label for="text">CPF</label>
                             </div>
