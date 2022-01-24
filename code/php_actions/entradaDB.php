@@ -3,6 +3,8 @@
 session_start();
 // Conexão DB
 include_once './conexao.php';
+require_once 'sessaoLog.php';
+
 
 // verifica se o botao foi clicado
 if(isset($_POST['btnCadCarro'])):
@@ -31,6 +33,9 @@ if(isset($_POST['btnCadCarro'])):
             $erros[] = "Vaga precisa ser inteiro";
         endif;
 
+        $query2 = mysqli_query($conn, "SELECT * FROM vaga where idEstac = '$idEstac'");
+        $vagas = mysqli_fetch_array($query2);
+
         //verifica se as vagas sao do estacionamento
         if(in_array($vagaCarro, $vagas)){
             // verifica se a vaga esta desocupada
@@ -47,9 +52,10 @@ if(isset($_POST['btnCadCarro'])):
             header('Location: ../entrada.php');
         else :
             // código SQL para inserir os dados
+            $idVag = $vaga[$vagaCarro];
             // faz a inserção dos dados
-            $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$vagaCarro', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente'); 
-                UPDATE vaga SET condVaga = 1 WHERE codVaga = '$vagaCarro' and idEstac = '$idEstac';";
+            $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$idVag', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente'); 
+                UPDATE vaga SET condVaga = 1 WHERE codVaga = '$idVag' and idEstac = '$idEstac';";
 
             if(mysqli_query($conn, $sql)):
                 header('Location: ../home.php'); // aqui deve ir para a tela home

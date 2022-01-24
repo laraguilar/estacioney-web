@@ -1,26 +1,18 @@
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                function escreverArquivo() {  
+<?php 
+include_once 'php_actions/conexao.php';
+// header
+include_once 'includes/headerLog.php';
+// sessao 
+require_once 'php_actions/sessaoLog.php';
 
-                    var fso  = new ActiveXObject("Scripting.FileSystemObject");
+$query = mysqli_query($conn, "SELECT idVaga FROM vaga WHERE idEstac = '$idEstac'");
 
-                    var fh = fso.CreateTextFile("C:TesteEstac.txt", true); 
+$vaga = array();
 
-                    fh.WriteLine(idClicadoJson);
-
-                    fh.Close();}
-
-                // funcao que percebe o evento de clique no item do dropdown
-                $(".liberar").click(function() {
-                    var idClicado = $(this).attr('id'); // pega o ID da vaga selecionada
-
-                    // tranforma o id em um objetojava
-                    var objId = new Object();
-                    objId.id = idClicado;
-
-                    // transforma o objeto em json
-                    let idClicadoJson = JSON.stringify(objId);
-                });
-            });
-        </script>   
+$id = 1;
+while($resultado = mysqli_fetch_array($query)){
+    $idVaga = $resultado['idVaga'];
+    $vaga[$id] = $idVaga;
+    $id ++;
+}
+?>

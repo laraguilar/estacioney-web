@@ -49,7 +49,6 @@ if(isset($_POST['btnEntrar'])):
 
                         $dadosEstac = mysqli_fetch_array($query3);
                         $_SESSION['dadosEstac'] = $dadosEstac;
-    
                         header('Location: ../home.php');
                     else:
                         header('Location: ../cadEstac.php');

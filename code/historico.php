@@ -95,11 +95,11 @@ require_once 'php_actions/sessaoLog.php';
         </div>
     </div>
 </div>
-
+<?php  include_once 'includes/footer.php';?>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="main.js"></script>
 
-        <?php  'includes/footer.php';?>
 
     </body>
 

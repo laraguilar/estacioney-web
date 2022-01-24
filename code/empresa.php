@@ -85,22 +85,32 @@ $mostrar = mysqli_query($conn, $sql3);
                         ?>
                         
                         
+                        <div class="row">
+                        <div class="col s4">
+
+                        </div>
+                        <div class="col s4">
                         <form action="empresa.php" method="POST" enctype="multipart/form-data"><br>
-                        <div class="center-align">
                             <div class="row file-field input-field center-align">
-                                
-                                    <div class="col s4 btn indigo darken-2 center-align" style="width: auto;">
-                                        <span><i class="material-icons">file_upload</i></span>
-                                        <input type="file" name="arquivo">
-                                    </div>
-                                    <div class="col s4 center-align">
-                                        <button type="submit" name="enviarImg" class="waves-effect waves-light btn indigo darken-2">Enviar</button>
-                                    </div>
+                                <div class="col s4 btn indigo darken-2 center-align" style="width: auto;">
+                                    <span><i class="material-icons">file_upload</i></span>
+                                    <input type="file" name="arquivo">
+                                </div>
+                                <div class="col s4 right-align">
+                                    <button type="submit" name="enviarImg" class="waves-effect waves-light btn indigo darken-2">Enviar</button>
                                 </div>
                             </div>
                         </form>
+                        </div>
+                        <div class="col s4">
+                        </div>
+                        </div>
+
                         <div class="row center">
+
+                        
                             <div class="col s12 left-align">
+                                
                                 <!-- A partir de agora todas as cols são uma linha do "histórico"-->
                                 <div class="row">
                                     <div class="divider"></div>
