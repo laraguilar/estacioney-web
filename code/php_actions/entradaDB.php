@@ -3,8 +3,8 @@
 session_start();
 // Conexão DB
 include_once './conexao.php';
-require_once 'sessaoLog.php';
 
+$idEstac = $_SESSION['dadosEstac']['idEstac'];
 
 // verifica se o botao foi clicado
 if(isset($_POST['btnCadCarro'])):
@@ -33,16 +33,19 @@ if(isset($_POST['btnCadCarro'])):
             $erros[] = "Vaga precisa ser inteiro";
         endif;
 
+        
         $query2 = mysqli_query($conn, "SELECT * FROM vaga where idEstac = '$idEstac'");
         $vagas = mysqli_fetch_array($query2);
 
+        $idVag = $vaga[$vagaCarro];
+
         //verifica se as vagas sao do estacionamento
-        if(in_array($vagaCarro, $vagas)){
+        if(in_array($idVag, $vagas)){
             // verifica se a vaga esta desocupada
-            $vagaVazia = "SELECT condVaga FROM vaga WHERE codVaga = $vagaCarro";
+            $vagaVazia = "SELECT condVaga FROM vaga WHERE codVaga = $idVag";
             $query = mysqli_query($conn, $vagaVazia);
             $result = mysqli_fetch_assoc($query);
-        if($result['condVaga']):
+        if($result):
             $erros[] = "vaga ocupada";
         endif;
         }
@@ -52,12 +55,12 @@ if(isset($_POST['btnCadCarro'])):
             header('Location: ../entrada.php');
         else :
             // código SQL para inserir os dados
-            $idVag = $vaga[$vagaCarro];
+            
             // faz a inserção dos dados
-            $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$idVag', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente'); 
-                UPDATE vaga SET condVaga = 1 WHERE codVaga = '$idVag' and idEstac = '$idEstac';";
+            $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$idVag', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente');";
+            $sql2 = "UPDATE vaga SET condVaga = 1 WHERE idVaga = '$idVag' and idEstac = '$idEstac';";
 
-            if(mysqli_query($conn, $sql)):
+            if(mysqli_query($conn, $sql) and mysqli_query($conn, $sql2)):
                 header('Location: ../home.php'); // aqui deve ir para a tela home
                 //$_SESSION['mensagem'] = "";
             else:
