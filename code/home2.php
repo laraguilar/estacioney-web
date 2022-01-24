@@ -1,8 +1,11 @@
 <?php 
-// Log na Sessao
-require_once 'php_actions/sessaoLog.php';
+include_once 'php_actions/conexao.php';
 // header
 include_once 'includes/headerLog.php';
+// sessao 
+require_once 'php_actions/sessaoLog.php';
+
+$_SESSION['idVagaSelect'] = $_SESSION['idVagaSelect'] ?? NULL;
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,26 +22,11 @@ include_once 'includes/headerLog.php';
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
             jQuery(document).ready(function($) {
-                function escreverArquivo() {  
-
-                    var fso  = new ActiveXObject("Scripting.FileSystemObject");
-
-                    var fh = fso.CreateTextFile("C:TesteEstac.txt", true); 
-
-                    fh.WriteLine(idClicadoJson);
-
-                    fh.Close();}
-
                 // funcao que percebe o evento de clique no item do dropdown
                 $(".liberar").click(function() {
                     var idClicado = $(this).attr('id'); // pega o ID da vaga selecionada
-
-                    // tranforma o id em um objetojava
-                    var objId = new Object();
-                    objId.id = idClicado;
-
-                    // transforma o objeto em json
-                    let idClicadoJson = JSON.stringify(objId);
+                    
+                    $.post("liberarvaga.php", {id : idClicado}, function(){});
                 });
             });
         </script>   
@@ -86,10 +74,17 @@ include_once 'includes/headerLog.php';
                         </div>
                         <div class="col s12 m6">
                             <?php 
-                                //$sql = "SELECT count(*) AS 'vagas ocupadas' FROM vaga WHERE idEstac = '$idEstac' AND condVaga = 1;";
-                                //$query = mysqli_query($conn, $sql);
+
+                                // calcula a quantidade de vagas ocupadas
+                                $sql3 = "SELECT count(*) as 'vagasOcup' from vaga where condVaga = 1 and idEstac ='$idEstac'";
+                                $query3 = mysqli_query($conn, $sql3);
+                                $resulta = mysqli_fetch_assoc($query3);
+                                $vagasOcup = $resulta['vagasOcup'];
+
+                                // quantidade de vagas disponíveis
+                                $vagasDisp = $qtdVagas - $vagasOcup;
                             ?>
-                            <h6><b>Disponibilidade:</b> 27/<?php echo $qtdVagas ?></h6>
+                            <h6><b>Disponibilidade:</b> <?php echo $vagasDisp."/".$qtdVagas ?></h6>
                         </div>
                         <div class="col s12 m6">
                             <h6><b>Acréscimo/hora:</b> R$<?php echo number_format($valAcresc, 2);?></h6>
@@ -119,31 +114,30 @@ include_once 'includes/headerLog.php';
                                         $query2 = mysqli_query($conn, $sql2);
 
                                         while($aloca = mysqli_fetch_array($query2)):
-                                            $idPessoa = $aloca['idPessoa'];
+                                            $nomCliente = $aloca['nomCliente'];
+
                                             $idVaga = $vaga['idVaga'];
 
                                             // dados do cliente que alocou a vaga
-                                            $query3 = mysqli_query($conn, "SELECT * FROM pessoa WHERE idPessoa = '$idPessoa'");
-                                            $pessoa = mysqli_fetch_array($query3);
                                             $hrEntrada = $aloca['hrEntrada'];
                                             echo "<div class='row'>";
                                                 echo "<div class='section'>";
                                                     echo "<div class='col s8'>";
-                                                        echo "<h5>".$pessoa['nomPessoa']."</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                                        echo "<h5>".$nomCliente."</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
                                                     echo "</div>";
                                                     echo "<div class='section'>";
                                                         echo "<div class='col s4'>";
                                                             echo "<div class='botao-lista right-align'>";
-                                                                echo "<form action='php_actions/liberarvaga.php' method='POST' name='liberarVaga'"; 
-                                                                    echo "<button type='submit' class='btn orange liberar' name='btnLiberar' id=".$idVaga.">liberar vaga</button>";
+                                                                echo "<form action='' method='POST' name='liberarVaga'";
+                                                                    echo "<input type='text' name='vaga' value=".$idVaga.">";
+                                                                    echo "<button type='submit' class='btn orange liberar' id=".$idVaga." name='btnLiberar'>liberar vaga</button>";
                                                                 echo "</form>";
                                                             echo "</div>";
                                                         echo "</div>";
                                                     echo "</div>";
                                                 echo "</div>";
                                             echo "</div>";
-                                            echo "<div class='divider'></div>";
-                                            
+                                            echo "<div class='divider'></div>";                                            
                                         endwhile;
                                     endwhile;
                                 ?>
@@ -160,8 +154,7 @@ include_once 'includes/headerLog.php';
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="main.js"></script>
 
-        <?php 
-        include_once 'includes/footer.php';?>
+        <?php  'includes/footer.php';?>
 
     </body>
 
