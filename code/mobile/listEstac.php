@@ -42,6 +42,8 @@ if ($isAuth) {
 
 	$estacionamentos = array();
 
+    $idEmpresa = $_SESSION['idEmpresa'];
+
 	// codigo sql da sua consulta
 	$query1 = mysqli_query($conn, "SELECT * from estacionamento where idEmpresa = '$idEmpresa'");
 
