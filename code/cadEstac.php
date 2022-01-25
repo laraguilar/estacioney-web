@@ -36,11 +36,11 @@ require_once 'php_actions/sessaoLog.php';
                                 <label for="text">Quantidade de vagas</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="valFixo" type="number" min="0,1"  id="valFixo" class="validate">
+                                <input name="valFixo" type="number" min="0,1" step="0.5" id="valFixo" >
                                 <label for="text">Valor Fixo</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="valAcresc" type="number" min="0"  id="valAcresc" class="validate">
+                                <input name="valAcresc" type="number" min="0" step="0.5" id="valAcresc" >
                                 <label for="text">Acréscimo/hora</label>
                             </div>
                             <div class="input-field col s12">
