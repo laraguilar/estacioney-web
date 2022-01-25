@@ -21,14 +21,5 @@ if(isset($_SESSION['dadosEstac'])){
     $valFixo = $dadosEstac['valFixo'];
     $valAcresc = $dadosEstac['valAcresc'];
     $qtdVagas = $dadosEstac['qtdVagas'];
-} else{
-    // Log na Sessao
-    $sql3 = "SELECT * FROM estacionamento WHERE idEmpresa = '$id'";
-    $query3 = mysqli_query($conn, $sql3);
-
-    $dadosEstac = mysqli_fetch_array($query3);
-    $_SESSION['dadosEstac'] = $dadosEstac;
-    header('Location: sessaoLog.php');
 }
-
 ?>
