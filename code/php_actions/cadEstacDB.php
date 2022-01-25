@@ -11,8 +11,8 @@ if (isset($_POST['btnCadEstac'])) :
 // atribui os valores do formulario
     $nomEstac = mysqli_escape_string($conn, $_POST['nomEstac']);
     $qtdVagas = mysqli_escape_string($conn, $_POST['qtdVagas']);
-    $valFixo = $_POST['valFixo'];
-    $valAcresc = $_POST['valAcresc'];
+    $valFixo = floatval($_POST['valFixo']);
+    $valAcresc = floatval($_POST['valAcresc']);
     $cep = mysqli_escape_string($conn, $_POST['cep']);
     $rua = mysqli_escape_string($conn, $_POST['rua']);
     $bairro = mysqli_escape_string($conn, $_POST['bairro']);
