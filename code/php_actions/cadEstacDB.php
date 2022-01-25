@@ -11,15 +11,14 @@ if (isset($_POST['btnCadEstac'])) :
 // atribui os valores do formulario
     $nomEstac = mysqli_escape_string($conn, $_POST['nomEstac']);
     $qtdVagas = mysqli_escape_string($conn, $_POST['qtdVagas']);
-    $valFixo = floatval($_POST['valFixo']);
-    $valAcresc = floatval($_POST['valAcresc']);
+    $valFixo = $_POST['valFixo'];
+    $valAcresc = $_POST['valAcresc'];
     $cep = mysqli_escape_string($conn, $_POST['cep']);
     $rua = mysqli_escape_string($conn, $_POST['rua']);
     $bairro = mysqli_escape_string($conn, $_POST['bairro']);
     $cidade = mysqli_escape_string($conn, $_POST['cidade']);
     $estado = mysqli_escape_string($conn, $_POST['estado']);
     $num = mysqli_escape_string($conn, $_POST['num']);
-
 
     if(!empty($nomEstac) && !empty($qtdVagas) && !empty($valFixo) && !empty($valAcresc) && !empty($cep) && !empty($rua) && !empty($bairro) && !empty($cidade) && !empty($estado) && !empty($num)):
         //Sanitize e Validate
@@ -36,7 +35,6 @@ if (isset($_POST['btnCadEstac'])) :
             $erros[] = "Quantidade de vagas precisa ser inteiro";
         endif;
 
-        $valFixo = filter_input(INPUT_POST, 'valFixo', FILTER_SANITIZE_NUMBER_FLOAT);
         if (!filter_var($valFixo, FILTER_VALIDATE_FLOAT)) :
             $erros[] = "Valor fixo deve ser float";
         endif;
@@ -94,7 +92,7 @@ if (isset($_POST['btnCadEstac'])) :
                     $dadosEstac = mysqli_fetch_array($query3);
                     $_SESSION['dadosEstac'] = $dadosEstac;
 
-                    
+
                         header('Location: ../home.php');
                 else:
                     header('Location: ../cadEstac.php');
