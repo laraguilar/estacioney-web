@@ -57,35 +57,43 @@ if ($isAuth) {
         $cidade = $_POST['cidade'];
         $estado = $_POST['estado'];
 
-        // cria o estacionamento no bd
-        $sql = "INSERT INTO estacionamento (nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$idEmpresa');";
+        // verifica se o estacionamento com o nome ja existe
+        $query2 = mysqli_query($conn, "SELECT idEstac FROM estacionamento WHERE idEmpresa = $idEmpresa and nomEstac = '$nomEstac';");
+        if((mysqli_num_rows($query))>0):
+            $response["success"] = 0;
+	        $response["error"] = "nome do estacionamento ja existe";
+        else:
+            // cria o estacionamento no bd
+            $sql = "INSERT INTO estacionamento (nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$idEmpresa');";
 
-        if(mysqli_query($conn, $sql)){
-            // pega o ID do estacionamento
-            $query = mysqli_query($conn, "SELECT idEstac, qtdVagas from Estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';");
-            $resultQuery = mysqli_fetch_array($query);
-            $idEstac = $resultQuery['idEstac'];
+            if(mysqli_query($conn, $sql)){
+                // pega o ID do estacionamento
+                $query = mysqli_query($conn, "SELECT idEstac, qtdVagas from Estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';");
+                $resultQuery = mysqli_fetch_array($query);
+                $idEstac = $resultQuery['idEstac'];
 
-            $sql2 = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', '$num', '$cep', '$bairro', '$cidade', '$estado', '$idEstac')";
+                $sql2 = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', '$num', '$cep', '$bairro', '$cidade', '$estado', '$idEstac')";
 
-            if(mysqli_query($conn, $sql2)){
-                $qtdVaga = $resultQuery['qtdVagas'];
+                if(mysqli_query($conn, $sql2)){
+                    $qtdVaga = $resultQuery['qtdVagas'];
 
-                
-                for($i=0; $i < $qtdVaga; $i++){
-                    $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$idEstac')";
-                    mysqli_query($conn, $sql2);
+                    
+                    for($i=0; $i < $qtdVaga; $i++){
+                        $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$idEstac')";
+                        mysqli_query($conn, $sql2);
+                    }
+
+                    $response["success"] = 1;
+                } else{
+                    $response["success"] = 0;
+                    $response["error"] = "falha no cadastro do endereço";
                 }
-                
-	            $response["success"] = 1;
             } else{
                 $response["success"] = 0;
-	            $response["error"] = "falha no cadastro do endereço";
+                $response["error"] = "falha no cadastro da empresa";
             }
-        } else{
-            $response["success"] = 0;
-	        $response["error"] = "falha no cadastro da empresa";
-        }
+        endif;
+
     endif;
 } else {
 	$response["success"] = 0;
