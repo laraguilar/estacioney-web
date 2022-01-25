@@ -86,6 +86,15 @@ if (isset($_POST['btnCadEstac'])) :
                         $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$sqlIdEmp')";
                         mysqli_query($conn, $sql2);
                     }
+
+                    // Log na Sessao
+                    $sql3 = "SELECT * FROM estacionamento WHERE idEmpresa = '$id'";
+                    $query3 = mysqli_query($conn, $sql3);
+
+                    $dadosEstac = mysqli_fetch_array($query3);
+                    $_SESSION['dadosEstac'] = $dadosEstac;
+
+                    
                         header('Location: ../home.php');
                 else:
                     header('Location: ../cadEstac.php');
