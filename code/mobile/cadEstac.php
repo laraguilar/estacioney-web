@@ -62,7 +62,11 @@ if ($isAuth) {
         if((mysqli_num_rows($query))>0):
             $response["success"] = 0;
 	        $response["error"] = "nome do estacionamento ja existe";
+        
+        
         else:
+            
+            
             // cria o estacionamento no bd
             $sql = "INSERT INTO estacionamento (nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$idEmpresa');";
 
