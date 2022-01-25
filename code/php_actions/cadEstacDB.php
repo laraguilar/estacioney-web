@@ -39,7 +39,6 @@ if (isset($_POST['btnCadEstac'])) :
             $erros[] = "Valor fixo deve ser float";
         endif;
 
-        $valAcresc = filter_input(INPUT_POST, 'valAcresc', FILTER_SANITIZE_NUMBER_FLOAT);
         if (!filter_var($valAcresc, FILTER_VALIDATE_FLOAT)):
             $erros[] = "Acréscimo/hora deve ser float";
         endif;
