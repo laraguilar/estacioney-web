@@ -73,17 +73,15 @@ if ($isAuth) {
                 $resultQuery = mysqli_fetch_array($query);
                 $idEstac = $resultQuery['idEstac'];
 
-                $sql2 = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', '$num', '$cep', '$bairro', '$cidade', '$estado', '$idEstac')";
+                $sql2 = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', '$num', '$cep', '$bairro', '$cidade', '$estado', '$idEstac');";
 
                 if(mysqli_query($conn, $sql2)){
                     $qtdVaga = $resultQuery['qtdVagas'];
 
-                    
                     for($i=0; $i < $qtdVaga; $i++){
-                        $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$idEstac')";
-                        mysqli_query($conn, $sql2);
+                        $sql3 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$idEstac')";
+                        mysqli_query($conn, $sql3);
                     }
-
                     $response["success"] = 1;
                 } else{
                     $response["success"] = 0;
