@@ -59,7 +59,7 @@ if ($isAuth) {
 
         // verifica se o estacionamento com o nome ja existe
         $query2 = mysqli_query($conn, "SELECT idEstac FROM estacionamento WHERE idEmpresa = $idEmpresa and nomEstac = '$nomEstac';");
-        if((mysqli_num_rows($query))>0):
+        if(mysqli_query($conn, $query2)):
             $response["success"] = 0;
 	        $response["error"] = "nome do estacionamento ja existe";
         else:
