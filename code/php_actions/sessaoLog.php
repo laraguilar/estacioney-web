@@ -1,6 +1,6 @@
 <?php
 include_once 'php_actions/conexao.php';
-if ( session_status() !== PHP_SESSION_ACTIVE )
+if ( session_status() != PHP_SESSION_ACTIVE )
  {
     session_start();
 }
