@@ -43,7 +43,7 @@ if(isset($_POST['btnCadCarro'])):
         //verifica se as vagas sao do estacionamento
         if(in_array($idVag, $vagas)){
             // verifica se a vaga esta desocupada
-            $vagaVazia = "SELECT condVaga FROM vaga WHERE codVaga = $idVag";
+            $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVag";
             $query = mysqli_query($conn, $vagaVazia);
             $result = mysqli_fetch_assoc($query);
         if($result):
