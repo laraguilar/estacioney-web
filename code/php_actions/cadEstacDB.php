@@ -42,7 +42,7 @@ if (isset($_POST['btnCadEstac'])) :
         endif;
 
         $valAcresc = filter_input(INPUT_POST, 'valAcresc', FILTER_SANITIZE_NUMBER_FLOAT);
-        if (!filter_var($valAcresc, FILTER_VALIDATE_FLOAT)) :
+        if (!filter_var($valAcresc, FILTER_VALIDATE_FLOAT)):
             $erros[] = "Acréscimo/hora deve ser float";
         endif;
 
@@ -69,7 +69,7 @@ if (isset($_POST['btnCadEstac'])) :
             // verifica se o insert retorna true
             if(mysqli_query($conn, $sql)):
                 // pega o id do estacionamento cadastrado
-                $sqlIdEmp = "SELECT idEstac, qtdVagas from Estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';";
+                $sqlIdEmp = "SELECT idEstac from Estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';";
                 $query = mysqli_query($conn, $sqlIdEmp);
                 $resultQuery = mysqli_fetch_array($query);
                 $sqlIdEmp = $resultQuery['idEstac'];

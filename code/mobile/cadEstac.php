@@ -39,9 +39,46 @@ if (!is_null($username)) {
 
 if ($isAuth) {
 	if(isset($_POST['nomEstac']) && isset($_POST['qtdVagas']) && isset($_POST['valFixo']) && isset($_POST['valAcresc']) && isset($_POST['cep']) && isset($_POST['rua']) && isset($_POST['num']) && isset($_POST['bairro']) && isset($_POST['cidade']) && isset($_POST['estado'])):
-	    $response["success"] = 1;
-    endif;
+        
+        // pega id Empresa
+        $query = mysqli_query($conn, "SELECT idEmpresa from empresa where email='$username'");
+        $empresa = mysqli_fetch_assoc($query);
+        $idEmpresa = $empresa['idEmpresa'];
 
+        // pega os dados do post
+        $nomEstac = $_POST['nomEstac'];
+        $qtdVagas = $_POST['qtdVagas'];
+        $valFixo = $_POST['valFixo'];
+        $valAcresc = $_POST['valAcresc'];
+        $cep = $_POST['cep'];
+        $rua = $_POST['rua'];
+        $num = $_POST['num'];
+        $bairro = $_POST['bairro'];
+        $cidade = $_POST['cidade'];
+        $estado = $_POST['estado'];
+
+        // cria o estacionamento no bd
+        $sql = "INSERT INTO estacionamento (nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$idEmpresa');";
+
+        if(mysqli_query($conn, $sql)){
+            // pega o ID do estacionamento
+            $query = mysqli_query($conn, "SELECT idEstac from Estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';");
+            $resultQuery = mysqli_fetch_array($query);
+            $idEstac = $resultQuery['idEstac'];
+
+            $sql2 = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', '$num', '$cep', '$bairro', '$cidade', '$estado', '$idEstac')";
+
+            if(mysqli_query($conn, $sql2)){
+	            $response["success"] = 1;
+            } else{
+                $response["success"] = 0;
+	            $response["error"] = "falha no cadastro do endereço";
+            }
+        } else{
+            $response["success"] = 0;
+	        $response["error"] = "falha no cadastro da empresa";
+        }
+    endif;
 } else {
 	$response["success"] = 0;
 	$response["error"] = "falha de autenticação";
