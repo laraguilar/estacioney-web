@@ -84,13 +84,9 @@ if (isset($_POST['btnCadEstac'])) :
 
                     for($i=0; $i < $qtdVaga; $i++){
                         $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$sqlIdEmp')";
+                        mysqli_query($conn, $sql2);
                     }
-
-                    if(mysqli_query($conn, $sql2)):
                         header('Location: ../home.php');
-                    else:
-                        header('Location: ../cadEstac.php');
-                    endif;
                 else:
                     header('Location: ../cadEstac.php');
                     $erros[] = "Erro ao cadastrar endereço";
