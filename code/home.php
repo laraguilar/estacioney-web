@@ -15,12 +15,11 @@ while($resultado = mysqli_fetch_array($query)){
     $id ++;
 }
 $_SESSION['vaga'] = $vaga;
-$_SESSION['dadosEstac'] = $dadosEstac;
-$_SESSION['idEstac'] = $idEstac;
-$_SESSION['nomEstac']=  $nomEstac;
-$_SESSION['valFixo'] =  $valFixo;
-$_SESSION['valAcresc'] = $valAcresc;
-$_SESSION['qtdVagas'] = $qtdVagas;
+$idEstac = $_SESSION['dadosEstac']['idEstac'];
+$nomEstac = $_SESSION['dadosEstac']['nomEstac'];
+$valFixo = $_SESSION['dadosEstac']['valFixo'];
+$valAcresc = $_SESSION['dadosEstac']['valAcresc'];
+$qtdVagas = $_SESSION['dadosEstac']['qtdVagas'];
 
 ?>
 <!DOCTYPE html>
