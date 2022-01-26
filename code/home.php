@@ -134,10 +134,9 @@ $_SESSION['vaga'] = $vaga;
                                                         </div>
                                                     </div>
                                                     <!-- Modal Structure -->
-                                                    <div id="modal<?php echo $idVaga ?>" class="modal" style="height:auto">
+                                                    <div id="modal<?php echo $idVaga ?>" class="modal" style="height: 24%; width:30%;">
                                                         <div class="modal-content">
-                                                        <h4>Liberar vaga</h4>
-                                                        <p>Tem certeza que deseja liberar a vaga?</p>
+                                                        <h5>Tem certeza que deseja liberar a vaga?</h5>
                                                         </div>
                                                         <div class="modal-footer">
 
