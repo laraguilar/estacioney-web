@@ -14,9 +14,6 @@ $vagaCarro = 10;
 while($idWeb = current($vag)){
     if($idWeb = $vagaCarro){
         $idVaga = key($vag);
-        $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVaga";
-        $query = mysqli_query($conn, $vagaVazia);
-        $result = mysqli_fetch_assoc($query);
 
         echo $idVaga;
         if($result['condVaga']):
