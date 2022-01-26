@@ -97,7 +97,7 @@ $mostrar = mysqli_query($conn, $sql3);
                                     <input type="file" name="arquivo">
                                 </div>
                                 <div class="col s4 right-align">
-                                    <button type="submit" name="enviarImg" class="waves-effect waves-light btn indigo darken-2">Enviar</button>
+                                    <button type="submit" name="enviarImg" class="waves-effect waves-light btn indigo darken-2">Atualizar imagem</button>
                                 </div>
                             </div>
                         </form>

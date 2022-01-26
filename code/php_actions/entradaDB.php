@@ -13,7 +13,7 @@ if(isset($_POST['btnCadCarro'])):
     $nomCliente = mysqli_escape_string($conn, $_POST['nomCliente']);
     $cpfCliente = mysqli_escape_string($conn, $_POST['cpfCliente']);
     $placaCarro = mysqli_escape_string($conn, $_POST['placaCarro']);
-    $vagaCarro = mysqli_escape_string($conn, $_POST['vagaCarro']);
+    $vagaCarro = mysqli_escape_string($conn, $_POST['select']);
 
     
     if(!empty($nomCliente) && !empty($cpfCliente) && !empty($placaCarro) && !empty($vagaCarro)):
@@ -27,12 +27,6 @@ if(isset($_POST['btnCadCarro'])):
         $cpfCliente = filter_input(INPUT_POST, 'cpfCliente', FILTER_SANITIZE_SPECIAL_CHARS);
 
         $placaCarro = filter_input(INPUT_POST, 'placaCarro', FILTER_SANITIZE_SPECIAL_CHARS);
-
-        $vagaCarro = filter_input(INPUT_POST, 'vagaCarro', FILTER_SANITIZE_NUMBER_INT);
-        if (!filter_var($vagaCarro, FILTER_VALIDATE_INT)) :
-            $erros[] = "Vaga precisa ser inteiro";
-        endif;
-
         
         $query2 = mysqli_query($conn, "SELECT * FROM vaga where idEstac = '$idEstac'");
         $vagas = mysqli_fetch_array($query2);
@@ -41,12 +35,12 @@ if(isset($_POST['btnCadCarro'])):
         $idVag = $vag[$vagaCarro];
 
         //verifica se as vagas sao do estacionamento
-        if(in_array($idVag, $vagas)){
+        if(in_array($vag, $idVag)){
             // verifica se a vaga esta desocupada
             $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVag";
             $query = mysqli_query($conn, $vagaVazia);
             $result = mysqli_fetch_assoc($query);
-        if($result):
+        if($result['condVaga']):
             $erros[] = "vaga ocupada";
         endif;
         }
@@ -60,11 +54,9 @@ if(isset($_POST['btnCadCarro'])):
             // faz a inserção dos dados
             $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$idVag', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente');";
             $sql2 = "UPDATE vaga SET condVaga = 1 WHERE idVaga = '$idVag' and idEstac = '$idEstac';";
+            
 
-            $teste = mysqli_query($conn, $sql);
-            $teste2 = mysqli_query($conn, $sql2);
-
-            if($teste && $teste2):
+            if(mysqli_query($conn, $sql) && mysqli_query($conn, $sql2)):
                 header('Location: ../home.php'); // aqui deve ir para a tela home
                 //$_SESSION['mensagem'] = "";
             else:

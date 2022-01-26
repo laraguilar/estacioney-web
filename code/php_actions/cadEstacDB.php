@@ -63,7 +63,8 @@ if (isset($_POST['btnCadEstac'])) :
             // código SQL para inserir os dados
             // codigo de cadastro do estacionamento
             $sql = "INSERT INTO estacionamento (nomEstac, qtdVagas, valFixo, valAcresc, idEmpresa) VALUES ('$nomEstac', '$qtdVagas', '$valFixo', '$valAcresc', '$id');";
-            // verifica se o insert retorna true
+            
+            // verifica se o insert deu certo
             if(mysqli_query($conn, $sql)):
                 // pega o id do estacionamento cadastrado
                 $sqlIdEmp = "SELECT idEstac, $qtdVagas from Estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';";
@@ -78,7 +79,7 @@ if (isset($_POST['btnCadEstac'])) :
                 if(mysqli_query($conn, $sqlCadEnd)):
                     
                     $qtdVaga = $resultQuery['qtdVagas'];
-
+                    
                     for($i=0; $i < $qtdVaga; $i++){
                         $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$sqlIdEmp')";
                         mysqli_query($conn, $sql2);

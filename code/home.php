@@ -100,6 +100,7 @@ $_SESSION['vaga'] = $vaga;
                                     $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
                                     $query = mysqli_query($conn, $sql);
 
+                                    
                                     // percorre as vagas do estacionamento
                                     while($vaga = mysqli_fetch_array($query)):     
 
@@ -111,6 +112,7 @@ $_SESSION['vaga'] = $vaga;
                                         $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga' and hrSaida IS NULL;";
                                         $query2 = mysqli_query($conn, $sql2);
 
+                                        // percorre e printa os carros alocados no momento
                                         while($aloca = mysqli_fetch_array($query2)):
                                             $nomCliente = $aloca['nomCliente'];
 
@@ -154,6 +156,8 @@ $_SESSION['vaga'] = $vaga;
                                             <?php                                       
                                         endwhile;
                                     endwhile;
+
+                                
                                 ?>
                                 </div>
                             </div>

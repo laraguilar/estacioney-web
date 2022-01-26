@@ -18,7 +18,12 @@ include_once 'includes/headerLog.php';
     <link rel="shortcut icon" type="imagex/png" href="imagem/logo_estacioney50px.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script >
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -43,8 +48,24 @@ include_once 'includes/headerLog.php';
                                 <label for="text">Placa do Carro</label>
                             </div>
                             <div class="input-field col s12">
-                                <input type="number" name="vagaCarro" id="vagaCarro" class="validate">
-                                <label for="number">Vaga</label>
+
+                                <select name="select">
+                                    
+                                    <?php
+                                        $vag = $_SESSION['vaga'];
+                                        $query = mysqli_query($conn, "SELECT idVaga from vaga WHERE condVaga = 0 and idEstac = '$idEstac'");
+                                        while($vagLivre = mysqli_fetch_array($query)){
+                                            
+                                            if(in_array($vagLivre['idVaga'], $vag)){
+                                                ?>
+                                                    <option value="<?php echo $vagLivre['idVaga'];?>"><?php echo $vagLivre['idVaga'];?></option>
+                                                <?php
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                                <label>Vaga</label>
+
                             </div>
                         </div>
                         <button href = "home.php" type="submit" name="btnCadCarro" class="waves-effect waves-light btn indigo darken-2">Continuar</button>
