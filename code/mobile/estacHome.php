@@ -50,11 +50,23 @@ if ($isAuth) {
         $response['dadosEstac'] = array();
 
         $estacionamento = array();
-        $estacionamento['nomEstac'] = $result['nomEstac'];
+		$estacionamento['nomEstac'] = $result['nomEstac'];
         $estacionamento['qtdVagas'] = $result['qtdVagas'];
         $estacionamento['valFixo'] = $result['valFixo'];
         $estacionamento['valAcresc'] = $result['valAcresc'];
 
+		$sql3 = "SELECT count(*) as 'vagasOcup' from vaga where condVaga = 1 and idEstac ='$idEstac'";
+		$query3 = mysqli_query($conn, $sql3);
+		$resulta = mysqli_fetch_assoc($query3);
+		$vagasOcup = $resulta['vagasOcup'];
+
+		// quantidade de vagas disponíveis
+		$vagasDisp = $estacionamento['qtdVagas'] - $vagasOcup;
+
+		$disponibilidade = $qtdVagas."/".$vagasDisp;
+		$estacionamento['vagasDisp'] = $disponibilidade; // add no array de estacionamento
+
+		
         array_push($response["dadosEstac"], $estacionamento);
 
         $response["success"] = 1;
