@@ -70,10 +70,10 @@ if (isset($_POST['btnCadEstac'])) :
                 $sqlIdEmp = "SELECT idEstac, $qtdVagas from Estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';";
                 $query = mysqli_query($conn, $sqlIdEmp);
                 $resultQuery = mysqli_fetch_array($query);
-                $sqlIdEmp = $resultQuery['idEstac'];
+                $idEstac = $resultQuery['idEstac'];
 
                 // cadastro do endereço
-                $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', '$num', '$cep', '$bairro', '$cidade', '$estado', '$sqlIdEmp')";
+                $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', '$num', '$cep', '$bairro', '$cidade', '$estado', '$idEstac')";
 
                 // verifica se o cadastro foi realizado com sucesso
                 if(mysqli_query($conn, $sqlCadEnd)):
@@ -81,19 +81,27 @@ if (isset($_POST['btnCadEstac'])) :
                     $qtdVaga = $resultQuery['qtdVagas'];
                     
                     for($i=0; $i < $qtdVaga; $i++){
-                        $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$sqlIdEmp')";
+                        $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$idEstac')";
                         mysqli_query($conn, $sql2);
                     }
 
-                    // Log na Sessao
-                    $sql3 = "SELECT * FROM estacionamento WHERE idEmpresa = '$id'";
-                    $query3 = mysqli_query($conn, $sql3);
+                    $query4 = mysqli_query($conn, "SELECT * FROM vaga WHERE idEstac = '$idEstac'");
 
-                    $dadosEstac = mysqli_fetch_array($query3);
-                    $_SESSION['dadosEstac'] = $dadosEstac;
+                    if(mysqli_num_rows($query4) > 0):
+
+                        $sql3 = "SELECT * FROM estacionamento WHERE idEmpresa = '$id'";
+                        $query3 = mysqli_query($conn, $sql3);
+
+                        $dadosEstac = mysqli_fetch_array($query3);
+                        $_SESSION['dadosEstac'] = $dadosEstac;
 
 
-                        header('Location: ../home.php');
+                            header('Location: ../home.php');
+                    else:
+                        header('Location: ../sobrenos.php');                    
+                        $erros[] = "Erro ao inserir vagas";                    
+                    endif;
+                    
                 else:
                     header('Location: ../cadEstac.php');
                     $erros[] = "Erro ao cadastrar endereço";
