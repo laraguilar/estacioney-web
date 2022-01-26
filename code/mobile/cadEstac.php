@@ -73,7 +73,7 @@ if ($isAuth) {
 
             if(mysqli_query($conn, $sql)){
                 // pega o ID do estacionamento
-                $query = mysqli_query($conn, "SELECT idEstac, qtdVagas from estacionamento WHERE idEmpresa = '$id' and nomEstac = '$nomEstac';");
+                $query = mysqli_query($conn, "SELECT idEstac, qtdVagas from estacionamento WHERE idEmpresa = '$idEmpresa' and nomEstac = '$nomEstac';");
                 $resultQuery = mysqli_fetch_array($query);
                 $idEstac = $resultQuery['idEstac'];
 
