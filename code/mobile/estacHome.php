@@ -45,17 +45,21 @@ if ($isAuth) {
     $query2 = mysqli_query($conn, "SELECT * FROM estacionamento WHERE idEstac = '$idEstac'");
     $result = mysqli_fetch_array($query2);
 
-    $estacionamento = array();
-    $estacionamento['nomEstac'] = $result['nomEstac'];
-    $estacionamento['qtdVagas'] = $result['qtdVagas'];
-    $estacionamento['valFixo'] = $result['valFixo'];
-    $estacionamento['valAcresc'] = $result['valAcresc'];
+    if($result>0){
+        $response['dadosEstac'] = array();
 
+        $estacionamento = array();
+        $estacionamento['nomEstac'] = $result['nomEstac'];
+        $estacionamento['qtdVagas'] = $result['qtdVagas'];
+        $estacionamento['valFixo'] = $result['valFixo'];
+        $estacionamento['valAcresc'] = $result['valAcresc'];
+
+        array_push($response["dadosEstac"], $estacionamento);
+    } else{
+        $response["success"] = 0;
+	    $response["error"] = "não foi possível carregar os dados";
+    }
     
-
-
-
-	$response["data"] = $nomEstac." ".$logradouro;
 
 } else {
 	$response["success"] = 0;
