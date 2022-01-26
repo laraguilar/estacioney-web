@@ -122,20 +122,36 @@ $_SESSION['vaga'] = $vaga;
                                                 echo "<div class='section'>";
                                                     echo "<div class='col s8'>";
                                                         echo "<h5>".$nomCliente."</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
-                                                    echo "</div>";
-                                                    echo "<div class='section'>";
-                                                        echo "<div class='col s4'>";
-                                                            echo "<div class='botao-lista right-align'>";
-                                                                echo "<form action='php_actions/liberarvaga.php' method='POST' name='liberarVaga'";
-                                                                    echo "<input type='text' name='vaga' value=".$idVaga.">";
-                                                                    echo "<button type='submit' class='btn-flat orange' name='btnLiberar'>liberar vaga</button>";
-                                                                echo "</form>";
-                                                            echo "</div>";
-                                                        echo "</div>";
-                                                    echo "</div>";
-                                                echo "</div>";
-                                            echo "</div>";
-                                            echo "<div class='divider'></div>";                                            
+                                                        ?>
+                                                    </div>
+                                                    <div class='section'>
+                                                        <div class='col s4'>
+                                                            <div class='botao-lista right-align'>
+                                                                    <a href='#modal<?php echo $idVaga ?>' class='btn-flat orange modal-trigger'>liberar vaga</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Modal Structure -->
+                                                    <div id="modal<?php echo $idVaga ?>" class="modal">
+                                                        <div class="modal-content">
+                                                        <h4>Opa!</h4>
+                                                        <p>Tem certeza que deseja liberar a vaga?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+
+                                                        <form action="php_actions/liberarvaga.php" method="POST">
+                                                            <input type="hidden" name="id" value="<?php echo $idVaga ?>">
+                                                            <input type="hidden" name="idEstac" value="<?php echo $idEstac ?>">
+
+                                                            <button type="submit" name="btnLiberar" class="btn-flat orange">Liberar Vaga</button>
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='divider'></div>
+                                            <?php                                       
                                         endwhile;
                                     endwhile;
                                 ?>
