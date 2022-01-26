@@ -72,17 +72,18 @@ if (isset($_POST['btnCadEstac'])) :
                 $resultQuery = mysqli_fetch_array($query);
                 $idEstac = $resultQuery['idEstac'];
 
+                $qtdVaga = $resultQuery['qtdVagas'];
+
                 // cadastro do endereço
                 $sqlCadEnd = "INSERT INTO endereco (dscLogradouro, numero, cep, bairro, cidade, estado, idEstac) VALUES ('$rua', '$num', '$cep', '$bairro', '$cidade', '$estado', '$idEstac')";
 
                 // verifica se o cadastro foi realizado com sucesso
                 if(mysqli_query($conn, $sqlCadEnd)):
                     
-                    $qtdVaga = $resultQuery['qtdVagas'];
-                    
                     for($i=0; $i < $qtdVaga; $i++){
-                        $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (0, '$idEstac')";
+                        $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (DEFAULT, '$idEstac')";
                         mysqli_query($conn, $sql2);
+
                     }
 
                     $query4 = mysqli_query($conn, "SELECT * FROM vaga WHERE idEstac = '$idEstac'");
