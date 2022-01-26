@@ -46,6 +46,7 @@ if ($isAuth) {
     $result = mysqli_fetch_array($query2);
 
     if($result>0){
+
         $response['dadosEstac'] = array();
 
         $estacionamento = array();
@@ -55,11 +56,13 @@ if ($isAuth) {
         $estacionamento['valAcresc'] = $result['valAcresc'];
 
         array_push($response["dadosEstac"], $estacionamento);
+
+        $response["success"] = 1;
+
     } else{
         $response["success"] = 0;
 	    $response["error"] = "não foi possível carregar os dados";
     }
-    
 
 } else {
 	$response["success"] = 0;
