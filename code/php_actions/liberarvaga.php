@@ -34,13 +34,6 @@ session_start();
             header('Location: ../home.php');
         }
 
-        //Adicionar horário de saida na tabela aloca e o valor da estadia
-        // setar a vaga como desocupada
-
-        //$tempoEstac = $tempoEstac - 1;
-        //$custo = $valFixo + ($valAcresc * $tempoEstac);
-
-        //echo $custo;
     }
 
 ?>

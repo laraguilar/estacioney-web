@@ -35,7 +35,7 @@ if(isset($_POST['btnCadCarro'])):
         $idVag = $vag[$vagaCarro];
 
         //verifica se as vagas sao do estacionamento
-        if(in_array($vag, $idVag)){
+        if(in_array($idVag, $vag)){
             // verifica se a vaga esta desocupada
             $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVag";
             $query = mysqli_query($conn, $vagaVazia);
@@ -54,7 +54,7 @@ if(isset($_POST['btnCadCarro'])):
             // faz a inserção dos dados
             $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$idVag', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente');";
             $sql2 = "UPDATE vaga SET condVaga = 1 WHERE idVaga = '$idVag' and idEstac = '$idEstac';";
-            
+
 
             if(mysqli_query($conn, $sql) && mysqli_query($conn, $sql2)):
                 header('Location: ../home.php'); // aqui deve ir para a tela home
