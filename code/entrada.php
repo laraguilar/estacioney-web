@@ -52,21 +52,23 @@ include_once 'includes/headerLog.php';
                                 <select name="select">
                                     
                                     <?php
-                                        $vag = $_SESSION['vaga'];
+                                        $vaga = $_SESSION['vaga'];
                                         $query = mysqli_query($conn, "SELECT idVaga from vaga WHERE condVaga = 0 and idEstac = '$idEstac'");
                                         while($vagLivre = mysqli_fetch_array($query)){
-                                            
-                                            if(in_array($vagLivre['idVaga'], $vag)){
+                                            if(in_array($vaga[$vagLivre['idVaga']], $vaga)){
                                                 ?>
-                                                    <option value="<?php echo $vagLivre['idVaga'];?>"><?php echo $vagLivre['idVaga'];?></option>
-                                                <?php
+                                                    <option value="<?php echo $vaga[$vagLivre['idVaga']]; ?>"><?php echo $vaga[$vagLivre['idVaga']];?></option>
+                                                <?php 
                                             }
                                         }
+
                                     ?>
                                 </select>
                                 <label>Vaga</label>
-
+                                    
                             </div>
+
+                            
                         </div>
                         <button href = "home.php" type="submit" name="btnCadCarro" class="waves-effect waves-light btn indigo darken-2">Continuar</button>
                         <p style="text-decoration: none;"> 

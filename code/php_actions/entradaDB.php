@@ -13,7 +13,7 @@ if(isset($_POST['btnCadCarro'])):
     $nomCliente = mysqli_escape_string($conn, $_POST['nomCliente']);
     $cpfCliente = mysqli_escape_string($conn, $_POST['cpfCliente']);
     $placaCarro = mysqli_escape_string($conn, $_POST['placaCarro']);
-    $vagaCarro = mysqli_escape_string($conn, $_POST['select']);
+    $vagaCarro = mysqli_escape_string($conn, $_POST['select']); // não é id do BD
 
     
     if(!empty($nomCliente) && !empty($cpfCliente) && !empty($placaCarro) && !empty($vagaCarro)):
@@ -32,17 +32,19 @@ if(isset($_POST['btnCadCarro'])):
         $vagas = mysqli_fetch_array($query2);
 
         $vag = $_SESSION['vaga'];
-        $idVag = $vag[$vagaCarro];
 
         //verifica se as vagas sao do estacionamento
-        if(in_array($idVag, $vag)){
-            // verifica se a vaga esta desocupada
-            $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVag";
-            $query = mysqli_query($conn, $vagaVazia);
-            $result = mysqli_fetch_assoc($query);
-        if($result['condVaga']):
-            $erros[] = "vaga ocupada";
-        endif;
+        while($idWeb = current($vag)){
+            if($idWeb = $vagaCarro){
+                $idVaga = key($vag);
+                $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVaga";
+                $query = mysqli_query($conn, $vagaVazia);
+                $result = mysqli_fetch_assoc($query);
+
+                if($result['condVaga']):
+                    $erros[] = "vaga ocupada";
+                endif;
+            }
         }
 
         // exibindo mensagens de erro

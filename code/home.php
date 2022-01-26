@@ -11,11 +11,12 @@ $vaga = array();
 $id = 1;
 while($resultado = mysqli_fetch_array($query)){
     $idVaga = $resultado['idVaga'];
-    $vaga[$id] = $idVaga;
+    $vaga[$idVaga] = $id;
     $id ++;
 }
 $_SESSION['vaga'] = $vaga;
 
+var_dump($vaga);
 ?>
 <!DOCTYPE html>
 <html>
