@@ -63,7 +63,7 @@ if ($isAuth) {
 		// quantidade de vagas disponíveis
 		$vagasDisp = $estacionamento['qtdVagas'] - $vagasOcup;
 
-		$disponibilidade = $vagasDisp."/".$estacionamento['qtdVagas'];
+		$disponibilidade = "Disponibilidade: ".$vagasDisp."/".$estacionamento['qtdVagas'];
 		$estacionamento['vagasDisp'] = $disponibilidade; // add no array de estacionamento
 
 		
