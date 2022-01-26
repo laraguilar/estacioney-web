@@ -6,7 +6,6 @@ include_once 'includes/headerLog.php';
 require_once 'php_actions/sessaoLog.php';
 
 $vag = $_SESSION['vaga'];
-var_dump($vag);
 
 $vag = $_SESSION['vaga'];
 
@@ -19,6 +18,7 @@ while($idWeb = current($vag)){
         $query = mysqli_query($conn, $vagaVazia);
         $result = mysqli_fetch_assoc($query);
 
+        echo $idVaga;
         if($result['condVaga']):
             $erros[] = "vaga ocupada";
         endif;
