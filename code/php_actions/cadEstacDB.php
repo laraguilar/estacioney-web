@@ -67,7 +67,7 @@ if (isset($_POST['btnCadEstac'])) :
             // verifica se o insert deu certo
             if(mysqli_query($conn, $sql)):
                 // pega o id do estacionamento cadastrado
-                $sqlIdEmp = "SELECT idEstac, $qtdVagas from Estacionamento WHERE idEmpresa = $id and nomEstac = '$nomEstac';";
+                $sqlIdEmp = "SELECT idEstac, $qtdVagas from Estacionamento WHERE idEmpresa = '$id' and nomEstac = '$nomEstac';";
                 $query = mysqli_query($conn, $sqlIdEmp);
                 $resultQuery = mysqli_fetch_array($query);
                 $idEstac = $resultQuery['idEstac'];
@@ -96,7 +96,7 @@ if (isset($_POST['btnCadEstac'])) :
                         $_SESSION['dadosEstac'] = $dadosEstac;
 
 
-                            header('Location: ../home.php');
+                        header('Location: ../home.php');
                     else:
                         header('Location: ../sobrenos.php');                    
                         $erros[] = "Erro ao inserir vagas";                    
