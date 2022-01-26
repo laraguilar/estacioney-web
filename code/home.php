@@ -140,14 +140,14 @@ $_SESSION['vaga'] = $vaga;
                                                         <p>Tem certeza que deseja liberar a vaga?</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
 
                                                         <form action="php_actions/liberarvaga.php" method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $idVaga ?>">
                                                             <input type="hidden" name="idEstac" value="<?php echo $idEstac ?>">
-
                                                             <button type="submit" name="btnLiberar" class="btn-flat orange">Liberar Vaga</button>
                                                         </form>
+                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+
                                                         </div>
                                                     </div>
                                                 </div>
