@@ -69,6 +69,14 @@ if ($isAuth) {
 		
         array_push($response["dadosEstac"], $estacionamento);
 
+
+		// dados do aloca
+
+		$alocados = array();
+
+		
+
+
         $response["success"] = 1;
 
     } else{
