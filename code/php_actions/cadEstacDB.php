@@ -67,7 +67,7 @@ if (isset($_POST['btnCadEstac'])) :
             // verifica se o insert deu certo
             if(mysqli_query($conn, $sql)):
                 // pega o id do estacionamento cadastrado
-                $sqlIdEmp = "SELECT idEstac, $qtdVagas from Estacionamento WHERE idEmpresa = '$id' and nomEstac = '$nomEstac';";
+                $sqlIdEmp = "SELECT idEstac, qtdVagas from Estacionamento WHERE idEmpresa = '$id' and nomEstac = '$nomEstac';";
                 $query = mysqli_query($conn, $sqlIdEmp);
                 $resultQuery = mysqli_fetch_array($query);
                 $idEstac = $resultQuery['idEstac'];
@@ -80,10 +80,9 @@ if (isset($_POST['btnCadEstac'])) :
                 // verifica se o cadastro foi realizado com sucesso
                 if(mysqli_query($conn, $sqlCadEnd)):
                     
-                    for($i=0; $i < $qtdVaga; $i++){
+                    for($i=0; $i<$qtdVaga; $i++){
                         $sql2 = "INSERT INTO vaga (condVaga, idEstac) VALUES (DEFAULT, '$idEstac')";
                         mysqli_query($conn, $sql2);
-
                     }
 
                     $query4 = mysqli_query($conn, "SELECT * FROM vaga WHERE idEstac = '$idEstac'");
