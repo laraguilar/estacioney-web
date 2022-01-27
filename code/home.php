@@ -79,8 +79,12 @@ $_SESSION['vaga'] = $vaga;
                                 $resulta = mysqli_fetch_assoc($query3);
                                 $vagasOcup = $resulta['vagasOcup'];
 
+                                if($vagasOcup > 0){
+                                    $vagasDisp = $qtdVagas - ($vagasOcup + 1);
+                                }else{
+                                    $vagasDisp = $qtdVagas;
+                                }
                                 // quantidade de vagas disponíveis
-                                $vagasDisp = $qtdVagas - ($vagasOcup + 1);
                             ?>
                             <h6><b>Disponibilidade:</b> <?php echo $vagasDisp."/".$qtdVagas ?></h6>
                         </div>
