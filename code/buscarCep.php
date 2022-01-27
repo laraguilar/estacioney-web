@@ -8,4 +8,9 @@ function get_endereco($cep){
     $xml = simplexml_load_file($url);
     return $xml;
 }
-var_dump(get_endereco(29161700));
+$endereco = (get_endereco(29161700));
+
+echo "Rua: $endereco -> logradouro";
+echo "Bairro: $endereco -> bairro";
+echo "Cidade: $endereco -> localidade";
+echo "Estado: $endereco -> uf";
