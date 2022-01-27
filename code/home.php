@@ -97,8 +97,7 @@ $_SESSION['vaga'] = $vaga;
                             <div class="col s12">
                                 <?php
                                     // pega dados da vaga
-                                    $sql = "SELECT * FROM vaga WHERE idEstac = '$idEstac';";
-                                    $query = mysqli_query($conn, $sql);
+                                    $query = mysqli_query($conn, "SELECT * FROM vaga WHERE idEstac = '$idEstac';");
 
                                     
                                     // percorre as vagas do estacionamento
