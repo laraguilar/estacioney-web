@@ -8,4 +8,4 @@ function get_endereco($cep){
     $xml = simplexml_load_file($url);
     return $xml;
 }
-echo(get_endereco(29161700));
+var_dump(get_endereco(29161700));
