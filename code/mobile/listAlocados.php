@@ -50,9 +50,9 @@ if ($isAuth) {
 
     if (mysqli_num_rows($query1) > 0) {
         // percorre as vagas do estacionamento
-        while($vaga = mysqli_fetch_array($query)):     
+        while($vaga = mysqli_fetch_array($query1)):     
 
-            $alocado = array();
+            
 
             // verifica se a vaga está ocupada
             $idVaga = $vaga['idVaga'];
@@ -64,6 +64,7 @@ if ($isAuth) {
             if(mysqli_num_rows($query2)){
                 // percorre e printa os carros alocados no momento
                 while($aloca = mysqli_fetch_array($query2)):
+                    $alocado = array();
 
                     $alocado['idAloca'] = $aloca['idAloca'];
                     $alocado['idVaga'] = $aloca['idVaga'];
