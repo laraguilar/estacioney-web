@@ -54,10 +54,9 @@ if ($isAuth) {
             $id ++;
         }
 
-        var_dump($vaga);
 
         if(in_array($vagaCarro, $vaga)){
-            $arr = array_keys($vag, $vagaCarro);
+            $arr = array_keys($vaga, $vagaCarro);
             $idVagaBD = $arr[0];
             // verifica se a vaga esta desocupada
             $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVagaBD";
