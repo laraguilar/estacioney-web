@@ -54,6 +54,8 @@ if ($isAuth) {
             $id ++;
         }
 
+        var_dump($vaga);
+
         if(in_array($vagaCarro, $vaga)){
             $arr = array_keys($vag, $vagaCarro);
             $idVagaBD = $arr[0];
