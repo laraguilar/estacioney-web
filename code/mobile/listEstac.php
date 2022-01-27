@@ -69,9 +69,21 @@ if ($isAuth) {
             $estacionamento = array();
             $estacionamento["nomEstac"] = $row["nomEstac"];
             $estacionamento["idEstac"] = $row["idEstac"];
-            $estacionamento["qtdVagas"] = $row["qtdVagas"];
-            $estacionamento["valFixo"] = $row["valFixo"];
-            $estacionamento["valAcresc"] = $row["valAcresc"];
+            
+            $idEstac = $row["idEstac"];
+            $query2 = mysqli_query($conn, "SELECT * FROM endereco WHERE idEstac = '$idEstac'");
+            if(mysqli_num_rows($query2) > 0){
+
+                $end = mysqli_fetch_array($query2);
+                $estacionamento["cep"] = $row["cep"];
+                $estacionamento["logr"] = $row["dscLogradouro"];
+                $estacionamento["num"] = $row["numero"];
+                $estacionamento["bairro"] = $row["bairro"];
+                $estacionamento["cidade"] = $row["cidade"];
+                $estacionamento["bairro"] = $row["bairro"];
+
+
+            }
      
             // Adiciona o produto no array de produtos.
             array_push($response["estacionamentos"], $estacionamento);
