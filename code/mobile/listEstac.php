@@ -70,6 +70,7 @@ if ($isAuth) {
             $estacionamento["nomEstac"] = $row["nomEstac"];
             $estacionamento["idEstac"] = $row["idEstac"];
             
+            
             $idEstac = $row["idEstac"];
             $query2 = mysqli_query($conn, "SELECT * FROM endereco WHERE idEstac = '$idEstac'");
             if(mysqli_num_rows($query2) > 0){
@@ -78,13 +79,8 @@ if ($isAuth) {
                 $estacionamento["cep"] = $row["cep"];
                 $estacionamento["logr"] = $row["dscLogradouro"];
                 $estacionamento["num"] = $row["numero"];
-                $estacionamento["bairro"] = $row["bairro"];
-                $estacionamento["cidade"] = $row["cidade"];
-                $estacionamento["bairro"] = $row["bairro"];
-
-
             }
-     
+
             // Adiciona o produto no array de produtos.
             array_push($response["estacionamentos"], $estacionamento);
         }
@@ -92,7 +88,6 @@ if ($isAuth) {
         // recebe a chave "success" com valor 1.
         $response["success"] = 1;
         
-     
         // Converte a resposta para o formato JSON.
         echo json_encode($response);
         
