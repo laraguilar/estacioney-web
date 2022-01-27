@@ -80,7 +80,7 @@ $_SESSION['vaga'] = $vaga;
                                 $vagasOcup = $resulta['vagasOcup'];
 
                                 // quantidade de vagas disponíveis
-                                $vagasDisp = $qtdVagas - $vagasOcup;
+                                $vagasDisp = $qtdVagas - ($vagasOcup + 1);
                             ?>
                             <h6><b>Disponibilidade:</b> <?php echo $vagasDisp."/".$qtdVagas ?></h6>
                         </div>
@@ -126,7 +126,7 @@ $_SESSION['vaga'] = $vaga;
                                             echo "<div class='row'>";
                                                 echo "<div class='section'>";
                                                     echo "<div class='col s8'>";
-                                                        echo "<h5>".$nomCliente. " - "." VAGA - $vagaWeb ". "</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                                        echo "<h5>".$nomCliente. "</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span><br><span>Vaga: ".$vagaWeb;
                                                         ?>
                                                     </div>
                                                     <div class='section'>
@@ -142,14 +142,12 @@ $_SESSION['vaga'] = $vaga;
                                                         <h5>Tem certeza que deseja liberar a vaga?</h5>
                                                         </div>
                                                         <div class="modal-footer">
-
-                                                        <form action="php_actions/liberarvaga.php" method="POST">
-                                                            <input type="hidden" name="id" value="<?php echo $idVaga ?>">
-                                                            <input type="hidden" name="idEstac" value="<?php echo $idEstac ?>">
-                                                            <button type="submit" name="btnLiberar" class="btn-flat orange">Liberar Vaga</button>
-                                                        </form>
-                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-
+                                                            <form action="php_actions/liberarvaga.php" method="POST">
+                                                                <input type="hidden" name="id" value="<?php echo $idVaga ?>">
+                                                                <input type="hidden" name="idEstac" value="<?php echo $idEstac ?>">
+                                                                <button type="submit" name="btnLiberar" class="btn-flat orange">Liberar Vaga</button>
+                                                            </form>
+                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                                                         </div>
                                                     </div>
                                                 </div>

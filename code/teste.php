@@ -1,15 +1,23 @@
 <?php 
+include_once 'php_actions/conexao.php';
 
-$vagaCarro = 10;
+$idEstac = 70;
+$vagaCarro = 21;
 
-
-$vag = $_SESSION['vaga'];
-if(in_array($vagaCarro, $vag)){
-    $arr = array_keys($vag, $vagaCarro);
-    $idVagaBD = $arr[0];
-    // verifica se a vaga esta desocupada
-    $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVagaBD";
-    $query = mysqli_query($conn, $vagaVazia);
-    $result = mysqli_fetch_assoc($query);
+$query4 = mysqli_query($conn, "SELECT idVaga FROM vaga WHERE idEstac = '$idEstac'");
+$vaga = array();
+$id = 1;
+while($resultado = mysqli_fetch_array($query4)){
+    $idVaga = $resultado['idVaga'];
+    $vaga[$idVaga] = $id;
+    $id ++;
 }
+
+if(in_array($vagaCarro, $vaga)){
+    $arr = array_keys($vaga, $vagaCarro);
+    $idVagaBD = $arr[0];
+    var_dump($arr);
+    echo $idVagaBD;
+}
+var_dump($vaga);
 ?>

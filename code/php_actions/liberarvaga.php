@@ -22,7 +22,13 @@ session_start();
         $query3 = mysqli_query($conn, "SELECT hour(TIMEDIFF(current_timestamp(), hrEntrada)) as 'tempEstac' FROM aloca WHERE idVaga = '$idVaga'");
         $tempoEstac = mysqli_fetch_assoc($query3);
         
-        $tempoEstac = $tempoEstac['tempEstac'] - 1;
+        $tempoEstac = $tempoEstac['tempEstac'];
+
+        if($tempoEstac['tempEstac'] = 0){
+            $tempoEstac = 0;
+        } else{
+            $tempoEstac = $tempoEstac['tempEstac']-1;
+        }
 
         $custo = $valFixo + ($valAcresc * $tempoEstac);
 
