@@ -38,7 +38,8 @@ if (!is_null($username)) {
 }
 
 if ($isAuth) {
-	if(isset($_POST['nomCliente']) && isset($_POST['cpfCliente']) && isset($_POST['placa']) && isset($_POST['vaga'])):
+	if(isset($_POST['idEstac']) && isset($_POST['nomCliente']) && isset($_POST['cpfCliente']) && isset($_POST['placa']) && isset($_POST['vaga'])):
+        $idEstac = $_POST['idEstac'];
         $nomCliente = $_POST['nomCliente'];
         $cpfCliente = $_POST['cpfCliente'];
         $placa = $_POST['placa'];
@@ -74,8 +75,6 @@ if ($isAuth) {
                 }
             endif;
         }
-
-
     endif;
 } else {
 	$response["success"] = 0;
