@@ -1,24 +1,15 @@
 <?php 
-include_once 'php_actions/conexao.php';
-// header
-include_once 'includes/headerLog.php';
-// sessao 
-require_once 'php_actions/sessaoLog.php';
-
-$vag = $_SESSION['vaga'];
-
-$vag = $_SESSION['vaga'];
 
 $vagaCarro = 10;
-//verifica se as vagas sao do estacionamento
-
-$arr = array_keys($vag, $vagaCarro);
-echo $arr[0];
 
 
-if(array_key_exists($vagaCarro, $arr)){
-    echo "Lara linda";
+$vag = $_SESSION['vaga'];
+if(in_array($vagaCarro, $vag)){
+    $arr = array_keys($vag, $vagaCarro);
+    $idVagaBD = $arr[0];
+    // verifica se a vaga esta desocupada
+    $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVagaBD";
+    $query = mysqli_query($conn, $vagaVazia);
+    $result = mysqli_fetch_assoc($query);
 }
-
-
 ?>

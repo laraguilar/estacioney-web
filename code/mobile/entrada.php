@@ -45,10 +45,10 @@ if ($isAuth) {
         $placa = $_POST['placa'];
         $vagaCarro = $_POST['vaga'];
 
-        $query = mysqli_query($conn, "SELECT idVaga FROM vaga WHERE idEstac = '$idEstac'");
+        $query4 = mysqli_query($conn, "SELECT idVaga FROM vaga WHERE idEstac = '$idEstac'");
         $vaga = array();
         $id = 1;
-        while($resultado = mysqli_fetch_array($query)){
+        while($resultado = mysqli_fetch_array($query4)){
             $idVaga = $resultado['idVaga'];
             $vaga[$idVaga] = $id;
             $id ++;
