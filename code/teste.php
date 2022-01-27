@@ -11,15 +11,13 @@ $vag = $_SESSION['vaga'];
 
 $vagaCarro = 10;
 //verifica se as vagas sao do estacionamento
-while($idWeb = current($vag)){
-    if($idWeb = $vagaCarro){
-        $idVaga = key($vag);
 
-        echo $idVaga;
-        if($result['condVaga']):
-            $erros[] = "vaga ocupada";
-        endif;
-    }
+$arr = array_keys($vag, $vagaCarro);
+echo $arr[0];
+
+
+if(array_key_exists($vagaCarro, $arr)){
+    echo "Lara linda";
 }
 
 

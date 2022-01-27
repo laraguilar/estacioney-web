@@ -16,7 +16,6 @@ while($resultado = mysqli_fetch_array($query)){
 }
 $_SESSION['vaga'] = $vaga;
 
-var_dump($vaga);
 ?>
 <!DOCTYPE html>
 <html>

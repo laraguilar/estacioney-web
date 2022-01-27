@@ -33,18 +33,19 @@ if(isset($_POST['btnCadCarro'])):
 
         $vag = $_SESSION['vaga'];
 
-        //verifica se as vagas sao do estacionamento
-        while($idWeb = current($vag)){
-            if($idWeb = $vagaCarro){
-                $idVaga = key($vag);
-                $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVaga";
-                $query = mysqli_query($conn, $vagaVazia);
-                $result = mysqli_fetch_assoc($query);
+        
 
-                if($result['condVaga']):
-                    $erros[] = "vaga ocupada";
-                endif;
-            }
+        //verifica se as vagas sao do estacionamento
+        if(in_array($vagaCarro, $vag)){
+            $arr = array_keys($vag, $vagaCarro);
+            $idVagaBD = $arr[0];
+            // verifica se a vaga esta desocupada
+            $vagaVazia = "SELECT condVaga FROM vaga WHERE idVaga = $idVagaBD";
+            $query = mysqli_query($conn, $vagaVazia);
+            $result = mysqli_fetch_assoc($query);
+        if($result['condVaga']):
+            $erros[] = "vaga ocupada";
+        endif;
         }
 
         // exibindo mensagens de erro
@@ -54,8 +55,8 @@ if(isset($_POST['btnCadCarro'])):
             // código SQL para inserir os dados
             
             // faz a inserção dos dados
-            $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$idVag', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente');";
-            $sql2 = "UPDATE vaga SET condVaga = 1 WHERE idVaga = '$idVag' and idEstac = '$idEstac';";
+            $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$idVagaBD', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente');";
+            $sql2 = "UPDATE vaga SET condVaga = 1 WHERE idVaga = '$idVagaBD' and idEstac = '$idEstac';";
 
 
             if(mysqli_query($conn, $sql) && mysqli_query($conn, $sql2)):
