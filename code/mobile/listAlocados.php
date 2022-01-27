@@ -66,9 +66,19 @@ if ($isAuth) {
                 // percorre e printa os carros alocados no momento
                 while($aloca = mysqli_fetch_array($query2)):
                     $alocado = array();
+                    
+                    $query = mysqli_query($conn, "SELECT idVaga FROM vaga WHERE idEstac = '$idEstac'");
+                    $vaga = array();
+                    $id = 1;
+                    while($resultado = mysqli_fetch_array($query)){
+                        $idVaga = $resultado['idVaga'];
+                        $vaga[$idVaga] = $id;
+                        $id ++;
+                    }
+                    
 
                     $alocado['idAloca'] = $aloca['idAloca'];
-                    $alocado['idVaga'] = $aloca['idVaga'];
+                    $alocado['idVaga'] = $vaga[$aloca['idVaga']];
                     $alocado['nomCliente'] = $aloca['nomCliente'];
                     $alocado['cpfCliente'] = $aloca['cpfCliente'];
                     $alocado['hrEntrada'] = $aloca['hrEntrada'];
