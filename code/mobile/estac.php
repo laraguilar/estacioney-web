@@ -69,7 +69,9 @@ if ($isAuth) {
             $estacionamento = array();
             $estacionamento["nomEstac"] = $row["nomEstac"];
             $estacionamento["idEstac"] = $row["idEstac"];
-            
+            $estacionamento["qtdVagas"] = $row["qtdVagas"];
+            $estacionamento["valFixo"] = $row["valFixo"];
+            $estacionamento["valAcresc"] = $row["valAcresc"];
             
             $idEstac = $row["idEstac"];
             $query2 = mysqli_query($conn, "SELECT * FROM endereco WHERE idEstac = '$idEstac'");
