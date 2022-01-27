@@ -49,6 +49,7 @@ if ($isAuth) {
 	$query1 = mysqli_query($conn, "SELECT * from vaga where idEstac = '$idEstac'");
 
     if (mysqli_num_rows($query1) > 0) {
+        $response["alocados"] = array();
         // percorre as vagas do estacionamento
         while($vaga = mysqli_fetch_array($query1)):     
 
