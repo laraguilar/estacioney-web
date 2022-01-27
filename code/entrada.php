@@ -71,8 +71,6 @@ include_once 'includes/headerLog.php';
                             
                         </div>
                         <button href = "home.php" type="submit" name="btnCadCarro" class="waves-effect waves-light btn indigo darken-2">Continuar</button>
-                        <p style="text-decoration: none;"> 
-                        <a href="cadPessoa.php">Cadastrar Cliente</a></p>
                     </div>
                 </div>
             </form>
