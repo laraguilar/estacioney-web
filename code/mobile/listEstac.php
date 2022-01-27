@@ -81,8 +81,6 @@ if ($isAuth) {
                 $estacionamento["bairro"] = $row["bairro"];
                 $estacionamento["cidade"] = $row["cidade"];
                 $estacionamento["bairro"] = $row["bairro"];
-
-
             }
      
             // Adiciona o produto no array de produtos.
