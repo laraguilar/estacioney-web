@@ -54,7 +54,7 @@ if ($isAuth) {
             $id ++;
         }
 
-        if(in_array($vagaCarro, $vag)){
+        if(in_array($vagaCarro, $vaga)){
             $arr = array_keys($vag, $vagaCarro);
             $idVagaBD = $arr[0];
             // verifica se a vaga esta desocupada
