@@ -74,16 +74,18 @@ $_SESSION['vaga'] = $vaga;
                         <div class="col s12 m6">
                             <?php 
                                 // calcula a quantidade de vagas ocupadas
-                                $sql3 = "SELECT count(*) as 'vagasOcup' from vaga where condVaga = 1 and idEstac ='$idEstac'";
+                                $sql3 = "SELECT idVaga from vaga where (condVaga = 1) and (idEstac ='$idEstac')";
                                 $query3 = mysqli_query($conn, $sql3);
-                                $resulta = mysqli_fetch_assoc($query3);
-                                $vagasOcup = $resulta['vagasOcup'];
 
-                                if($vagasOcup > 0){
-                                    $vagasDisp = $qtdVagas - ($vagasOcup + 1);
-                                }else{
-                                    $vagasDisp = $qtdVagas;
+
+                                if(mysqli_num_rows($query3) > 0){
+                                    $vagasOcup = mysqli_num_rows($query3);
+                                    $vagasDisp = $qtdVagas - $vagasOcup;
+                                } else{
+                                    $vagasDisp = $qtdVagas - $vagasOcup;
                                 }
+                                
+
                                 // quantidade de vagas disponíveis
                             ?>
                             <h6><b>Disponibilidade:</b> <?php echo $vagasDisp."/".$qtdVagas ?></h6>
