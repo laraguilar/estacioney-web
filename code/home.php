@@ -107,6 +107,8 @@ $_SESSION['vaga'] = $vaga;
                                         // verifica se a vaga está ocupada
                                         $idVaga = $vaga['idVaga'];
                                         $condVaga = $vaga['condVaga'];
+                                        
+                                
 
                                         // pega os dados da vaga alocada
                                         $sql2 = "SELECT * FROM aloca WHERE idVaga = '$idVaga' and hrSaida IS NULL;";
@@ -118,12 +120,14 @@ $_SESSION['vaga'] = $vaga;
 
                                             $idVaga = $vaga['idVaga'];
 
+                                            $vagaWeb = $_SESSION['vaga'][$idVaga];
+
                                             // dados do cliente que alocou a vaga
                                             $hrEntrada = $aloca['hrEntrada'];
                                             echo "<div class='row'>";
                                                 echo "<div class='section'>";
                                                     echo "<div class='col s8'>";
-                                                        echo "<h5>".$nomCliente."</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
+                                                        echo "<h5>".$nomCliente. " - "." VAGA - $vagaWeb ". "</h5><span>Hora de Entrada: ".$hrEntrada."</span><br><span>Placa: ".$aloca['dscPlaca']."</span>";
                                                         ?>
                                                     </div>
                                                     <div class='section'>

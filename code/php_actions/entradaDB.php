@@ -58,6 +58,8 @@ if(isset($_POST['btnCadCarro'])):
             $sql = "INSERT INTO aloca (idVaga, hrEntrada, dscPlaca, nomCliente, cpfCliente) VALUES ('$idVagaBD', CURRENT_TIMESTAMP, '$placaCarro', '$nomCliente', '$cpfCliente');";
             $sql2 = "UPDATE vaga SET condVaga = 1 WHERE idVaga = '$idVagaBD' and idEstac = '$idEstac';";
 
+            
+
 
             if(mysqli_query($conn, $sql) && mysqli_query($conn, $sql2)):
                 header('Location: ../home.php'); // aqui deve ir para a tela home
