@@ -38,9 +38,7 @@ if (!is_null($username)) {
 }
 
 if ($isAuth) {
-	if(isset($_POST['idAlocado']) && isset($_POST['valFixo'])):
-        $response["success"] = 1;
-        
+	if(isset($_POST['idAlocado']) && isset($_POST['valFixo'])):        
         $idAlocado = $_POST['idAlocado'];
         $valFixo = $_POST['idAlocado'];
         
@@ -58,34 +56,45 @@ if ($isAuth) {
                 $hrEntrada = $hrEntrada['hrEntrada'];
 
                 $query3 = mysqli_query($conn, "SELECT hour(TIMEDIFF(current_timestamp(), hrEntrada)) as 'tempEstac' FROM aloca WHERE idAloca = '$idAlocado'");
-                $tempoEstac = mysqli_fetch_assoc($query3);
-                $tempoEstac = $tempoEstac['tempEstac'];
-
-
-                if($tempoEstac = 0){
-                    $tempoEstac = 0;
-                } else{
-                    $tempoEstac = $tempoEstac['tempEstac']-1;
-                }
-
-                $query4 = mysqli_query($conn, "SELECT idEstac FROM vaga WHERE idVaga = '$idVaga'");
-                $result = mysqli_fetch_array($query4);
-                $idEstac = $result['idEstac'];
-
-                $query5 = mysqli_query($conn, "SELECT valFixo, valAcresc FROM estacionamento WHERE idEstac = '$idEstac'");
-                $result2 = mysqli_fetch_array($query5);
-                $valFixo = $result2['valFixo'];
-                $valAcresc = $result2['valAcresc'];
                 
+                if(mysqli_num_rows($query3) > 0){
+                    $tempoEstac = mysqli_fetch_assoc($query3);
+                    $tempoEstac = $tempoEstac['tempEstac'];
 
-                $custo = $valFixo + ($valAcresc * $tempoEstac);
 
-                $sql1 = "UPDATE aloca SET hrSaida = current_timestamp(), valTotal = '$custo' WHERE idAloca = '$idAlocado';";
+                    if($tempoEstac = 0){
+                        $tempoEstac = 0;
+                    } else{
+                        $tempoEstac = $tempoEstac['tempEstac']-1;
+                    }
 
-                $sql2 = "UPDATE vaga SET condVaga = 0 WHERE idVaga='$idVaga';";
+                    $query4 = mysqli_query($conn, "SELECT idEstac FROM vaga WHERE idVaga = '$idVaga'");
+                    $result = mysqli_fetch_array($query4);
+                    $idEstac = $result['idEstac'];
 
-                if(mysqli_query($conn, $sql1) && mysqli_query($conn, $sql2)){
-                $response["success"] = 1;
+                    $query5 = mysqli_query($conn, "SELECT valFixo, valAcresc FROM estacionamento WHERE idEstac = '$idEstac'");
+
+                    if(mysqli_num_rows($query5) > 0){
+
+                        $result2 = mysqli_fetch_array($query5);
+                        $valFixo = $result2['valFixo'];
+                        $valAcresc = $result2['valAcresc'];
+
+
+                        $custo = $valFixo + ($valAcresc * $tempoEstac);
+
+                        $sql1 = "UPDATE aloca SET hrSaida = current_timestamp(), valTotal = '$custo' WHERE idAloca = '$idAlocado';";
+
+                        $sql2 = "UPDATE vaga SET condVaga = 0 WHERE idVaga='$idVaga';";
+
+                        if(mysqli_query($conn, $sql1) && mysqli_query($conn, $sql2)){
+                            $response["success"] = 1;
+                        }
+                                            
+                    }
+                }else{
+                    $response["success"] = 0;
+	                $response["error"] = "hora entrada nao encontrada";
                 }
             }
 
