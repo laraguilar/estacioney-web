@@ -24,7 +24,7 @@ session_start();
         
         $tempoEstac = $tempoEstac['tempEstac'];
 
-        if($tempoEstac['tempEstac'] = 0){
+        if($tempoEstac = 0){
             $tempoEstac = 0;
         } else{
             $tempoEstac = $tempoEstac['tempEstac']-1;
