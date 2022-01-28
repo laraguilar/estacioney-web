@@ -82,7 +82,7 @@ $_SESSION['vaga'] = $vaga;
                                     $vagasOcup = mysqli_num_rows($query3);
                                     $vagasDisp = $qtdVagas - $vagasOcup;
                                 } else{
-                                    $vagasDisp = $qtdVagas - $vagasOcup;
+                                    $vagasDisp = $qtdVagas;
                                 }
                                 
 
