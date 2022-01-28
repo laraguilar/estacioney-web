@@ -69,8 +69,8 @@ if ($isAuth) {
                     }
 
                     $query4 = mysqli_query($conn, "SELECT idEstac FROM vaga WHERE idVaga = '$idVaga'");
-                    $result = mysqli_fetch_array($query4);
-                    $idEstac = $result['idEstac'];
+                    $resulta = mysqli_fetch_array($query4);
+                    $idEstac = $resulta['idEstac'];
 
                     $query5 = mysqli_query($conn, "SELECT valFixo, valAcresc FROM estacionamento WHERE idEstac = '$idEstac'");
 
