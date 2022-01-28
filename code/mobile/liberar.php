@@ -56,12 +56,12 @@ if ($isAuth) {
                 $hrEntrada = mysqli_fetch_assoc($query3);
                 $hrEntrada = $hrEntrada['hrEntrada'];
 
-                $query3 = mysqli_query($conn, "SELECT hour(TIMEDIFF(current_timestamp(), hrEntrada)) as 'tempEstac' FROM aloca WHERE idVaga = '$idVaga'");
+                $query3 = mysqli_query($conn, "SELECT hour(TIMEDIFF(current_timestamp(), hrEntrada)) as 'tempEstac' FROM aloca WHERE idAloca = '$idAlocado'");
                 $tempoEstac = mysqli_fetch_assoc($query3);
                 $tempoEstac = $tempoEstac['tempEstac'];
 
 
-                if($tempoEstac['tempEstac'] = 0){
+                if($tempoEstac = 0){
                     $tempoEstac = 0;
                 } else{
                     $tempoEstac = $tempoEstac['tempEstac']-1;
@@ -69,7 +69,7 @@ if ($isAuth) {
 
                 $custo = $valFixo + ($valAcresc * $tempoEstac);
 
-                $sql1 = "UPDATE aloca SET hrSaida = current_timestamp(), valTotal = '$custo' WHERE idVaga = '$idVaga';";
+                $sql1 = "UPDATE aloca SET hrSaida = current_timestamp(), valTotal = '$custo' WHERE idAloca = '$idAlocado';";
 
                 $sql2 = "UPDATE vaga SET condVaga = 0 WHERE idVaga='$idVaga';";
 
