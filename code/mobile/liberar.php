@@ -38,10 +38,11 @@ if (!is_null($username)) {
 }
 
 if ($isAuth) {
-	if(isset($_POST['idAlocado'])):
+	if(isset($_POST['idAlocado']) && isset($_POST['valFixo'])):
         $response["success"] = 1;
         
         $idAlocado = $_POST['idAlocado'];
+        $valFixo = $_POST['idAlocado'];
         
         $query2 = mysqli_query($conn, "SELECT idVaga FROM aloca WHERE idAloca = '$idAlocado'");
 
@@ -66,6 +67,16 @@ if ($isAuth) {
                 } else{
                     $tempoEstac = $tempoEstac['tempEstac']-1;
                 }
+
+                $query4 = mysqli_query($conn, "SELECT idEstac FROM vaga WHERE idVaga = '$idVaga'");
+                $result = mysqli_fetch_array($query4);
+                $idEstac = $result['idEstac'];
+
+                $query5 = mysqli_query($conn, "SELECT valFixo, valAcresc FROM estacionamento WHERE idEstac = '$idEstac'");
+                $result2 = mysqli_fetch_array($query5);
+                $valFixo = $result2['valFixo'];
+                $valAcresc = $result2['valAcresc'];
+                
 
                 $custo = $valFixo + ($valAcresc * $tempoEstac);
 
