@@ -50,9 +50,9 @@ $valAcresc = $dadosEsta['valAcresc'];
 </head>
 <body>
     <div class="container" style="margin: auto; width: 60%;">
-        <div class="row">
-            <div class="col center-align">
-            <div class="row s12 m6 center-align">
+        <div class="row center">
+            <div class="col s12 center">
+            <div class="row center">
                 <div class="col s12 z-depth-1">
                     <h4 class="center"><?php echo $nomEstac?></h4>
                     <!-- Dropdown Trigger
