@@ -17,7 +17,7 @@ if (isset($_POST['btnCadEstac'])) :
     $rua = mysqli_escape_string($conn, $_POST['rua']);
     $bairro = mysqli_escape_string($conn, $_POST['bairro']);
     $cidade = mysqli_escape_string($conn, $_POST['cidade']);
-    $estado = mysqli_escape_string($conn, $_POST['estado']);
+    $estado = mysqli_escape_string($conn, $_POST['uf']);
     $num = mysqli_escape_string($conn, $_POST['num']);
 
     if(!empty($nomEstac) && !empty($qtdVagas) && !empty($valFixo) && !empty($valAcresc) && !empty($cep) && !empty($rua) && !empty($bairro) && !empty($cidade) && !empty($estado) && !empty($num)):

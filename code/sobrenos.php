@@ -1,4 +1,13 @@
-<?php include_once 'includes/header.php' ?>
+<?php
+
+session_start();
+if(isset($_SESSION['logado'])){
+    include_once 'includes/headerLog.php';
+}else{
+    include_once 'includes/headerDeslog.php';
+}
+
+?>
 <!DOCTYPE html>
 <html>
     <head>

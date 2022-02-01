@@ -1,10 +1,19 @@
 <?php
 require_once 'php_actions/sessaoLog.php';
+$pageName = basename($_SERVER['PHP_SELF']);
+$listEstac = "listEstacs.php";
+
+if($pageName == $listEstac){
+    $pagina = $pageName;
+} else{
+    $pagina = "home.php";
+
+}
 ?>
 <div class="navbar">
     <nav>
         <div class="nav-wrapper indigo darken-4">
-            <a href="home.php" class="brand-logo" style="margin-left:2%; margin-top: 1%;"><img src="imagem/logo_estacioney50px.png" alt="" width="35" height="35"></a>
+            <a href="<?php echo $pagina; ?>" class="brand-logo" style="margin-left:2%; margin-top: 1%;"><img src="imagem/logo_estacioney50px.png" alt="" width="35" height="35"></a>
             <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
             </a>

@@ -23,14 +23,14 @@
 <footer class="page-footer indigo darken-4">
         <div class="container">
             <div class="row">
-                <div class="col s4" style="margin-left: -10%;">
+                <div class="col s12 m8" style="margin-left: -10%;">
                 Copyright © 2022 Estacioney. 
                 Todos os direitos reservados.
                 </div>
-                <div class="col s2" style="margin-left: 10%;">
+                <div class="col s12 m2" style="margin-left: 10%;">
                     <a class="grey-text text-lighten-3" href="sobrenos.php" target="_blank">Sobre nós</a>
                 </div>
-                <div class="col s2">
+                <div class="col s12 m2">
                     <a class="grey-text text-lighten-3" href="https://github.com/laraguilar/trabalho2-pw2" target="_blank">GitHub</a>
                 </div>
                 </div>
