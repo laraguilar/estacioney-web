@@ -5,6 +5,8 @@ include_once 'includes/headerLog.php';
 // sessao 
 require_once 'php_actions/sessaoLog.php';
 
+$idEstac = $_SESSION['idEstac'];
+
 // atribui uma vaga a um item 
 $query = mysqli_query($conn, "SELECT idVaga FROM vaga WHERE idEstac = '$idEstac'");
 $vaga = array();
@@ -15,6 +17,16 @@ while($resultado = mysqli_fetch_array($query)){
     $id ++;
 }
 $_SESSION['vaga'] = $vaga;
+
+
+$query4 = mysqli_query($conn, "SELECT * FROM estacionamento WHERE idEstac = '$idEstac'");
+$dadosEsta = mysqli_fetch_array($query4);
+
+$nomEstac = $dadosEsta['nomEstac'];
+$qtdVagas = $dadosEsta['qtdVagas'];
+$valFixo = $dadosEsta['valFixo'];
+$valAcresc = $dadosEsta['valAcresc'];
+
 
 ?>
 <!DOCTYPE html>

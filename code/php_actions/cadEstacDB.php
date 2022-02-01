@@ -96,10 +96,10 @@ if (isset($_POST['btnCadEstac'])) :
                         $_SESSION['dadosEstac'] = $dadosEstac;
 
 
-                        header('Location: ../home.php');
+                        header('Location: ../listEstacs.php');
                     else:
                         header('Location: ../sobrenos.php');                    
-                        $erros[] = "Erro ao inserir vagas";                    
+                        $erros[] = "Erro ao inserir vagas";
                     endif;
                     
                 else:

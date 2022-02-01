@@ -5,6 +5,18 @@ require_once 'php_actions/sessaoLog.php';
 //header
 include_once 'includes/headerLog.php';
 
+
+$idEstac = $_SESSION['idEstac'];
+
+$query4 = mysqli_query($conn, "SELECT * FROM estacionamento WHERE idEstac = '$idEstac'");
+$dadosEsta = mysqli_fetch_array($query4);
+
+$nomEstac = $dadosEsta['nomEstac'];
+$qtdVagas = $dadosEsta['qtdVagas'];
+$valFixo = $dadosEsta['valFixo'];
+$valAcresc = $dadosEsta['valAcresc'];
+
+
 // pega os dados de endereço
 $sql = "SELECT * FROM endereco WHERE idEstac = '$idEstac'";
 $query = mysqli_query($conn, $sql);

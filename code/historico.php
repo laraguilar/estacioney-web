@@ -5,6 +5,8 @@ include_once 'includes/headerLog.php';
 // sessao 
 require_once 'php_actions/sessaoLog.php';
 
+$idEstac = $_SESSION['idEstac'];
+
 ?>
 <!DOCTYPE html>
 <html>

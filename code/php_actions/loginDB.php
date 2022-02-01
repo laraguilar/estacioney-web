@@ -46,12 +46,18 @@ if(isset($_POST['btnEntrar'])):
                         // Log na Sessao
                         $sql3 = "SELECT * FROM estacionamento WHERE idEmpresa = '$id'";
                         $query3 = mysqli_query($conn, $sql3);
+                        
+                        $arr = array();
 
-                        $dadosEstac = mysqli_fetch_array($query3);
-                        $_SESSION['dadosEstac'] = $dadosEstac;
-                        header('Location: ../home.php');
+                        while($dadosEstac = mysqli_fetch_array($query3)):
+                            $arr[] = $dadosEstac['nomEstac'];
+                        endwhile;
+
+                        $_SESSION['dadosEstac'] = $arr;
+
+                        header('Location: ../listEstacs.php');
                     else:
-                        header('Location: ../cadEstac.php');
+                        header('Location: ../listEstacs.php');
                     endif;
                 else:
                     header('Location: ../index.php');

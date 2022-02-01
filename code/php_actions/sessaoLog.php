@@ -16,10 +16,5 @@ $logado = $_SESSION['logado'];
 
 if(isset($_SESSION['dadosEstac'])){
     $dadosEstac = $_SESSION['dadosEstac'];
-    $idEstac = $dadosEstac['idEstac'];
-    $nomEstac = $dadosEstac['nomEstac'];
-    $valFixo = $dadosEstac['valFixo'];
-    $valAcresc = $dadosEstac['valAcresc'];
-    $qtdVagas = $dadosEstac['qtdVagas'];
 }
 ?>
