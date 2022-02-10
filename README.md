@@ -1,4 +1,6 @@
 # Sistema de Controle Estacionamento Rotativo
+Esse projeto se trata da parte Web do Projeto Integrador que consiste em um sistema de gerenciamento de estacionamento onde o gerente consegue ter controle da entrada e saída de veículos e o histórico.
+
 Para executar o projeto, é necessário abrir um servidor e alocar a aplicação e o banco de dados disponível. Está sendo utilizado o Heroku para isso, porém pode ser alocado também em localhost.
 
 ## Banco de Dados
